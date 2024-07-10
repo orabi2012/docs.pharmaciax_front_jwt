@@ -1,0 +1,210 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IralLiCaseAuthInvestSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRAL_LI_CASE_AUTH_INVEST_SRV" targetNamespace="http://tempuri.org/IralLiCaseAuthInvestSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IralLiCaseAuthInvestSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IralLiCaseAuthInvestSrv/">
+<xs:element name="IralLiCaseAuthInvestSrvcall" type="tns:IralLiCaseAuthInvestSrvcall"/>
+<xs:element name="IralLiCaseAuthInvestSrvcallResponse" type="tns:IralLiCaseAuthInvestSrvcallResponse"/>
+<xs:complexType name="IralLiCaseAuthInvestSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IralLiCaseAuthInvestSrvImport" type="tns:IralLiCaseAuthInvestSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IralLiCaseAuthInvestSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCheckIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportLastStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportFristStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IralLiCaseAuthInvestSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IralLiCaseAuthInvestSrvExport" type="tns:IralLiCaseAuthInvestSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IralLiCaseAuthInvestSrvExport">
+<xs:sequence>
+<xs:element name="ExportSelectedStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="AuthNationalNum" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCheckIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportLastStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportFristStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IralLiCaseAuthInvestSrvcallResponse">
+<wsdl:part element="tns:IralLiCaseAuthInvestSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IralLiCaseAuthInvestSrvcall">
+<wsdl:part element="tns:IralLiCaseAuthInvestSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRAL_LI_CASE_AUTH_INVEST_SRV">
+<wsdl:operation name="IralLiCaseAuthInvestSrvcall">
+<wsdl:input message="tns:IralLiCaseAuthInvestSrvcall" name="IralLiCaseAuthInvestSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IralLiCaseAuthInvestSrvcallResponse" name="IralLiCaseAuthInvestSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRAL_LI_CASE_AUTH_INVEST_SRVSoapBinding" type="tns:IRAL_LI_CASE_AUTH_INVEST_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IralLiCaseAuthInvestSrvcall">
+<soap:operation soapAction="http://tempuri.org/IralLiCaseAuthInvestSrvcall/" style="document"/>
+<wsdl:input name="IralLiCaseAuthInvestSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IralLiCaseAuthInvestSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRAL_LI_CASE_AUTH_INVEST_SRV">
+<wsdl:port binding="tns:IRAL_LI_CASE_AUTH_INVEST_SRVSoapBinding" name="IRAL_LI_CASE_AUTH_INVEST_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRAL/IRAL_LI_CASE_AUTH_INVEST_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

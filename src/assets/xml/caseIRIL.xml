@@ -1,0 +1,223 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrilInLstUnkownCaseSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIL_IN_LST_UNKOWN_CASE_SRV" targetNamespace="http://tempuri.org/IrilInLstUnkownCaseSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrilInLstUnkownCaseSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrilInLstUnkownCaseSrv/">
+<xs:element name="IrilInLstUnkownCaseSrvcall" type="tns:IrilInLstUnkownCaseSrvcall"/>
+<xs:element name="IrilInLstUnkownCaseSrvcallResponse" type="tns:IrilInLstUnkownCaseSrvcallResponse"/>
+<xs:complexType name="IrilInLstUnkownCaseSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrilInLstUnkownCaseSrvImport" type="tns:IrilInLstUnkownCaseSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrilInLstUnkownCaseSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GpImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element minOccurs="0" name="DateRecorded" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhosePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrilInLstUnkownCaseSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrilInLstUnkownCaseSrvExport" type="tns:IrilInLstUnkownCaseSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrilInLstUnkownCaseSrvExport">
+<xs:sequence>
+<xs:element name="ExportWhoseCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhoseCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element name="DateRecorded" nillable="true" type="xs:string"/>
+<xs:element name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhosePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrilInLstUnkownCaseSrvcallResponse">
+<wsdl:part element="tns:IrilInLstUnkownCaseSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrilInLstUnkownCaseSrvcall">
+<wsdl:part element="tns:IrilInLstUnkownCaseSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIL_IN_LST_UNKOWN_CASE_SRV">
+<wsdl:operation name="IrilInLstUnkownCaseSrvcall">
+<wsdl:input message="tns:IrilInLstUnkownCaseSrvcall" name="IrilInLstUnkownCaseSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrilInLstUnkownCaseSrvcallResponse" name="IrilInLstUnkownCaseSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIL_IN_LST_UNKOWN_CASE_SRVSoapBinding" type="tns:IRIL_IN_LST_UNKOWN_CASE_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrilInLstUnkownCaseSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrilInLstUnkownCaseSrvcall/" style="document"/>
+<wsdl:input name="IrilInLstUnkownCaseSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrilInLstUnkownCaseSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIL_IN_LST_UNKOWN_CASE_SRV">
+<wsdl:port binding="tns:IRIL_IN_LST_UNKOWN_CASE_SRVSoapBinding" name="IRIL_IN_LST_UNKOWN_CASE_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIL/IRIL_IN_LST_UNKOWN_CASE_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

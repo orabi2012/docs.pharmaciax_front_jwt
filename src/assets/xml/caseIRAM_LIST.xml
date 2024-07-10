@@ -1,0 +1,278 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IramListAllCasesByCdmSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRAM_LIST_ALL_CASES_BY_CDM_SRV" targetNamespace="http://tempuri.org/IramListAllCasesByCdmSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IramListAllCasesByCdmSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IramListAllCasesByCdmSrv/">
+<xs:element name="IramListAllCasesByCdmSrvcall" type="tns:IramListAllCasesByCdmSrvcall"/>
+<xs:element name="IramListAllCasesByCdmSrvcallResponse" type="tns:IramListAllCasesByCdmSrvcallResponse"/>
+<xs:complexType name="IramListAllCasesByCdmSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IramListAllCasesByCdmSrvImport" type="tns:IramListAllCasesByCdmSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IramListAllCasesByCdmSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImpGpCaseMovementPersonDetail">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DateCaseEmployeeStart" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DateCaseEmployeeEnd" nillable="true" type="xs:string"/>
+<xs:element name="PubOrgNo" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImpGpCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImpGpCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImpGpCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportHdrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text27" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOptionDateIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseMovementPersonDetail">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PubOrgNo" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOptionTypeIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportJobClassification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseMovementOrganization">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IramListAllCasesByCdmSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IramListAllCasesByCdmSrvExport" type="tns:IramListAllCasesByCdmSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IramListAllCasesByCdmSrvExport">
+<xs:sequence>
+<xs:element name="ExportOptionTypeIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseMovementPersonDetail">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PubOrgNo" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportJobClassification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseMovementOrganization">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOptionDateIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+<xs:element name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExpGpCaseMovementPersonDetail">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PubOrgNo" type="xs:short"/>
+<xs:element name="JobClassCode" type="xs:short"/>
+<xs:element name="AuthCode" type="xs:short"/>
+<xs:element name="DateCaseEmployeeStart" nillable="true" type="xs:string"/>
+<xs:element name="DateCaseEmployeeEnd" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExpGpCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExpGpCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExpGpCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="DateNotified" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportHdrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text27" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IramListAllCasesByCdmSrvcallResponse">
+<wsdl:part element="tns:IramListAllCasesByCdmSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IramListAllCasesByCdmSrvcall">
+<wsdl:part element="tns:IramListAllCasesByCdmSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRAM_LIST_ALL_CASES_BY_CDM_SRV">
+<wsdl:operation name="IramListAllCasesByCdmSrvcall">
+<wsdl:input message="tns:IramListAllCasesByCdmSrvcall" name="IramListAllCasesByCdmSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IramListAllCasesByCdmSrvcallResponse" name="IramListAllCasesByCdmSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRAM_LIST_ALL_CASES_BY_CDM_SRVSoapBinding" type="tns:IRAM_LIST_ALL_CASES_BY_CDM_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IramListAllCasesByCdmSrvcall">
+<soap:operation soapAction="http://tempuri.org/IramListAllCasesByCdmSrvcall/" style="document"/>
+<wsdl:input name="IramListAllCasesByCdmSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IramListAllCasesByCdmSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRAM_LIST_ALL_CASES_BY_CDM_SRV">
+<wsdl:port binding="tns:IRAM_LIST_ALL_CASES_BY_CDM_SRVSoapBinding" name="IRAM_LIST_ALL_CASES_BY_CDM_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRAM/IRAM_LIST_ALL_CASES_BY_CDM_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

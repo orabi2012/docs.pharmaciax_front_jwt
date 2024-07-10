@@ -1,0 +1,178 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlcLiNationalitySrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLC_LI_NATIONALITY_SRV" targetNamespace="http://tempuri.org/IrlcLiNationalitySrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlcLiNationalitySrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlcLiNationalitySrv/">
+<xs:element name="IrlcLiNationalitySrvcall" type="tns:IrlcLiNationalitySrvcall"/>
+<xs:element name="IrlcLiNationalitySrvcallResponse" type="tns:IrlcLiNationalitySrvcallResponse"/>
+<xs:complexType name="IrlcLiNationalitySrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlcLiNationalitySrvImport" type="tns:IrlcLiNationalitySrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlcLiNationalitySrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportSearchNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlcLiNationalitySrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlcLiNationalitySrvExport" type="tns:IrlcLiNationalitySrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlcLiNationalitySrvExport">
+<xs:sequence>
+<xs:element name="ExportSearchNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhoseAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PassportNationality" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlcLiNationalitySrvcallResponse">
+<wsdl:part element="tns:IrlcLiNationalitySrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlcLiNationalitySrvcall">
+<wsdl:part element="tns:IrlcLiNationalitySrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLC_LI_NATIONALITY_SRV">
+<wsdl:operation name="IrlcLiNationalitySrvcall">
+<wsdl:input message="tns:IrlcLiNationalitySrvcall" name="IrlcLiNationalitySrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlcLiNationalitySrvcallResponse" name="IrlcLiNationalitySrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLC_LI_NATIONALITY_SRVSoapBinding" type="tns:IRLC_LI_NATIONALITY_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlcLiNationalitySrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlcLiNationalitySrvcall/" style="document"/>
+<wsdl:input name="IrlcLiNationalitySrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlcLiNationalitySrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLC_LI_NATIONALITY_SRV">
+<wsdl:port binding="tns:IRLC_LI_NATIONALITY_SRVSoapBinding" name="IRLC_LI_NATIONALITY_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLC/IRLC_LI_NATIONALITY_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

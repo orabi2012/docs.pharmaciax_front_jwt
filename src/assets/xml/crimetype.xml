@@ -1,0 +1,149 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlfLiCrimeTypeSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLF_LI_CRIME_TYPE_SRV" targetNamespace="http://tempuri.org/IrlfLiCrimeTypeSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlfLiCrimeTypeSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlfLiCrimeTypeSrv/">
+<xs:element name="IrlfLiCrimeTypeSrvcall" type="tns:IrlfLiCrimeTypeSrvcall"/>
+<xs:element name="IrlfLiCrimeTypeSrvcallResponse" type="tns:IrlfLiCrimeTypeSrvcallResponse"/>
+<xs:complexType name="IrlfLiCrimeTypeSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlfLiCrimeTypeSrvImport" type="tns:IrlfLiCrimeTypeSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlfLiCrimeTypeSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:int"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhoseCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:int"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlfLiCrimeTypeSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlfLiCrimeTypeSrvExport" type="tns:IrlfLiCrimeTypeSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlfLiCrimeTypeSrvExport">
+<xs:sequence>
+<xs:element name="ExportReturnedCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:int"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:int"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlfLiCrimeTypeSrvcall">
+<wsdl:part element="tns:IrlfLiCrimeTypeSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlfLiCrimeTypeSrvcallResponse">
+<wsdl:part element="tns:IrlfLiCrimeTypeSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLF_LI_CRIME_TYPE_SRV">
+<wsdl:operation name="IrlfLiCrimeTypeSrvcall">
+<wsdl:input message="tns:IrlfLiCrimeTypeSrvcall" name="IrlfLiCrimeTypeSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlfLiCrimeTypeSrvcallResponse" name="IrlfLiCrimeTypeSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLF_LI_CRIME_TYPE_SRVSoapBinding" type="tns:IRLF_LI_CRIME_TYPE_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlfLiCrimeTypeSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlfLiCrimeTypeSrvcall/" style="document"/>
+<wsdl:input name="IrlfLiCrimeTypeSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlfLiCrimeTypeSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLF_LI_CRIME_TYPE_SRV">
+<wsdl:port binding="tns:IRLF_LI_CRIME_TYPE_SRVSoapBinding" name="IRLF_LI_CRIME_TYPE_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLF/IRLF_LI_CRIME_TYPE_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

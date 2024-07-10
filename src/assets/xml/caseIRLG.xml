@@ -1,0 +1,179 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlgLiNationalPermPersonSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLG_LI_NATIONAL_PERM_PERSON_SRV" targetNamespace="http://tempuri.org/IrlgLiNationalPermPersonSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlgLiNationalPermPersonSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlgLiNationalPermPersonSrv/">
+<xs:element name="IrlgLiNationalPermPersonSrvcall" type="tns:IrlgLiNationalPermPersonSrvcall"/>
+<xs:element name="IrlgLiNationalPermPersonSrvcallResponse" type="tns:IrlgLiNationalPermPersonSrvcallResponse"/>
+<xs:complexType name="IrlgLiNationalPermPersonSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlgLiNationalPermPersonSrvImport" type="tns:IrlgLiNationalPermPersonSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlgLiNationalPermPersonSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportWhosePermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="ArabicFirstName" type="xs:string"/>
+<xs:element minOccurs="0" name="ArabicSecondName" type="xs:string"/>
+<xs:element minOccurs="0" name="ArabicFamilyName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlgLiNationalPermPersonSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlgLiNationalPermPersonSrvExport" type="tns:IrlgLiNationalPermPersonSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlgLiNationalPermPersonSrvExport">
+<xs:sequence>
+<xs:element name="ExportWhosePermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element name="ArabicFirstName" type="xs:string"/>
+<xs:element name="ArabicSecondName" type="xs:string"/>
+<xs:element name="ArabicFamilyName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportReturnedIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportReturnedPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlgLiNationalPermPersonSrvcall">
+<wsdl:part element="tns:IrlgLiNationalPermPersonSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlgLiNationalPermPersonSrvcallResponse">
+<wsdl:part element="tns:IrlgLiNationalPermPersonSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLG_LI_NATIONAL_PERM_PERSON_SRV">
+<wsdl:operation name="IrlgLiNationalPermPersonSrvcall">
+<wsdl:input message="tns:IrlgLiNationalPermPersonSrvcall" name="IrlgLiNationalPermPersonSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlgLiNationalPermPersonSrvcallResponse" name="IrlgLiNationalPermPersonSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLG_LI_NATIONAL_PERM_PERSON_SRVSoapBinding" type="tns:IRLG_LI_NATIONAL_PERM_PERSON_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlgLiNationalPermPersonSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlgLiNationalPermPersonSrvcall/" style="document"/>
+<wsdl:input name="IrlgLiNationalPermPersonSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlgLiNationalPermPersonSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLG_LI_NATIONAL_PERM_PERSON_SRV">
+<wsdl:port binding="tns:IRLG_LI_NATIONAL_PERM_PERSON_SRVSoapBinding" name="IRLG_LI_NATIONAL_PERM_PERSON_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLG/IRLG_LI_NATIONAL_PERM_PERSON_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

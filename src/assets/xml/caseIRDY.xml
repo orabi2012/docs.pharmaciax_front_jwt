@@ -1,0 +1,260 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrdyLiVehicleOwnersSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDY_LI_VEHICLE_OWNERS_SRV" targetNamespace="http://tempuri.org/IrdyLiVehicleOwnersSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrdyLiVehicleOwnersSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrdyLiVehicleOwnersSrv/">
+<xs:element name="IrdyLiVehicleOwnersSrvcall" type="tns:IrdyLiVehicleOwnersSrvcall"/>
+<xs:element name="IrdyLiVehicleOwnersSrvcallResponse" type="tns:IrdyLiVehicleOwnersSrvcallResponse"/>
+<xs:complexType name="IrdyLiVehicleOwnersSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdyLiVehicleOwnersSrvImport" type="tns:IrdyLiVehicleOwnersSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdyLiVehicleOwnersSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpOwner">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Number" type="xs:long"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpVehicleOwnerRegistration">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string"/>
+<xs:element name="VehicleOwnerTypeId" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+<xs:element minOccurs="0" name="VehicleIdentificationNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportConcatedNames">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="LatineName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrdyLiVehicleOwnersSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdyLiVehicleOwnersSrvExport" type="tns:IrdyLiVehicleOwnersSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdyLiVehicleOwnersSrvExport">
+<xs:sequence>
+<xs:element name="ExportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Identifier" type="xs:string"/>
+<xs:element name="VehicleIdentificationNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportConcatedNames">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="LatineName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportTrafficPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Zt4f0tsnTrafficNoOfPerson" type="xs:int"/>
+<xs:element name="Zt4f0namArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCommercialOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CommercialNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpOwner">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:long"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpVehicleOwnerRegistration">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+<xs:element name="EndDate" nillable="true" type="xs:string"/>
+<xs:element name="VehicleOwnerTypeId" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrdyLiVehicleOwnersSrvcall">
+<wsdl:part element="tns:IrdyLiVehicleOwnersSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdyLiVehicleOwnersSrvcallResponse">
+<wsdl:part element="tns:IrdyLiVehicleOwnersSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDY_LI_VEHICLE_OWNERS_SRV">
+<wsdl:operation name="IrdyLiVehicleOwnersSrvcall">
+<wsdl:input message="tns:IrdyLiVehicleOwnersSrvcall" name="IrdyLiVehicleOwnersSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrdyLiVehicleOwnersSrvcallResponse" name="IrdyLiVehicleOwnersSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDY_LI_VEHICLE_OWNERS_SRVSoapBinding" type="tns:IRDY_LI_VEHICLE_OWNERS_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrdyLiVehicleOwnersSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrdyLiVehicleOwnersSrvcall/" style="document"/>
+<wsdl:input name="IrdyLiVehicleOwnersSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrdyLiVehicleOwnersSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDY_LI_VEHICLE_OWNERS_SRV">
+<wsdl:port binding="tns:IRDY_LI_VEHICLE_OWNERS_SRVSoapBinding" name="IRDY_LI_VEHICLE_OWNERS_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRDY/IRDY_LI_VEHICLE_OWNERS_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

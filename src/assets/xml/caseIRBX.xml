@@ -1,0 +1,346 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrbxLsCaseMovementsSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRBX_LS_CASE_MOVEMENTS_SRV" targetNamespace="http://tempuri.org/IrbxLsCaseMovementsSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrbxLsCaseMovementsSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrbxLsCaseMovementsSrv/">
+<xs:element name="IrbxLsCaseMovementsSrvcall" type="tns:IrbxLsCaseMovementsSrvcall"/>
+<xs:element name="IrbxLsCaseMovementsSrvcallResponse" type="tns:IrbxLsCaseMovementsSrvcallResponse"/>
+<xs:complexType name="IrbxLsCaseMovementsSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrbxLsCaseMovementsSrvImport" type="tns:IrbxLsCaseMovementsSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrbxLsCaseMovementsSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportTstPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Userno" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportLastCaseMovement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ReferenceType" type="xs:short"/>
+<xs:element minOccurs="0" name="ReferenceNo" type="xs:string"/>
+<xs:element minOccurs="0" name="DateReceived" nillable="true" type="xs:string"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportLastMovementPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportHdIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text27" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrpSelect">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImCaseMovement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DateReceived" nillable="true" type="xs:string"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+<xs:element minOccurs="0" name="ReferenceNo" type="xs:string"/>
+<xs:element name="ReferenceType" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImHdCharIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSelectedIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Subscript" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSelectedCaseMovementOrganization">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="Action" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrbxLsCaseMovementsSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrbxLsCaseMovementsSrvExport" type="tns:IrbxLsCaseMovementsSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrbxLsCaseMovementsSrvExport">
+<xs:sequence>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpSelect">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExCaseMovement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DateReceived" nillable="true" type="xs:string"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+<xs:element name="ReferenceNo" type="xs:string"/>
+<xs:element name="ReferenceType" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExHdCharIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportTstPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Userno" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportLastCaseMovement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ReferenceType" type="xs:short"/>
+<xs:element name="ReferenceNo" type="xs:string"/>
+<xs:element name="DateReceived" nillable="true" type="xs:string"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportLastMovementPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Subscript" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedCaseMovementOrganization">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportHdIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text27" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrbxLsCaseMovementsSrvcallResponse">
+<wsdl:part element="tns:IrbxLsCaseMovementsSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrbxLsCaseMovementsSrvcall">
+<wsdl:part element="tns:IrbxLsCaseMovementsSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRBX_LS_CASE_MOVEMENTS_SRV">
+<wsdl:operation name="IrbxLsCaseMovementsSrvcall">
+<wsdl:input message="tns:IrbxLsCaseMovementsSrvcall" name="IrbxLsCaseMovementsSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrbxLsCaseMovementsSrvcallResponse" name="IrbxLsCaseMovementsSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRBX_LS_CASE_MOVEMENTS_SRVSoapBinding" type="tns:IRBX_LS_CASE_MOVEMENTS_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrbxLsCaseMovementsSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrbxLsCaseMovementsSrvcall/" style="document"/>
+<wsdl:input name="IrbxLsCaseMovementsSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrbxLsCaseMovementsSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRBX_LS_CASE_MOVEMENTS_SRV">
+<wsdl:port binding="tns:IRBX_LS_CASE_MOVEMENTS_SRVSoapBinding" name="IRBX_LS_CASE_MOVEMENTS_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRBX/IRBX_LS_CASE_MOVEMENTS_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

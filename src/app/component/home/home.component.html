@@ -1,0 +1,707 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
+    <div class="d-flex align-items-center">
+      <div class="toggle-icon-wrapper">
+        <button
+          class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          aria-label="Toggle Navigation"
+          data-bs-original-title="Toggle Navigation"
+        >
+          <span class="navbar-toggle-icon">
+            <span class="toggle-line"></span>
+          </span>
+        </button>
+      </div>
+      <a class="navbar-brand">
+        <div class="d-flex align-items-center">
+          <img
+            class="me-2"
+            src="http://i.ibb.co/TbGRtGc/logotrans.webp"
+            alt=""
+            width="150px"
+          />
+        </div>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+      <div class="navbar-vertical-content scrollbar">
+        <ul class="navbar-nav flex-column mb-2" id="navbarVerticalNav">
+          <li class="nav-item">
+            <a
+              *ngIf="showActiveFilesTable"
+              (click)="filterByActiveFile(); clearAll()"
+              class="nav-link"
+              [ngClass]="{ active: activeFileFilter }"
+              role="button"
+            >
+              <div class="d-flex align-items-center" style="margin-top: 60px">
+                <span class="nav-link-icon">
+                  <span class="fas fa-chart-pie"></span>
+                </span>
+                <span style="font-size: 16px" class="nav-link-text ps-1"
+                  >الكل</span
+                >
+              </div>
+            </a>
+          </li>
+          <li
+            class="nav-item"
+            *ngFor="let category of categories; let i = index"
+            value="{{ i }}"
+          >
+            <a
+              *ngIf="showActiveFilesTable"
+              (click)="filterDataByCat(category, i); clearAll()"
+              class="nav-link dropdown-indicator"
+              [ngClass]="{
+                active: selectedCategoryIndex === i && !activeFileFilter
+              }"
+              href="#dash{{ i }}"
+              role="button"
+              data-bs-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="dashboard"
+            >
+              <div class="d-flex align-items-center">
+                <span class="nav-link-icon">
+                  <span class="fas fa-chart-pie"></span>
+                </span>
+                <span style="font-size: 16px" class="nav-link-text ps-1">{{
+                  category?.Category_name
+                }}</span>
+              </div>
+            </a>
+            <ul class="nav collapse" id="dash{{ i }}">
+              <li
+                class="nav-item"
+                *ngFor="let subcategory of category.subcategories"
+              >
+                <a
+                  *ngIf="showActiveFilesTable"
+                  class="nav-link"
+                  role="button"
+                  [ngClass]="{
+                    active:
+                      selectedSubcategoryIndex === subcategory.subcat_id &&
+                      !activeFileFilter
+                  }"
+                >
+                  <div class="d-flex align-items-center">
+                    <span
+                      (click)="
+                        filterDataBySub(category, subcategory); clearAll()
+                      "
+                      class="nav-link-text ps-1"
+                      >{{ subcategory.SubCategory_name }}</span
+                    >
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <nav
+      class="navbar navbar-light navbar-glass navbar-top navbar-expand navbar-glass-shadow"
+    >
+      <div class="d-flex align-items-center">
+        <button
+          class="btn navbar- toggler-humburger-icon navbar-toggler me-1 me-sm-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarVerticalCollapse"
+          aria-controls="navbarVerticalCollapse"
+          aria-expanded="true"
+          aria-label="Toggle Navigation"
+        >
+          <span class="navbar-toggle-icon">
+            <span class="toggle-line"></span>
+          </span>
+        </button>
+      </div>
+      <ul
+        class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center"
+      >
+        <li class="nav-item pt-1">
+          <a
+            *ngIf="user.role_id === 1 || user.role_id === 2"
+            class="nav-link pe-3"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <button
+              class="btn rounded-pill btn-sm"
+              [ngClass]="{
+                'btn-warning': showActiveFilesTable,
+                'btn-success': !showActiveFilesTable
+              }"
+              (click)="showInactiveFiles()"
+            >
+              {{ showActiveFilesTable ? "Inactive Files" : "Active Files" }}
+            </button>
+          </a>
+        </li>
+        <li class="nav-item pt-1">
+          <a
+            *ngIf="user.role_id === 1 || user.role_id === 2"
+            class="nav-link pe-3"
+            role="button"
+            routerLink="/createFile"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <button class="btn btn-secondary rounded-pill btn-sm" type="button">
+              <span class="p-1 bi-plus-circle-fill mt-auto"></span>إضافة ملف
+              جديد
+            </button></a
+          >
+        </li>
+        <li class="nav-item pt-2">
+          <a class="nav-link pe-3">
+            <button
+              disabled
+              class="btn me-1 mb-1 rounded-pill btn-sm"
+              [ngClass]="{
+                'btn-danger': roles?.role_name === 'Admin',
+                'btn-warning': roles?.role_name === 'Editor',
+                'btn-success': roles?.role_name === 'Authorized',
+                'btn-primary': roles?.role_name === 'User'
+              }"
+            >
+              {{ roles?.role_name }}
+            </button>
+          </a>
+        </li>
+        <li
+          *ngIf="user.role_id == 1 || user.role_id == 2 || user.role_id == 3 || user.role_id == 4"
+          class="nav-item dropdown pt-2 pe-2"
+        >
+          <a
+            class="nav-link"
+            id="navbarDropdownNotification"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span style="font-weight: bolder; font-size: 16px"
+              >تغيير الدولة</span
+            >
+          </a>
+          <div
+            class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
+            aria-labelledby="navbarDropdownNotification"
+          >
+            <div class="bg-white dark__bg-1000 rounded-2 py-2">
+              <a class="dropdown-item" *ngFor="let country of countries">
+                <div (click)="filterDataByCountry(country.id)" class="row">
+                  <div class="col-6" style="cursor: pointer">
+                    {{ country.country_name }}
+                  </div>
+                  <div class="col-6">
+                    <img
+                      style="width: 20px; height: 10px; justify-self: self-end"
+                      [src]="country.flag"
+                    />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item pt-1">
+          <a
+            class="nav-link pe-3"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              style="width: 30px; height: 20px; justify-self: self-end"
+              [src]="getCountryFlag(user.Country_id)"
+            />
+          </a>
+        </li>
+        <li class="nav-item dropdown pt-1">
+          <a
+            class="nav-link pe-0 ps-2"
+            id="navbarDropdownUser"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            مرحبا <span style="font-weight: bolder">{{ user.first_name }}</span>
+          </a>
+          <div
+            class="dropdown-menu dropdown-caret dropdown-menu-end py-0"
+            aria-labelledby="navbarDropdownUser"
+          >
+            <div class="bg-white dark__bg-1000 rounded-2 py-2">
+              <a
+                *ngIf="user.role_id == 1"
+                class="dropdown-item"
+                routerLink="/adminPage"
+              >
+                المستخدمين
+              </a>
+              <div *ngIf="user.role_id == 1" class="dropdown-divider"></div>
+
+              <!-- <a routerLink="/change_password" class="dropdown-item"
+                >تغيير كلمة المرور</a
+              > -->
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" (click)="logout()"
+                >تسجيل الخروج</a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="card mt-3 mb-3" *ngIf="showActiveFilesTable">
+      <div class="card-header d-flex">
+        <div class="toggle-icon-wrapper" (click)="toggleCard()">
+          <button
+            class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            aria-label="Toggle Navigation"
+            data-bs-original-title="Toggle Navigation"
+          >
+            <span class="navbar-toggle-icon">
+              <span class="toggle-line"></span>
+            </span>
+          </button>
+        </div>
+        <h5 class="mb-0 ps-2 mt-1">بحث متقدم</h5>
+      </div>
+      <div class="card-body bg-light" *ngIf="searchBox">
+        <form class="row g-3" [formGroup]="searchForm">
+          <div class="col-md-3">
+            <input
+              class="form-control"
+              placeholder=" إسم المستند"
+              formControlName="File_name"
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              class="form-control"
+              placeholder=" تاريخ المستند"
+              formControlName="Year"
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              class="form-control"
+              placeholder=" رقم المستند "
+              formControlName="Doc_no"
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              class="form-control"
+              placeholder="كلمات مفتاحية"
+              formControlName="Txt"
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="Status_id"> حالة المستند</label>
+            <ng-select class="form-select ngSelect" formControlName="Status_id">
+              <ng-option
+                *ngFor="let status of allStatus"
+                [value]="status.status_id"
+                >{{ status.status_name }}</ng-option
+              >
+            </ng-select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="category_id">التصنيف الرئيسي</label>
+            <ng-select
+              [(ngModel)]="selectedCategory"
+              (change)="onChange()"
+              class="form-select ngSelect"
+              formControlName="category_id"
+              [closeOnSelect]="true"
+            >
+              <ng-option
+                *ngFor="let category of categories"
+                [value]="category.cat_id"
+                >{{ category.Category_name }}</ng-option
+              >
+            </ng-select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="subcat_id">التصنيف الفرعي</label>
+            <ng-select
+              [multiple]="true"
+              [clearable]="true"
+              class="form-select ngSelect"
+              formControlName="subcat_id"
+            >
+              <ng-option
+                *ngFor="let sub of subCategoriesArr"
+                [value]="sub.subcat_id"
+                >{{ sub.SubCategory_name }}</ng-option
+              >
+            </ng-select>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn btn-primary"
+              (click)="toggleCard(); filterBySearchForm()"
+              type="submit"
+            >
+              بحث
+            </button>
+            <button class="btn btn-secondary" (click)="clearAll()">مسح</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="card-header"></div>
+      <div class="card-body pt-0">
+        <div id="tableExample3" *ngIf="showActiveFilesTable">
+          <div class="table-responsive scrollbar">
+            <table class="table table-bordered table-striped fs--1 mb-0">
+              <thead class="bg-200 text-900">
+                <tr>
+                  <th class="text-center d-sm-none" style="font-size: large">
+                    عرض المستند
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    إسم المستند
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    رقم المستند
+                  </th>
+                  <th class="hidden-xs text-center" style="font-size: large">
+                    سنة الإصدار
+                  </th>
+                  <th class="text-center" style="font-size: large">ملف خاص</th>
+                  <th class="hidden-xs text-center" style="font-size: large">
+                    الدولة
+                  </th>
+                  <th class="text-center" style="font-size: large">
+                    التصنيف الرئيسي
+                  </th>
+                  <th class="text-center" style="font-size: large">الحالة</th>
+                  <th class="hidden-xs text-center" style="font-size: large">
+                    تاريخ أخر تحديث
+                  </th>
+                  <th
+                    class="text-center d-none d-sm-table-cell"
+                    style="font-size: large"
+                  >
+                    عرض المستند
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr *ngFor="let item of getDataForPage()">
+                  <ng-container *ngIf="isSmallScreen; else largeScreenTemplate">
+                    <td class="text-center">
+                      <ng-container
+                        *ngTemplateOutlet="
+                          fileDetailsColumn;
+                          context: { item: item }
+                        "
+                      ></ng-container>
+                    </td>
+                    <td>{{ item.file_name }}</td>
+                    <td>{{ item.Doc_No }}</td>
+                    <td class="hidden-xs">{{ item.Year }}</td>
+                    <td class="isAuthorized">
+                      <span *ngIf="item.isAuthorized; else unauthorized">
+                        <i class="bi bi-star-fill" style="color: red"></i>
+                      </span>
+                      <ng-template #unauthorized>
+                        <div class="pretty p-default">
+                          <div class="state p-warning">
+                            <i
+                              class="icon bi bi-circle"
+                              style="color: green"
+                            ></i>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </td>
+                    <td class="hidden-xs">
+                      <img
+                        style="width: 30px; height: 20px"
+                        [src]="item.Country.flag"
+                      />
+                    </td>
+                    <td>{{ item.Category.Category_name }}</td>
+                    <td>
+                      <button
+                        disabled
+                        class="btn me-1 mb-1 rounded-pill btn-sm"
+                        [ngStyle]="{
+                          'background-color':
+                            item.file_data_status.status_id === 1
+                              ? 'green'
+                              : item.file_data_status.status_id === 2
+                              ? 'orange'
+                              : 'red'
+                        }"
+                        style="font-weight: bolder; color: white"
+                      >
+                        {{ item.file_data_status.status_name }}
+                      </button>
+                    </td>
+                    <td class="hidden-xs">
+                      {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
+                    </td>
+                  </ng-container>
+                  <ng-template #largeScreenTemplate>
+                    <td>{{ item.file_name }}</td>
+                    <td>{{ item.Doc_No }}</td>
+                    <td class="hidden-xs">{{ item.Year }}</td>
+                    <td class="isAuthorized">
+                      <span *ngIf="item.isAuthorized; else unauthorized">
+                        <i class="bi bi-star-fill" style="color: red"></i>
+                      </span>
+                      <ng-template #unauthorized>
+                        <div class="pretty p-default">
+                          <div class="state p-warning">
+                            <i
+                              class="icon bi bi-circle"
+                              style="color: green"
+                            ></i>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </td>
+                    <td class="hidden-xs">
+                      <img
+                        style="width: 30px; height: 20px"
+                        [src]="item.Country.flag"
+                      />
+                    </td>
+                    <td>{{ item.Category.Category_name }}</td>
+                    <td>
+                      <button
+                        disabled
+                        class="btn me-1 mb-1 rounded-pill btn-sm"
+                        [ngStyle]="{
+                          'background-color':
+                            item.file_data_status.status_id === 1
+                              ? 'green'
+                              : item.file_data_status.status_id === 2
+                              ? 'orange'
+                              : 'red'
+                        }"
+                        style="font-weight: bolder; color: white"
+                      >
+                        {{ item.file_data_status.status_name }}
+                      </button>
+                    </td>
+                    <td class="hidden-xs">
+                      {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
+                    </td>
+                  </ng-template>
+                  <ng-container *ngIf="!isSmallScreen">
+                    <td class="text-center">
+                      <ng-container
+                        *ngTemplateOutlet="
+                          fileDetailsColumn;
+                          context: { item: item }
+                        "
+                      ></ng-container>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <ng-template #fileDetailsColumn let-item="item">
+                  <i
+                    [routerLink]="['/file_details', item.File_data_id]"
+                    class="bi bi-eye"
+                    [class.pointer-events-none]="item.isAuthorized && user.role_id === 4"
+                    style="font-size: 24px;"
+                  ></i>
+                </ng-template> -->
+          <ng-template #fileDetailsColumn let-item="item">
+            <button
+              [routerLink]="['/file_details', item.File_data_id]"
+              [class.pointer-events-none]="
+                item.isAuthorized && user.role_id === 4
+              "
+              class="btn btn-primary"
+              style="font-size: 12px"
+            >
+              عرض
+              <!-- <i class="bi bi-eye"></i> -->
+              <!-- Icon can be added inside the button if needed -->
+              <!-- Additional text or content can also be added inside the button if needed -->
+            </button>
+          </ng-template>
+
+          <div class="d-flex justify-content-center mt-3">
+            <nav class="nael">
+              <ul>
+                <li *ngIf="page > 1">
+                  <a (click)="goToPage(page - 1)"
+                    ><i class="bi bi-chevron-right"></i
+                  ></a>
+                </li>
+                <li *ngFor="let pg of pages">
+                  <a [class.active]="pg === page" (click)="goToPage(pg)">{{
+                    pg
+                  }}</a>
+                </li>
+                <li *ngIf="page < totalPages">
+                  <a (click)="goToPage(page + 1)"
+                    ><i class="bi bi-chevron-left"></i
+                  ></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="noFiles" *ngIf="loadedData && totalItems == 0">
+            <h3>لا توجد ملفات</h3>
+          </div>
+        </div>
+        <div id="tableExample3" *ngIf="!showActiveFilesTable">
+          <div class="table-responsive scrollbar">
+            <table class="table table-bordered table-striped fs--1 mb-0">
+              <thead class="bg-200 text-900">
+                <tr>
+                  <th class="sort" data-sort="file_name">إسم المستند</th>
+                  <th class="sort" data-sort="Doc_No">رقم المستند</th>
+                  <th class="sort" data-sort="Year">سنة الإصدار</th>
+                  <th class="sort" data-sort="isAuthorized">is Authorizrd</th>
+                  <th class="sort" data-sort="Country">الدولة</th>
+                  <th class="sort" data-sort="Category">التصنيف الرئيسي</th>
+                  <th class="sort" data-sort="file_data_status">الحالة</th>
+                  <th class="sort" data-sort="file_name">تاريخ أخر تحديث</th>
+                  <th>عرض القرار</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr *ngFor="let item of getInactiveFilesForPage()">
+                  <td>{{ item.file_name }}</td>
+                  <td>{{ item.Doc_No }}</td>
+                  <td>{{ item.Year }}</td>
+                  <td class="isAuthorized">
+                    <span *ngIf="item.isAuthorized; else unauthorized">
+                      <i class="bi bi-star-fill" style="color: red"></i>
+                    </span>
+                    <ng-template #unauthorized>
+                      <div class="pretty p-default">
+                        <div class="state p-warning">
+                          <i class="icon bi bi-circle" style="color: green"></i>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </td>
+                  <td>
+                    <img
+                      style="width: 30px; height: 20px"
+                      [src]="item.Country.flag"
+                    />
+                  </td>
+                  <td>{{ item.Category.Category_name }}</td>
+                  <!-- <td>{{item.file_data_status.status_name}}</td> -->
+                  <td>
+                    <button
+                      disabled
+                      class="btn me-1 mb-1 rounded-pill btn-sm"
+                      [ngStyle]="{
+                        'background-color':
+                          item.file_data_status.status_id === 1
+                            ? ' green'
+                            : item.file_data_status.status_id === 2
+                            ? 'orange'
+                            : 'red'
+                      }"
+                      style="font-weight: bolder; color: white"
+                    >
+                      {{ item.file_data_status.status_name }}
+                    </button>
+                  </td>
+                  <td>
+                    {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
+                  </td>
+                  <td class="d-flex justify-content-center align-items-center">
+                    <i
+                      [routerLink]="['/file_details', item.File_data_id]"
+                      class="bi bi-eye"
+                      [class.pointer-events-none]="
+                        item.isAuthorized && user.role_id === 4
+                      "
+                      style="font-size: 24px"
+                    >
+                    </i>
+                  </td>
+                  <!-- <td>
+                            <button mat-raised-button [disabled]="(item.isAuthorized && user.role_id === 4)"
+                            [matTooltipDisabled]="!(item.isAuthorized && user.role_id === 4)" [matTooltip]="disabledTooltip"
+                            class="btn btn-outline-secondary " [routerLink]="['/file_details',item.File_data_id]">
+                            preview
+                          </button>
+                        </td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+            <nav class="nael">
+              <ul>
+                <li *ngIf="page > 1">
+                  <a (click)="goToPage(page - 1)"
+                    ><i class="bi bi-chevron-right"></i
+                  ></a>
+                </li>
+                <li *ngFor="let pg of pages">
+                  <a [class.active]="pg === page" (click)="goToPage(pg)">{{
+                    pg
+                  }}</a>
+                </li>
+                <li *ngIf="page < totalPages">
+                  <a (click)="goToPage(page + 1)"
+                    ><i class="bi bi-chevron-left"></i
+                  ></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="noFiles" *ngIf="loadedData && totalItems == 0">
+            <h3>لا توجد ملفات</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer dir="ltr">
+      <div class="row g-0 justify-content-between fs--1 mt-4 mb-2">
+        <div class="col-12 col-sm-auto text-center">
+          <p style="text-align: start" class="mb-1 text-600">
+            Contact Us :
+            <br />
+            <a
+              >E.mail :<span style="font-weight: bold">
+                pharmacia2006@gmail.com</span
+              ></a
+            >
+            <br />
+            <a href="http://www.facebook.com/Pharmaciax"
+              >http://www.facebook.com/Pharmaciax</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

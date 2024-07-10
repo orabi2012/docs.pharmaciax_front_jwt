@@ -1,0 +1,132 @@
+<main class="main" id="top">
+    <div class="container" data-layout="container">
+      <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand">
+        <button
+          class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarVerticalCollapse"
+          aria-controls="navbarVerticalCollapse"
+          aria-expanded="false"
+          aria-label="Toggle Navigation"
+        >
+          <span class="navbar-toggle-icon"
+            ><span class="toggle-line"></span
+          ></span>
+        </button>
+        <a class="navbar-brand p-1 me-1 me-sm-3" routerLink="/adminPage">
+          <!-- <div class="d-flex align-items-center">
+            <img
+              class="me-2"
+              src="../../assets/img/icons/spot-illustrations/falcon.png"
+              alt=""
+              width="40"
+            /><span class="font-sans-serif">falcon</span>
+          </div> -->
+          <button class="d-flex align-items-center p-3 btn btn-outline-dark btn-sm"> العودة إلي صفحة المستخدمين</button>
+
+        </a>
+      </nav>
+      <div class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-3 btn-reveal-trigger">
+            <div class="card-header position-relative min-vh-25 mb-8">
+              <div class="cover-image">
+                <div
+                  class="bg-holder rounded-3 rounded-bottom-0"
+                  style="background-image: url(../../assets/img/generic/4.jpg)"
+                ></div>
+                <!--/.bg-holder-->
+  
+                <input class="d-none" id="upload-cover-image" type="file" />
+              </div>
+              <div
+                class="avatar avatar-5xl avatar-profile shadow-sm img-thumbnail rounded-circle">
+                <div
+                  class="h-100 w-100 rounded-circle overflow-hidden position-relative">
+                  <img
+                  [src]="imageUrl || 'https://png.pngtree.com/png-clipart/20210915/ourmid/pngtree-user-avatar-placeholder-png-image_3918418.jpg'"                    width="200"
+                    alt=""
+                    data-dz-thumbnail="data-dz-thumbnail" />
+                  <input class="d-none" id="profile-image" type="file" />
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-header">
+          <h2 class="mb-0">  إضافة مستخدم جديد</h2>
+        </div>
+        <div class="card-body bg-light">
+          <form [formGroup]="newUserForm" (ngSubmit)="createUser()"  class="row g-3">
+            <div class="col-lg-6">
+              <label class="form-label" for="first_name">الإسم الأول</label>
+              <input
+              formControlName="first_name"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="last_name">الإسم الأخير </label>
+              <input
+              formControlName="last_name"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="email">البريد الإلكتروني</label>
+              <input
+              formControlName="email"
+                class="form-control"
+                type="email"
+              />
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="password"> كلمة المرور</label>
+              <input
+              formControlName="password"
+                class="form-control"
+                type="password"
+              />
+            </div>
+          
+            <div class="col-lg-12">
+              <label class="form-label" for="Country_id">البلد</label>
+             <ng-select class=" ngSelect form-control" formControlName="Country_id" [searchable]="true">
+                <ng-option *ngFor="let country of countries" [value]="country.id">{{country.country_name}}</ng-option>
+             </ng-select>
+            </div>
+            <!-- <div class="col-lg-12">
+              <label class="form-label" for="Country_id">حالة المستخدم</label>
+              <ng-select class=" ngSelect form-control" formControlName="role_id" [searchable]="true">
+                <ng-option *ngFor="let role of rolesId" [value]="role.id">{{role.role_name}}</ng-option>
+              </ng-select>
+            </div> -->
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary" type="submit">حفظ</button>
+              <button class="btn btn-danger" type="button" (click)="cancel()">إلغاء</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer dir="ltr">
+        <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+          <div class="col-12 col-sm-auto text-center">
+            <p style="text-align: start;" class="mb-1 text-600">Contact Us :
+              <br>
+              <a >E.mail :<span style="font-weight: bold;"> pharmacia2006@gmail.com</span></a>
+              <br>
+              <a href="http://www.facebook.com/Pharmaciax">http://www.facebook.com/Pharmaciax</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+      </div>
+    </div>
+  </main>

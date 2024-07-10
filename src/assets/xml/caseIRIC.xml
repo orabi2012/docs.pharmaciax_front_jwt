@@ -1,0 +1,332 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IricLiPeopleInCustodySrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIC_LI_PEOPLE_IN_CUSTODY_SRV" targetNamespace="http://tempuri.org/IricLiPeopleInCustodySrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IricLiPeopleInCustodySrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IricLiPeopleInCustodySrv/">
+<xs:element name="IricLiPeopleInCustodySrvcall" type="tns:IricLiPeopleInCustodySrvcall"/>
+<xs:element name="IricLiPeopleInCustodySrvcallResponse" type="tns:IricLiPeopleInCustodySrvcallResponse"/>
+<xs:complexType name="IricLiPeopleInCustodySrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IricLiPeopleInCustodySrvImport" type="tns:IricLiPeopleInCustodySrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IricLiPeopleInCustodySrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="InList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GImportJailPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GImportRequestPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GImportCaseCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="JailedDate" nillable="true" type="xs:string"/>
+<xs:element name="Period" type="xs:short"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ReasonHeld" type="xs:string"/>
+<xs:element name="World" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiText" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSearchNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSearchCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="World" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSearchJailPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSearchPoliceStationPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportChoiceIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IricLiPeopleInCustodySrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IricLiPeopleInCustodySrvExport" type="tns:IricLiPeopleInCustodySrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IricLiPeopleInCustodySrvExport">
+<xs:sequence>
+<xs:element name="ExportSearchNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSearchCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="World" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSearchJailPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSearchPoliceStationPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportChoiceIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOrgIndicatorIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GExportJailPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GExportRequestPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GExportCaseCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="JailedDate" nillable="true" type="xs:string"/>
+<xs:element name="Period" type="xs:short"/>
+<xs:element name="SequenceNo" type="xs:int"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+<xs:element name="ReasonHeld" type="xs:string"/>
+<xs:element name="World" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="PersonTypePpTpPoiNumber" type="xs:long"/>
+<xs:element name="PersonTypePpTpPoiText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IricLiPeopleInCustodySrvcall">
+<wsdl:part element="tns:IricLiPeopleInCustodySrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IricLiPeopleInCustodySrvcallResponse">
+<wsdl:part element="tns:IricLiPeopleInCustodySrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIC_LI_PEOPLE_IN_CUSTODY_SRV">
+<wsdl:operation name="IricLiPeopleInCustodySrvcall">
+<wsdl:input message="tns:IricLiPeopleInCustodySrvcall" name="IricLiPeopleInCustodySrvcall"> </wsdl:input>
+<wsdl:output message="tns:IricLiPeopleInCustodySrvcallResponse" name="IricLiPeopleInCustodySrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIC_LI_PEOPLE_IN_CUSTODY_SRVSoapBinding" type="tns:IRIC_LI_PEOPLE_IN_CUSTODY_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IricLiPeopleInCustodySrvcall">
+<soap:operation soapAction="http://tempuri.org/IricLiPeopleInCustodySrvcall/" style="document"/>
+<wsdl:input name="IricLiPeopleInCustodySrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IricLiPeopleInCustodySrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIC_LI_PEOPLE_IN_CUSTODY_SRV">
+<wsdl:port binding="tns:IRIC_LI_PEOPLE_IN_CUSTODY_SRVSoapBinding" name="IRIC_LI_PEOPLE_IN_CUSTODY_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIC/IRIC_LI_PEOPLE_IN_CUSTODY_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

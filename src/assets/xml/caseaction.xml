@@ -1,0 +1,141 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrdfLiCaseActionSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDF_LI_CASE_ACTION_SRV" targetNamespace="http://tempuri.org/IrdfLiCaseActionSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrdfLiCaseActionSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrdfLiCaseActionSrv/">
+<xs:element name="IrdfLiCaseActionSrvcall" type="tns:IrdfLiCaseActionSrvcall"/>
+<xs:element name="IrdfLiCaseActionSrvcallResponse" type="tns:IrdfLiCaseActionSrvcallResponse"/>
+<xs:complexType name="IrdfLiCaseActionSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdfLiCaseActionSrvImport" type="tns:IrdfLiCaseActionSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdfLiCaseActionSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InCaseAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Desc" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrdfLiCaseActionSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdfLiCaseActionSrvExport" type="tns:IrdfLiCaseActionSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdfLiCaseActionSrvExport">
+<xs:sequence>
+<xs:element name="ExpoerWhoseCaseAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Desc" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutCaseAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Desc" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrdfLiCaseActionSrvcall">
+<wsdl:part element="tns:IrdfLiCaseActionSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdfLiCaseActionSrvcallResponse">
+<wsdl:part element="tns:IrdfLiCaseActionSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDF_LI_CASE_ACTION_SRV">
+<wsdl:operation name="IrdfLiCaseActionSrvcall">
+<wsdl:input message="tns:IrdfLiCaseActionSrvcall" name="IrdfLiCaseActionSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrdfLiCaseActionSrvcallResponse" name="IrdfLiCaseActionSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDF_LI_CASE_ACTION_SRVSoapBinding" type="tns:IRDF_LI_CASE_ACTION_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrdfLiCaseActionSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrdfLiCaseActionSrvcall/" style="document"/>
+<wsdl:input name="IrdfLiCaseActionSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrdfLiCaseActionSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDF_LI_CASE_ACTION_SRV">
+<wsdl:port binding="tns:IRDF_LI_CASE_ACTION_SRVSoapBinding" name="IRDF_LI_CASE_ACTION_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRDF/IRDF_LI_CASE_ACTION_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

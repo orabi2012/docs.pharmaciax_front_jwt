@@ -1,0 +1,243 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrmdLsNonKwtVehByPlateNS/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRMD_LS_NON_KWT_VEH_BY_PLATE_N_S" targetNamespace="http://tempuri.org/IrmdLsNonKwtVehByPlateNS/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrmdLsNonKwtVehByPlateNS/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrmdLsNonKwtVehByPlateNS/">
+<xs:element name="IrmdLsNonKwtVehByPlateNScall" type="tns:IrmdLsNonKwtVehByPlateNScall"/>
+<xs:element name="IrmdLsNonKwtVehByPlateNScallResponse" type="tns:IrmdLsNonKwtVehByPlateNScallResponse"/>
+<xs:complexType name="IrmdLsNonKwtVehByPlateNScall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrmdLsNonKwtVehByPlateNSImport" type="tns:IrmdLsNonKwtVehByPlateNSImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrmdLsNonKwtVehByPlateNSImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportDisGroupByPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PlateCharacters" type="xs:string"/>
+<xs:element minOccurs="0" name="VehicleIdNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpGdc2moiCity">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpGdc2moiMake">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpGdc2moiShape">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrmdLsNonKwtVehByPlateNScallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrmdLsNonKwtVehByPlateNSExport" type="tns:IrmdLsNonKwtVehByPlateNSExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrmdLsNonKwtVehByPlateNSExport">
+<xs:sequence>
+<xs:element name="ExportSelectedGdc2moiCity">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element name="VehicleIdNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportDisGroupByPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateCharacters" type="xs:string"/>
+<xs:element name="VehicleIdNumber" type="xs:string"/>
+<xs:element name="Model" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpGdc2moiCity">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpGdc2moiMake">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpGdc2moiShape">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrmdLsNonKwtVehByPlateNScallResponse">
+<wsdl:part element="tns:IrmdLsNonKwtVehByPlateNScallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrmdLsNonKwtVehByPlateNScall">
+<wsdl:part element="tns:IrmdLsNonKwtVehByPlateNScall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRMD_LS_NON_KWT_VEH_BY_PLATE_N_S">
+<wsdl:operation name="IrmdLsNonKwtVehByPlateNScall">
+<wsdl:input message="tns:IrmdLsNonKwtVehByPlateNScall" name="IrmdLsNonKwtVehByPlateNScall"> </wsdl:input>
+<wsdl:output message="tns:IrmdLsNonKwtVehByPlateNScallResponse" name="IrmdLsNonKwtVehByPlateNScallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRMD_LS_NON_KWT_VEH_BY_PLATE_N_SSoapBinding" type="tns:IRMD_LS_NON_KWT_VEH_BY_PLATE_N_S">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrmdLsNonKwtVehByPlateNScall">
+<soap:operation soapAction="http://tempuri.org/IrmdLsNonKwtVehByPlateNScall/" style="document"/>
+<wsdl:input name="IrmdLsNonKwtVehByPlateNScall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrmdLsNonKwtVehByPlateNScallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRMD_LS_NON_KWT_VEH_BY_PLATE_N_S">
+<wsdl:port binding="tns:IRMD_LS_NON_KWT_VEH_BY_PLATE_N_SSoapBinding" name="IRMD_LS_NON_KWT_VEH_BY_PLATE_N_SPort">
+<soap:address location="http://10.11.78.103:9080/IRMD/IRMD_LS_NON_KWT_VEH_BY_PLATE_N_S"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,382 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrbjCrVehicleInvolvementSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRBJ_CR_VEHICLE_INVOLVEMENT_SRV" targetNamespace="http://tempuri.org/IrbjCrVehicleInvolvementSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrbjCrVehicleInvolvementSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrbjCrVehicleInvolvementSrv/">
+<xs:element name="IrbjCrVehicleInvolvementSrvcall" type="tns:IrbjCrVehicleInvolvementSrvcall"/>
+<xs:element name="IrbjCrVehicleInvolvementSrvcallResponse" type="tns:IrbjCrVehicleInvolvementSrvcallResponse"/>
+<xs:complexType name="IrbjCrVehicleInvolvementSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrbjCrVehicleInvolvementSrvImport" type="tns:IrbjCrVehicleInvolvementSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrbjCrVehicleInvolvementSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIrBlkWorkSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="BlkActnCode" type="xs:short"/>
+<xs:element name="BlkVehCrimeType" type="xs:int"/>
+<xs:element name="BlkCaseNum" type="xs:int"/>
+<xs:element name="BlkCaseYear" type="xs:short"/>
+<xs:element name="BlkCaseType" type="xs:short"/>
+<xs:element name="BlkCaseOrg" type="xs:int"/>
+<xs:element name="BlkUserid" type="xs:int"/>
+<xs:element minOccurs="0" name="BlkTermid" type="xs:string"/>
+<xs:element name="BlkType" type="xs:short"/>
+<xs:element name="BlkMoiId" type="xs:int"/>
+<xs:element minOccurs="0" name="BlkNoteRemark" type="xs:string"/>
+<xs:element name="BlkCaseInvSeqNo" type="xs:int"/>
+<xs:element minOccurs="0" name="BlkPltIdentifier" type="xs:string"/>
+<xs:element minOccurs="0" name="BlkVehIdentifier" type="xs:string"/>
+<xs:element minOccurs="0" name="BlkCaseInvDate" nillable="true" type="xs:string"/>
+<xs:element name="BlkActType" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPpCoPoIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCommercialOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="CommercialNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportInsurance">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PolicyNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="Type" type="xs:short"/>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DateInvolved" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Make" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrbjCrVehicleInvolvementSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrbjCrVehicleInvolvementSrvExport" type="tns:IrbjCrVehicleInvolvementSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrbjCrVehicleInvolvementSrvExport">
+<xs:sequence>
+<xs:element name="ExportIrBlkWorkSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="BlkActnCode" type="xs:short"/>
+<xs:element name="BlkVehCrimeType" type="xs:int"/>
+<xs:element name="BlkCaseNum" type="xs:int"/>
+<xs:element name="BlkCaseYear" type="xs:short"/>
+<xs:element name="BlkCaseType" type="xs:short"/>
+<xs:element name="BlkCaseOrg" type="xs:int"/>
+<xs:element name="BlkUserid" type="xs:int"/>
+<xs:element name="BlkTermid" type="xs:string"/>
+<xs:element name="BlkType" type="xs:short"/>
+<xs:element name="BlkMoiId" type="xs:int"/>
+<xs:element name="BlkNoteRemark" type="xs:string"/>
+<xs:element name="BlkCaseInvSeqNo" type="xs:int"/>
+<xs:element name="BlkPltIdentifier" type="xs:string"/>
+<xs:element name="BlkVehIdentifier" type="xs:string"/>
+<xs:element name="BlkCaseInvDate" nillable="true" type="xs:string"/>
+<xs:element name="BlkActType" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPpCoPoIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCommercialOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="CommercialNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportInsurance">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PolicyNumber" type="xs:string"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+<xs:element name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element name="Identifier" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="Identifier" type="xs:string"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Make" type="xs:string"/>
+<xs:element name="Model" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SeqNo" type="xs:int"/>
+<xs:element name="DateInvolved" nillable="true" type="xs:string"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrbjCrVehicleInvolvementSrvcallResponse">
+<wsdl:part element="tns:IrbjCrVehicleInvolvementSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrbjCrVehicleInvolvementSrvcall">
+<wsdl:part element="tns:IrbjCrVehicleInvolvementSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRBJ_CR_VEHICLE_INVOLVEMENT_SRV">
+<wsdl:operation name="IrbjCrVehicleInvolvementSrvcall">
+<wsdl:input message="tns:IrbjCrVehicleInvolvementSrvcall" name="IrbjCrVehicleInvolvementSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrbjCrVehicleInvolvementSrvcallResponse" name="IrbjCrVehicleInvolvementSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRBJ_CR_VEHICLE_INVOLVEMENT_SRVSoapBinding" type="tns:IRBJ_CR_VEHICLE_INVOLVEMENT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrbjCrVehicleInvolvementSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrbjCrVehicleInvolvementSrvcall/" style="document"/>
+<wsdl:input name="IrbjCrVehicleInvolvementSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrbjCrVehicleInvolvementSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRBJ_CR_VEHICLE_INVOLVEMENT_SRV">
+<wsdl:port binding="tns:IRBJ_CR_VEHICLE_INVOLVEMENT_SRVSoapBinding" name="IRBJ_CR_VEHICLE_INVOLVEMENT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRBJ/IRBJ_CR_VEHICLE_INVOLVEMENT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

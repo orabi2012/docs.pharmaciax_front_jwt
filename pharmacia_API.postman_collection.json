@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "dc054058-56d3-48ee-93eb-4f5b702d0f80",
+		"name": "pharmacia_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6734173"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pharmaciax-api.onrender.com/users",
+							"protocol": "https",
+							"host": [
+								"pharmaciax-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"first_name\": \"User-01\",\r\n    \"last_name\": \"editor\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"token_id\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pharmaciax-api.onrender.com/user/create",
+							"protocol": "https",
+							"host": [
+								"pharmaciax-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						},
+						"description": "Create user (register) POST "
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pharmaciax-api.onrender.com/user/1",
+							"protocol": "https",
+							"host": [
+								"pharmaciax-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Get Roles List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pharmaciax-api.onrender.com/roles",
+							"protocol": "https",
+							"host": [
+								"pharmaciax-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pharmaciax-api.onrender.com/role/1",
+							"protocol": "https",
+							"host": [
+								"pharmaciax-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"role",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

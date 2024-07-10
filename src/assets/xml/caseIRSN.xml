@@ -1,0 +1,267 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrsnDisSessionDelaySrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRSN_DIS_SESSION_DELAY_SRV" targetNamespace="http://tempuri.org/IrsnDisSessionDelaySrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrsnDisSessionDelaySrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrsnDisSessionDelaySrv/">
+<xs:element name="IrsnDisSessionDelaySrvcall" type="tns:IrsnDisSessionDelaySrvcall"/>
+<xs:element name="IrsnDisSessionDelaySrvcallResponse" type="tns:IrsnDisSessionDelaySrvcallResponse"/>
+<xs:complexType name="IrsnDisSessionDelaySrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrsnDisSessionDelaySrvImport" type="tns:IrsnDisSessionDelaySrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrsnDisSessionDelaySrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportUnidentifiedPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentifierNo" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="CivilIdNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+<xs:element minOccurs="0" name="SessionTypeText" type="xs:string"/>
+<xs:element minOccurs="0" name="AppealTypeText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InGpSessionDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SessionSerialNo" type="xs:int"/>
+<xs:element name="AppealType" type="xs:short"/>
+<xs:element name="SessionType" type="xs:short"/>
+<xs:element name="SessionDate" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCasePersonInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SeqNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiText" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPolicePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPoliceCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPoliceCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportExitIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrsnDisSessionDelaySrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrsnDisSessionDelaySrvExport" type="tns:IrsnDisSessionDelaySrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrsnDisSessionDelaySrvExport">
+<xs:sequence>
+<xs:element name="ExportSelectedSessionDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SessionSerialNo" type="xs:int"/>
+<xs:element name="AppealType" type="xs:short"/>
+<xs:element name="SessionType" type="xs:short"/>
+<xs:element name="SessionDate" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+<xs:element name="SessionTypeText" type="xs:string"/>
+<xs:element name="AppealTypeText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutGpSessionDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SessionSerialNo" type="xs:int"/>
+<xs:element name="AppealType" type="xs:short"/>
+<xs:element name="SessionType" type="xs:short"/>
+<xs:element name="SessionDate" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCasePersonInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SeqNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PersonTypePpTpPoiText" type="xs:string"/>
+<xs:element name="PersonTypePpTpPoiNumber" type="xs:long"/>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPolicePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPoliceCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPoliceCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrsnDisSessionDelaySrvcall">
+<wsdl:part element="tns:IrsnDisSessionDelaySrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrsnDisSessionDelaySrvcallResponse">
+<wsdl:part element="tns:IrsnDisSessionDelaySrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRSN_DIS_SESSION_DELAY_SRV">
+<wsdl:operation name="IrsnDisSessionDelaySrvcall">
+<wsdl:input message="tns:IrsnDisSessionDelaySrvcall" name="IrsnDisSessionDelaySrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrsnDisSessionDelaySrvcallResponse" name="IrsnDisSessionDelaySrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRSN_DIS_SESSION_DELAY_SRVSoapBinding" type="tns:IRSN_DIS_SESSION_DELAY_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrsnDisSessionDelaySrvcall">
+<soap:operation soapAction="http://tempuri.org/IrsnDisSessionDelaySrvcall/" style="document"/>
+<wsdl:input name="IrsnDisSessionDelaySrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrsnDisSessionDelaySrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRSN_DIS_SESSION_DELAY_SRV">
+<wsdl:port binding="tns:IRSN_DIS_SESSION_DELAY_SRVSoapBinding" name="IRSN_DIS_SESSION_DELAY_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRSN/IRSN_DIS_SESSION_DELAY_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

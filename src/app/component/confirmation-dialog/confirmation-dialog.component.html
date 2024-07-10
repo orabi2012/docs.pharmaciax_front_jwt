@@ -1,0 +1,17 @@
+<div class="header">
+  <h2 mat-dialog-title>Title</h2>
+  <button mat-icon-button [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <p>{{ data.message }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="primary" [mat-dialog-close]="defaultAnswer">
+    No
+  </button>
+  <button mat-button (click)="onYesClick()" color="warn" [mat-dialog-close]="true">
+    Yes
+  </button>
+</div>

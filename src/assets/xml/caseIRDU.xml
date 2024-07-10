@@ -1,0 +1,277 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrduDsVehicleDetailsSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDU_DS_VEHICLE_DETAILS_SRV" targetNamespace="http://tempuri.org/IrduDsVehicleDetailsSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrduDsVehicleDetailsSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrduDsVehicleDetailsSrv/">
+<xs:element name="IrduDsVehicleDetailsSrvcall" type="tns:IrduDsVehicleDetailsSrvcall"/>
+<xs:element name="IrduDsVehicleDetailsSrvcallResponse" type="tns:IrduDsVehicleDetailsSrvcallResponse"/>
+<xs:complexType name="IrduDsVehicleDetailsSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrduDsVehicleDetailsSrvImport" type="tns:IrduDsVehicleDetailsSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrduDsVehicleDetailsSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPpCoPoIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportInsurance">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PolicyNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCommercialOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="CommercialNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Make" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" type="xs:string"/>
+<xs:element minOccurs="0" name="Shape" type="xs:string"/>
+<xs:element minOccurs="0" name="CubicCapacity" type="xs:string"/>
+<xs:element minOccurs="0" name="Length" type="xs:string"/>
+<xs:element minOccurs="0" name="Height" type="xs:string"/>
+<xs:element minOccurs="0" name="Width" type="xs:string"/>
+<xs:element minOccurs="0" name="Weight" type="xs:string"/>
+<xs:element minOccurs="0" name="Fuel" type="xs:string"/>
+<xs:element name="NumberOfDoors" type="xs:short"/>
+<xs:element name="NoOfCylinders" type="xs:short"/>
+<xs:element name="NoOfSeats" type="xs:short"/>
+<xs:element minOccurs="0" name="LadenWeight" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element minOccurs="0" name="MajorColor" type="xs:string"/>
+<xs:element minOccurs="0" name="MinorColor" type="xs:string"/>
+<xs:element minOccurs="0" name="EngineNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrduDsVehicleDetailsSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrduDsVehicleDetailsSrvExport" type="tns:IrduDsVehicleDetailsSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrduDsVehicleDetailsSrvExport">
+<xs:sequence>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportConcatedNames">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="LatineName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="Identifier" type="xs:string"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPpCoPoIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportInsurance">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PolicyNumber" type="xs:string"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+<xs:element name="EndDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCommercialOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="CommercialNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="IdentifierNumber" type="xs:int"/>
+<xs:element name="Make" type="xs:string"/>
+<xs:element name="Model" type="xs:string"/>
+<xs:element name="Shape" type="xs:string"/>
+<xs:element name="CubicCapacity" type="xs:string"/>
+<xs:element name="Length" type="xs:string"/>
+<xs:element name="Height" type="xs:string"/>
+<xs:element name="Width" type="xs:string"/>
+<xs:element name="Weight" type="xs:string"/>
+<xs:element name="Fuel" type="xs:string"/>
+<xs:element name="NumberOfDoors" type="xs:short"/>
+<xs:element name="NoOfCylinders" type="xs:short"/>
+<xs:element name="NoOfSeats" type="xs:short"/>
+<xs:element name="LadenWeight" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element name="MajorColor" type="xs:string"/>
+<xs:element name="MinorColor" type="xs:string"/>
+<xs:element name="EngineNumber" type="xs:string"/>
+<xs:element name="Identifier" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrduDsVehicleDetailsSrvcall">
+<wsdl:part element="tns:IrduDsVehicleDetailsSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrduDsVehicleDetailsSrvcallResponse">
+<wsdl:part element="tns:IrduDsVehicleDetailsSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDU_DS_VEHICLE_DETAILS_SRV">
+<wsdl:operation name="IrduDsVehicleDetailsSrvcall">
+<wsdl:input message="tns:IrduDsVehicleDetailsSrvcall" name="IrduDsVehicleDetailsSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrduDsVehicleDetailsSrvcallResponse" name="IrduDsVehicleDetailsSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDU_DS_VEHICLE_DETAILS_SRVSoapBinding" type="tns:IRDU_DS_VEHICLE_DETAILS_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrduDsVehicleDetailsSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrduDsVehicleDetailsSrvcall/" style="document"/>
+<wsdl:input name="IrduDsVehicleDetailsSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrduDsVehicleDetailsSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDU_DS_VEHICLE_DETAILS_SRV">
+<wsdl:port binding="tns:IRDU_DS_VEHICLE_DETAILS_SRVSoapBinding" name="IRDU_DS_VEHICLE_DETAILS_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRDU/IRDU_DS_VEHICLE_DETAILS_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

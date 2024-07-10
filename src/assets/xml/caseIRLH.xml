@@ -1,0 +1,343 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlhListCaseInPeriodSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLH_LIST_CASE_IN_PERIOD_SRV" targetNamespace="http://tempuri.org/IrlhListCaseInPeriodSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlhListCaseInPeriodSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlhListCaseInPeriodSrv/">
+<xs:element name="IrlhListCaseInPeriodSrvcall" type="tns:IrlhListCaseInPeriodSrvcall"/>
+<xs:element name="IrlhListCaseInPeriodSrvcallResponse" type="tns:IrlhListCaseInPeriodSrvcallResponse"/>
+<xs:complexType name="IrlhListCaseInPeriodSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlhListCaseInPeriodSrvImport" type="tns:IrlhListCaseInPeriodSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlhListCaseInPeriodSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GpImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CreatorSystemCode" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DateNotified" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeNotified" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeStamp" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficerName" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeHappenedAmPm" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeNotifiedAmPm" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficerTitle" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GpInCrimeTypeIrTextHeader">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPubOrgNameIrTextHeader">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCountIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRequestedCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRequestedPolicePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportEndDateHappenedCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportStartDateHappenedCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element minOccurs="0" name="CreatorSystemCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlhListCaseInPeriodSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlhListCaseInPeriodSrvExport" type="tns:IrlhListCaseInPeriodSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlhListCaseInPeriodSrvExport">
+<xs:sequence>
+<xs:element name="ExportRequestedCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRequestedPolicePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportEndDateHappenedCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportStartDateHappenedCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element name="CreatorSystemCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element name="CreatorSystemCode" type="xs:string"/>
+<xs:element name="OfficerName" type="xs:string"/>
+<xs:element name="OfficerTitle" type="xs:string"/>
+<xs:element name="TimeStamp" type="xs:string"/>
+<xs:element name="TimeHappened" nillable="true" type="xs:string"/>
+<xs:element name="DateNotified" nillable="true" type="xs:string"/>
+<xs:element name="TimeNotified" nillable="true" type="xs:string"/>
+<xs:element name="TimeHappenedAmPm" type="xs:string"/>
+<xs:element name="TimeNotifiedAmPm" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+<xs:element name="Code" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpOutCrimeTypeIrTextHeader">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPubOrgNameIrTextHeader">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCountIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlhListCaseInPeriodSrvcall">
+<wsdl:part element="tns:IrlhListCaseInPeriodSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlhListCaseInPeriodSrvcallResponse">
+<wsdl:part element="tns:IrlhListCaseInPeriodSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLH_LIST_CASE_IN_PERIOD_SRV">
+<wsdl:operation name="IrlhListCaseInPeriodSrvcall">
+<wsdl:input message="tns:IrlhListCaseInPeriodSrvcall" name="IrlhListCaseInPeriodSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlhListCaseInPeriodSrvcallResponse" name="IrlhListCaseInPeriodSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLH_LIST_CASE_IN_PERIOD_SRVSoapBinding" type="tns:IRLH_LIST_CASE_IN_PERIOD_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlhListCaseInPeriodSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlhListCaseInPeriodSrvcall/" style="document"/>
+<wsdl:input name="IrlhListCaseInPeriodSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlhListCaseInPeriodSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLH_LIST_CASE_IN_PERIOD_SRV">
+<wsdl:port binding="tns:IRLH_LIST_CASE_IN_PERIOD_SRVSoapBinding" name="IRLH_LIST_CASE_IN_PERIOD_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLH/IRLH_LIST_CASE_IN_PERIOD_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

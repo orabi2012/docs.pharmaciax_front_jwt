@@ -1,0 +1,99 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/GqayListNationalitySvr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GQAY_LIST_NATIONALITY_SVR" targetNamespace="http://tempuri.org/GqayListNationalitySvr/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/GqayListNationalitySvr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/GqayListNationalitySvr/">
+<xs:element name="GqayListNationalitySvrcall" type="tns:GqayListNationalitySvrcall"/>
+<xs:element name="GqayListNationalitySvrcallResponse" type="tns:GqayListNationalitySvrcallResponse"/>
+<xs:complexType name="GqayListNationalitySvrcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="GqayListNationalitySvrImport" type="tns:GqayListNationalitySvrImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GqayListNationalitySvrImport">
+<xs:sequence/>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="GqayListNationalitySvrcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="GqayListNationalitySvrExport" type="tns:GqayListNationalitySvrExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="GqayListNationalitySvrExport">
+<xs:sequence>
+<xs:element name="OutGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GrpOutNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+<xs:element name="OcrCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="GqayListNationalitySvrcall">
+<wsdl:part element="tns:GqayListNationalitySvrcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="GqayListNationalitySvrcallResponse">
+<wsdl:part element="tns:GqayListNationalitySvrcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="GQAY_LIST_NATIONALITY_SVR">
+<wsdl:operation name="GqayListNationalitySvrcall">
+<wsdl:input message="tns:GqayListNationalitySvrcall" name="GqayListNationalitySvrcall"> </wsdl:input>
+<wsdl:output message="tns:GqayListNationalitySvrcallResponse" name="GqayListNationalitySvrcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="GQAY_LIST_NATIONALITY_SVRSoapBinding" type="tns:GQAY_LIST_NATIONALITY_SVR">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="GqayListNationalitySvrcall">
+<soap:operation soapAction="http://tempuri.org/GqayListNationalitySvrcall/" style="document"/>
+<wsdl:input name="GqayListNationalitySvrcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="GqayListNationalitySvrcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="GQAY_LIST_NATIONALITY_SVR">
+<wsdl:port binding="tns:GQAY_LIST_NATIONALITY_SVRSoapBinding" name="GQAY_LIST_NATIONALITY_SVRPort">
+<soap:address location="http://10.11.78.103:9080/GQAY/GQAY_LIST_NATIONALITY_SVR"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

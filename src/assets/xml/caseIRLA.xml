@@ -1,0 +1,309 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlaLiAlienPassportSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLA_LI_ALIEN_PASSPORT_SRV" targetNamespace="http://tempuri.org/IrlaLiAlienPassportSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlaLiAlienPassportSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlaLiAlienPassportSrv/">
+<xs:element name="IrlaLiAlienPassportSrvcall" type="tns:IrlaLiAlienPassportSrvcall"/>
+<xs:element name="IrlaLiAlienPassportSrvcallResponse" type="tns:IrlaLiAlienPassportSrvcallResponse"/>
+<xs:complexType name="IrlaLiAlienPassportSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlaLiAlienPassportSrvImport" type="tns:IrlaLiAlienPassportSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlaLiAlienPassportSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PassportNo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhoseNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhoseAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PassportNo" type="xs:string"/>
+<xs:element minOccurs="0" name="PassportNationality" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportSelectedPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlaLiAlienPassportSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlaLiAlienPassportSrvExport" type="tns:IrlaLiAlienPassportSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlaLiAlienPassportSrvExport">
+<xs:sequence>
+<xs:element name="ExportWhoseNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhoseAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PassportNo" type="xs:string"/>
+<xs:element name="PassportNationality" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PersonTypePpTpPoiCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PassportNo" type="xs:string"/>
+<xs:element name="PassportNationality" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutAlienPassport">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PassportNo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="PersonTypePpTpPoiCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlaLiAlienPassportSrvcall">
+<wsdl:part element="tns:IrlaLiAlienPassportSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlaLiAlienPassportSrvcallResponse">
+<wsdl:part element="tns:IrlaLiAlienPassportSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLA_LI_ALIEN_PASSPORT_SRV">
+<wsdl:operation name="IrlaLiAlienPassportSrvcall">
+<wsdl:input message="tns:IrlaLiAlienPassportSrvcall" name="IrlaLiAlienPassportSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlaLiAlienPassportSrvcallResponse" name="IrlaLiAlienPassportSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLA_LI_ALIEN_PASSPORT_SRVSoapBinding" type="tns:IRLA_LI_ALIEN_PASSPORT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlaLiAlienPassportSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlaLiAlienPassportSrvcall/" style="document"/>
+<wsdl:input name="IrlaLiAlienPassportSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlaLiAlienPassportSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLA_LI_ALIEN_PASSPORT_SRV">
+<wsdl:port binding="tns:IRLA_LI_ALIEN_PASSPORT_SRVSoapBinding" name="IRLA_LI_ALIEN_PASSPORT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLA/IRLA_LI_ALIEN_PASSPORT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,135 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrobMenuCasesForVehInqSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IROB_MENU_CASES_FOR_VEH_INQ_SRV" targetNamespace="http://tempuri.org/IrobMenuCasesForVehInqSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrobMenuCasesForVehInqSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrobMenuCasesForVehInqSrv/">
+<xs:element name="IrobMenuCasesForVehInqSrvcall" type="tns:IrobMenuCasesForVehInqSrvcall"/>
+<xs:element name="IrobMenuCasesForVehInqSrvcallResponse" type="tns:IrobMenuCasesForVehInqSrvcallResponse"/>
+<xs:complexType name="IrobMenuCasesForVehInqSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrobMenuCasesForVehInqSrvImport" type="tns:IrobMenuCasesForVehInqSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrobMenuCasesForVehInqSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportFromWhereIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text6" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrobMenuCasesForVehInqSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrobMenuCasesForVehInqSrvExport" type="tns:IrobMenuCasesForVehInqSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrobMenuCasesForVehInqSrvExport">
+<xs:sequence>
+<xs:element name="ExportFromWhereIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text6" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrobMenuCasesForVehInqSrvcallResponse">
+<wsdl:part element="tns:IrobMenuCasesForVehInqSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrobMenuCasesForVehInqSrvcall">
+<wsdl:part element="tns:IrobMenuCasesForVehInqSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IROB_MENU_CASES_FOR_VEH_INQ_SRV">
+<wsdl:operation name="IrobMenuCasesForVehInqSrvcall">
+<wsdl:input message="tns:IrobMenuCasesForVehInqSrvcall" name="IrobMenuCasesForVehInqSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrobMenuCasesForVehInqSrvcallResponse" name="IrobMenuCasesForVehInqSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IROB_MENU_CASES_FOR_VEH_INQ_SRVSoapBinding" type="tns:IROB_MENU_CASES_FOR_VEH_INQ_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrobMenuCasesForVehInqSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrobMenuCasesForVehInqSrvcall/" style="document"/>
+<wsdl:input name="IrobMenuCasesForVehInqSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrobMenuCasesForVehInqSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IROB_MENU_CASES_FOR_VEH_INQ_SRV">
+<wsdl:port binding="tns:IROB_MENU_CASES_FOR_VEH_INQ_SRVSoapBinding" name="IROB_MENU_CASES_FOR_VEH_INQ_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IROB/IROB_MENU_CASES_FOR_VEH_INQ_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,255 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IriiInDiCaseSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRII_IN_DI_CASE_SRV" targetNamespace="http://tempuri.org/IriiInDiCaseSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IriiInDiCaseSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IriiInDiCaseSrv/">
+<xs:element name="IriiInDiCaseSrvcall" type="tns:IriiInDiCaseSrvcall"/>
+<xs:element name="IriiInDiCaseSrvcallResponse" type="tns:IriiInDiCaseSrvcallResponse"/>
+<xs:complexType name="IriiInDiCaseSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriiInDiCaseSrvImport" type="tns:IriiInDiCaseSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeHappened" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DateNotified" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeNotified" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficerName" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeHappenedAmPm" type="xs:string"/>
+<xs:element minOccurs="0" name="TimeNotifiedAmPm" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficerTitle" type="xs:string"/>
+<xs:element minOccurs="0" name="Worker" type="xs:string"/>
+<xs:element minOccurs="0" name="ViolatedCompany" type="xs:string"/>
+<xs:element minOccurs="0" name="Item1" type="xs:string"/>
+<xs:element minOccurs="0" name="Item2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="Action" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriiInDiCaseSrvExport" type="tns:IriiInDiCaseSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseSrvExport">
+<xs:sequence>
+<xs:element name="ExporttGp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExporttIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExporttCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element name="DateNotified" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExporttPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportStatOffActionAuth">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AuthCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Desc" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportLocation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DetailLine1" type="xs:string"/>
+<xs:element name="DetailLine2" type="xs:string"/>
+<xs:element name="DetailLine3" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element name="Street" type="xs:string"/>
+<xs:element name="Lane" type="xs:string"/>
+<xs:element name="BuildingType" type="xs:string"/>
+<xs:element name="Building" type="xs:string"/>
+<xs:element name="PlotNumber" type="xs:int"/>
+<xs:element name="AreaName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCrimeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:int"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportApartment">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Floor" type="xs:string"/>
+<xs:element name="Apartment" type="xs:short"/>
+<xs:element name="Enterance" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IriiInDiCaseSrvcallResponse">
+<wsdl:part element="tns:IriiInDiCaseSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IriiInDiCaseSrvcall">
+<wsdl:part element="tns:IriiInDiCaseSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRII_IN_DI_CASE_SRV">
+<wsdl:operation name="IriiInDiCaseSrvcall">
+<wsdl:input message="tns:IriiInDiCaseSrvcall" name="IriiInDiCaseSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IriiInDiCaseSrvcallResponse" name="IriiInDiCaseSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRII_IN_DI_CASE_SRVSoapBinding" type="tns:IRII_IN_DI_CASE_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IriiInDiCaseSrvcall">
+<soap:operation soapAction="http://tempuri.org/IriiInDiCaseSrvcall/" style="document"/>
+<wsdl:input name="IriiInDiCaseSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IriiInDiCaseSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRII_IN_DI_CASE_SRV">
+<wsdl:port binding="tns:IRII_IN_DI_CASE_SRVSoapBinding" name="IRII_IN_DI_CASE_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRII/IRII_IN_DI_CASE_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

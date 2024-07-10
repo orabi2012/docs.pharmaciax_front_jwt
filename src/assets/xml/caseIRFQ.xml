@@ -1,0 +1,141 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrfqLiJbClassificationSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRFQ_LI_JB_CLASSIFICATION_SRV" targetNamespace="http://tempuri.org/IrfqLiJbClassificationSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrfqLiJbClassificationSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrfqLiJbClassificationSrv/">
+<xs:element name="IrfqLiJbClassificationSrvcall" type="tns:IrfqLiJbClassificationSrvcall"/>
+<xs:element name="IrfqLiJbClassificationSrvcallResponse" type="tns:IrfqLiJbClassificationSrvcallResponse"/>
+<xs:complexType name="IrfqLiJbClassificationSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrfqLiJbClassificationSrvImport" type="tns:IrfqLiJbClassificationSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrfqLiJbClassificationSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="InGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InJobClassification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrfqLiJbClassificationSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrfqLiJbClassificationSrvExport" type="tns:IrfqLiJbClassificationSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrfqLiJbClassificationSrvExport">
+<xs:sequence>
+<xs:element name="ExportJobClassification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutJobClassification">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrfqLiJbClassificationSrvcall">
+<wsdl:part element="tns:IrfqLiJbClassificationSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrfqLiJbClassificationSrvcallResponse">
+<wsdl:part element="tns:IrfqLiJbClassificationSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRFQ_LI_JB_CLASSIFICATION_SRV">
+<wsdl:operation name="IrfqLiJbClassificationSrvcall">
+<wsdl:input message="tns:IrfqLiJbClassificationSrvcall" name="IrfqLiJbClassificationSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrfqLiJbClassificationSrvcallResponse" name="IrfqLiJbClassificationSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRFQ_LI_JB_CLASSIFICATION_SRVSoapBinding" type="tns:IRFQ_LI_JB_CLASSIFICATION_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrfqLiJbClassificationSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrfqLiJbClassificationSrvcall/" style="document"/>
+<wsdl:input name="IrfqLiJbClassificationSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrfqLiJbClassificationSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRFQ_LI_JB_CLASSIFICATION_SRV">
+<wsdl:port binding="tns:IRFQ_LI_JB_CLASSIFICATION_SRVSoapBinding" name="IRFQ_LI_JB_CLASSIFICATION_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRFQ/IRFQ_LI_JB_CLASSIFICATION_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,307 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrdqMenuVehicleEnquirySrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDQ_MENU_VEHICLE_ENQUIRY_SRV" targetNamespace="http://tempuri.org/IrdqMenuVehicleEnquirySrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrdqMenuVehicleEnquirySrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrdqMenuVehicleEnquirySrv/">
+<xs:element name="IrdqMenuVehicleEnquirySrvcall" type="tns:IrdqMenuVehicleEnquirySrvcall"/>
+<xs:element name="IrdqMenuVehicleEnquirySrvcallResponse" type="tns:IrdqMenuVehicleEnquirySrvcallResponse"/>
+<xs:complexType name="IrdqMenuVehicleEnquirySrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdqMenuVehicleEnquirySrvImport" type="tns:IrdqMenuVehicleEnquirySrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdqMenuVehicleEnquirySrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportNoDataFoundIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="EngineNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGovernate2Plate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGovernate1Plate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportScreenTitleIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="OwnerName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportMainMenuIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="DateHappened" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrdqMenuVehicleEnquirySrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdqMenuVehicleEnquirySrvExport" type="tns:IrdqMenuVehicleEnquirySrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdqMenuVehicleEnquirySrvExport">
+<xs:sequence>
+<xs:element name="ExportVehicleStaticInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="VehicleIdentificationNumber" type="xs:string"/>
+<xs:element name="EngineNumber" type="xs:string"/>
+<xs:element name="Identifier" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="NewPlateCode" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGovernate2Plate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGovernate1Plate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNoDataFoundIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportScreenTitleIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OwnerName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportMainMenuIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrdqMenuVehicleEnquirySrvcall">
+<wsdl:part element="tns:IrdqMenuVehicleEnquirySrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdqMenuVehicleEnquirySrvcallResponse">
+<wsdl:part element="tns:IrdqMenuVehicleEnquirySrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDQ_MENU_VEHICLE_ENQUIRY_SRV">
+<wsdl:operation name="IrdqMenuVehicleEnquirySrvcall">
+<wsdl:input message="tns:IrdqMenuVehicleEnquirySrvcall" name="IrdqMenuVehicleEnquirySrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrdqMenuVehicleEnquirySrvcallResponse" name="IrdqMenuVehicleEnquirySrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDQ_MENU_VEHICLE_ENQUIRY_SRVSoapBinding" type="tns:IRDQ_MENU_VEHICLE_ENQUIRY_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrdqMenuVehicleEnquirySrvcall">
+<soap:operation soapAction="http://tempuri.org/IrdqMenuVehicleEnquirySrvcall/" style="document"/>
+<wsdl:input name="IrdqMenuVehicleEnquirySrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrdqMenuVehicleEnquirySrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDQ_MENU_VEHICLE_ENQUIRY_SRV">
+<wsdl:port binding="tns:IRDQ_MENU_VEHICLE_ENQUIRY_SRVSoapBinding" name="IRDQ_MENU_VEHICLE_ENQUIRY_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRDQ/IRDQ_MENU_VEHICLE_ENQUIRY_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

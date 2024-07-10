@@ -1,0 +1,183 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IriiInDiCaseTextSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRII_IN_DI_CASE_TEXT_SRV" targetNamespace="http://tempuri.org/IriiInDiCaseTextSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IriiInDiCaseTextSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IriiInDiCaseTextSrv/">
+<xs:element name="IriiInDiCaseTextSrvcall" type="tns:IriiInDiCaseTextSrvcall"/>
+<xs:element name="IriiInDiCaseTextSrvcallResponse" type="tns:IriiInDiCaseTextSrvcallResponse"/>
+<xs:complexType name="IriiInDiCaseTextSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriiInDiCaseTextSrvImport" type="tns:IriiInDiCaseTextSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseTextSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GpImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InCaseDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="Action" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseTextSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriiInDiCaseTextSrvExport" type="tns:IriiInDiCaseTextSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriiInDiCaseTextSrvExport">
+<xs:sequence>
+<xs:element name="ExportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GpExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutCaseDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="Action" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IriiInDiCaseTextSrvcall">
+<wsdl:part element="tns:IriiInDiCaseTextSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IriiInDiCaseTextSrvcallResponse">
+<wsdl:part element="tns:IriiInDiCaseTextSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRII_IN_DI_CASE_TEXT_SRV">
+<wsdl:operation name="IriiInDiCaseTextSrvcall">
+<wsdl:input message="tns:IriiInDiCaseTextSrvcall" name="IriiInDiCaseTextSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IriiInDiCaseTextSrvcallResponse" name="IriiInDiCaseTextSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRII_IN_DI_CASE_TEXT_SRVSoapBinding" type="tns:IRII_IN_DI_CASE_TEXT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IriiInDiCaseTextSrvcall">
+<soap:operation soapAction="http://tempuri.org/IriiInDiCaseTextSrvcall/" style="document"/>
+<wsdl:input name="IriiInDiCaseTextSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IriiInDiCaseTextSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRII_IN_DI_CASE_TEXT_SRV">
+<wsdl:port binding="tns:IRII_IN_DI_CASE_TEXT_SRVSoapBinding" name="IRII_IN_DI_CASE_TEXT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRII/IRII_IN_DI_CASE_TEXT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

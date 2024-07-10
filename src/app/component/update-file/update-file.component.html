@@ -1,0 +1,346 @@
+<main class="main" id="top">
+    <div class="container">
+      <div class="content">
+      
+      <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand">
+          <button
+            class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarVerticalCollapse"
+            aria-controls="navbarVerticalCollapse"
+            aria-expanded="false"
+            aria-label="Toggle Navigation"
+          >
+            <span class="navbar-toggle-icon"
+              ><span class="toggle-line"></span
+            ></span>
+          </button>
+          <a class="navbar-brand me-1 p-1 me-sm-3" routerLink="/home">
+            <!-- <div class="d-flex align-items-center">
+              <img
+                class="me-2"
+                src="../../assets/img/icons/spot-illustrations/falcon.png"
+                alt=""
+                width="40"
+              /><span class="font-sans-serif">falcon</span>
+            </div> -->
+            <button class="d-flex align-items-center p-3 btn btn-secondary btn-sm">العودة إلي الصفحة الرئيسية</button>
+  
+          </a>
+        </nav>
+      <div class="card mb-5">
+        <div class="card-header">
+          <div class="row flex-between-end">
+            <div class="col-auto align-self-center">
+              <h3 class="mb-0" data-anchor="data-anchor" id="basic-form">
+                  تعديل تفاصيل المستند
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body bg-light">
+              <form [formGroup]="fileForm" (ngSubmit)="update()">
+                <div class="row mb-4">
+                  <div class="col-md-2 text-center">
+                     <label class="form-label" for="file_name">إسم المستند</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input
+                      required
+                      formControlName="file_name"
+                      class="form-control"
+                      type="text"/>
+                      <div class="alert alert-danger" *ngIf="f['file_name'].invalid && (f['file_name'].dirty || f['file_name'].touched)">
+                        <div *ngIf="f['file_name']?.errors?.['required']">
+                          Name is required
+                        </div>
+                        <div *ngIf="f['file_name']?.errors?.['minlength']">
+                          Name must be at least 3 characters long
+                        </div>
+                      </div>
+                  </div>
+                
+                  <div class="col-md-2 text-center">
+                   <label class="form-label" for="Doc_No">رقم المستند</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input
+                      required
+                      formControlName="Doc_No"
+                      class="form-control"
+                      type="text"/>
+                      <div class="alert alert-danger"
+                           *ngIf="f['Doc_No'].touched && f['Doc_No'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-2 text-center ">
+                      <label class="form-label" for="txt_Ar"> كلمات مفتاحية عربي</label>
+                  </div>
+                  <div class="col-md-4">
+                      <input
+                      formControlName="txt_Ar"
+                        class="form-control"
+                        type="text"/>
+                  </div>
+                
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="txt_Eng">كلمات مفتاحية إنجليزي</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input 
+                    formControlName="txt_Eng"
+                    class="form-control"  
+                    type="text" />
+                  </div>
+                </div>
+                <div class="row mb-4 text-center">
+                  <div class="col-md-2">
+                    <label class="form-label" for="Year">سنة الإصدار</label>
+                  </div>
+                  <div class="col-md-10">
+                  <div class="p-fluid p-grid p-formgrid">
+                      <div class="p-field p-col-10">
+                          <p-calendar
+                          [required]="true"
+                          formControlName="Year"
+                            view="year"
+                            dateFormat="yy"
+                            [readonlyInput]="false"
+                            inputId="pickYear"
+                            >
+                          </p-calendar>
+                      </div>
+                      <div class="alert alert-danger"
+                           *ngIf="f['Year'].touched && f['Year'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-2 text-center align-items-center">
+                   <label class="form-label" for="file_Path">إختيار الملف</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input #fileInput  
+                    (change)="onImageChangeFromFile($event)"
+                    class="form-control" 
+                    formControlName="fileID"
+                    type="file" 
+                    accept="application/pdf"/>
+                    <div *ngIf="f['fileID'].touched && f['fileID'].errors" class=" alert alert-danger">
+                      <!-- <div *ngIf="f['fileID'].errors?.['required']">This Field Is Required And Only Pdf File Allowed</div> -->
+                      <div *ngIf="f['fileID'].errors?.['max']">File size must be less than 10MB.</div>
+                    </div>
+                  </div>
+                  <div class="col-6 card-body bg-light">
+                    <ng-container *ngIf="pdfLoading; else pdfContent">
+                      <div class="text-center">
+                        <i class="fa fa-spinner fa-spin fa-4x"></i>
+                        <p>جاري التحميل ...</p>
+                      </div>
+                    </ng-container>
+                    <ng-template #pdfContent>
+                      <iframe [src]="pdfUrl" width="100%" height="200"></iframe>
+                    </ng-template>
+                  </div>
+                  
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="file_desc"> وصف المستند</label>
+                  </div>
+                  <div class="col-md-10">
+                    <quill-editor
+                      [styles]="{height: '250px', backgroundColor:'#faf8f8'}"
+                      formControlName="file_desc"
+                      [modules]="quillEditorModules">
+                    </quill-editor>
+                  </div>
+                </div>
+                <div class="mb-4 row">
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="status_id">حالة المستند</label> 
+                  </div>
+                  <div class="col-md-4">
+                      <ng-select
+                        [required]="true"
+                        formControlName="status_id"
+                        class="form-control ngSelect"
+                        [clearOnBackspace]="true"
+                        [searchable]="true">
+                        <ng-option *ngFor="let status of allStatus" [value]="status.status_id" >{{status.status_name}}</ng-option>
+                      </ng-select>
+                      <div class="alert alert-danger"
+                           *ngIf="f['status_id'].touched && f['status_id'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                  <div class="col-md-2 text-center">
+                   <label class="form-label" for="Country_id"> الدولة</label>
+                  </div>
+                  <div class="col-md-4">
+                      <ng-select
+                        [required]="true"
+                        formControlName="Country_id"
+                        class="form-control ngSelect"
+                        [clearOnBackspace]="true"
+                        [searchable]="true"	>
+                        <ng-option *ngFor="let country of countries" [value]="country.id" >{{country.country_name}}</ng-option>
+                      </ng-select>
+                      <div class="alert alert-danger"
+                           *ngIf="f['Country_id'].touched && f['Country_id'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                </div>
+
+                <div class="mb-4 row">
+                  <div class="col-md-2 text-center">
+                      <label class="form-label" for="Category_id" >التصنيف الرئيسي</label>
+                  </div>
+                  <div class="col-md-4">
+                      <ng-select [(ngModel)]="selectedCategory"
+                        [searchable]="true"	
+                        (change)="onChange()"
+                        [required]="true"
+                        formControlName="Category_id"
+                        class="form-control ngSelect">
+                        <ng-option *ngFor="let category of categories" [value]="category.cat_id" >{{category.Category_name}}</ng-option>
+                      </ng-select>
+                      <div class="alert alert-danger"
+                           *ngIf="f['Category_id'].touched && f['Category_id'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <label class="form-label ngSelect" for="subCategories"> التصنيف الفرعي</label>
+                  </div>
+                  <div class="col-md-4">
+                      <ng-select  class="form-control ngSelect" 
+                        [searchable]="true" 
+                        [multiple]="true"
+                        [required]="true"
+                        formControlName="subCategories" [closeOnSelect]="false">
+                        <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id" >{{sub.SubCategory_name}}</ng-option> 
+                      </ng-select>
+                      <div class="alert alert-danger"
+                           *ngIf="f['subCategories'].touched && f['subCategories'].errors?.['required']">
+                             Field Is Required
+                      </div>
+                  </div>
+                </div>
+                <!-- <div class="row mb-4">
+                  <div class="col-md-2 text-center ">
+                      <label class="form-label" for="createdByID">Created By</label>
+                  </div>
+                  <div class="col-md-4">
+                      <input
+                      formControlName="createdByID"
+                        class="form-control"
+                        type="text"
+                        />
+                  </div>
+                
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="createdAt">Created At</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input 
+                    formControlName="createdAt"
+                    class="form-control"  
+                    type="text"/>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-2 text-center ">
+                      <label class="form-label" for="UpdatedbyID">Updated By</label>
+                  </div>
+                  <div class="col-md-4">
+                      <input
+                      formControlName="UpdatedbyID"
+                        class="form-control"
+                        type="text"/>
+                  </div>
+                
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="updatedAt">Updated At</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input 
+                    formControlName="updatedAt"
+                    class="form-control"  
+                    type="text" />
+                  </div>
+                </div> -->
+                <div class="row mb-3">
+                  <div class="col-md-2 text-center">
+                    <label class="form-label" for="isAuthorized">Authorized file</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input  formControlName="isAuthorized" type="checkbox"/>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <label class="form-label">Active</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input formControlName="isActive" type="checkbox">
+                  </div>
+                </div>
+                <div  class="card-body bg-light border-top" dir="ltr">
+                  <div class="row" >
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-3 mb-3">
+                          <p class=" mb-1"> Created By :</p>
+                        </div>
+                        <div class="col-md-5" style="font-weight: bold;">{{file?.data?.createdBy?.first_name}} {{file?.data?.createdBy?.last_name}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 mb-3"> Created At :</div>
+                        <div class="col-md-5" style="font-weight: bold;">{{datePipe.transform(file?.data?.createdAt, 'dd/MM/yyyy')}}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-3 mb-3">
+                          <p  class=" mb-1"> Updated By :</p>
+                        </div>
+                        <div class="col-md-5" style="font-weight: bold;">{{file?.data?.updatedBy?.first_name}} {{file?.data?.updatedBy?.last_name}}</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 mb-3"> Updated At :</div>
+                        <div class="col-md-5" style="font-weight: bold;">{{datePipe.transform(file?.data?.updatedAt, 'dd/MM/yyyy')}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div  class="card-body bg-light border-top">
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" [disabled]="!fileForm.valid" type="submit">حفظ</button>
+                    <button class="btn btn-danger ms-4" type="button" (click)="cancel()" >إلغاء</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+      <footer dir="ltr">
+        <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+          <div class="col-12 col-sm-auto text-center">
+            <p style="text-align: start;" class="mb-1 text-600">Contact Us :
+              <br>
+              <a >E.mail :<span style="font-weight: bold;"> pharmacia2006@gmail.com</span></a>
+              <br>
+              <a href="http://www.facebook.com/Pharmaciax">http://www.facebook.com/Pharmaciax</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+      </div>
+      </div>
+  </main>
+  

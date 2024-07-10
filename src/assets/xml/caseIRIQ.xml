@@ -1,0 +1,155 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IriqLiStatuteOffenceAcSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIQ_LI_STATUTE_OFFENCE_AC_SRV" targetNamespace="http://tempuri.org/IriqLiStatuteOffenceAcSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IriqLiStatuteOffenceAcSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IriqLiStatuteOffenceAcSrv/">
+<xs:element name="IriqLiStatuteOffenceAcSrvcall" type="tns:IriqLiStatuteOffenceAcSrvcall"/>
+<xs:element name="IriqLiStatuteOffenceAcSrvcallResponse" type="tns:IriqLiStatuteOffenceAcSrvcallResponse"/>
+<xs:complexType name="IriqLiStatuteOffenceAcSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriqLiStatuteOffenceAcSrvImport" type="tns:IriqLiStatuteOffenceAcSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriqLiStatuteOffenceAcSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportSearchStatuteOffenceAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InStatuteOffenceAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IriqLiStatuteOffenceAcSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriqLiStatuteOffenceAcSrvExport" type="tns:IriqLiStatuteOffenceAcSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriqLiStatuteOffenceAcSrvExport">
+<xs:sequence>
+<xs:element name="OutSelectedStatuteOffenceAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNullSearchIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutStatuteOffenceAction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IriqLiStatuteOffenceAcSrvcallResponse">
+<wsdl:part element="tns:IriqLiStatuteOffenceAcSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IriqLiStatuteOffenceAcSrvcall">
+<wsdl:part element="tns:IriqLiStatuteOffenceAcSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIQ_LI_STATUTE_OFFENCE_AC_SRV">
+<wsdl:operation name="IriqLiStatuteOffenceAcSrvcall">
+<wsdl:input message="tns:IriqLiStatuteOffenceAcSrvcall" name="IriqLiStatuteOffenceAcSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IriqLiStatuteOffenceAcSrvcallResponse" name="IriqLiStatuteOffenceAcSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIQ_LI_STATUTE_OFFENCE_AC_SRVSoapBinding" type="tns:IRIQ_LI_STATUTE_OFFENCE_AC_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IriqLiStatuteOffenceAcSrvcall">
+<soap:operation soapAction="http://tempuri.org/IriqLiStatuteOffenceAcSrvcall/" style="document"/>
+<wsdl:input name="IriqLiStatuteOffenceAcSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IriqLiStatuteOffenceAcSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIQ_LI_STATUTE_OFFENCE_AC_SRV">
+<wsdl:port binding="tns:IRIQ_LI_STATUTE_OFFENCE_AC_SRVSoapBinding" name="IRIQ_LI_STATUTE_OFFENCE_AC_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIQ/IRIQ_LI_STATUTE_OFFENCE_AC_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

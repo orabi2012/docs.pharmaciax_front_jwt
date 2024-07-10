@@ -1,0 +1,145 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/SearchByName/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SEARCH_BY_NAME" targetNamespace="http://tempuri.org/SearchByName/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/SearchByName/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/SearchByName/">
+<xs:element name="SearchByNamecall" type="tns:SearchByNamecall"/>
+<xs:element name="SearchByNamecallResponse" type="tns:SearchByNamecallResponse"/>
+<xs:complexType name="SearchByNamecall">
+<xs:sequence>
+<xs:element minOccurs="0" name="SearchByNameImport" type="tns:SearchByNameImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SearchByNameImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportPersonEntry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PersonType" type="xs:string"/>
+<xs:element minOccurs="0" name="Arabic1stName" type="xs:string"/>
+<xs:element minOccurs="0" name="Arabic2ndName" type="xs:string"/>
+<xs:element minOccurs="0" name="Arabic3rdName" type="xs:string"/>
+<xs:element minOccurs="0" name="Arabic4thName" type="xs:string"/>
+<xs:element minOccurs="0" name="ArabicFamilyName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="SearchByNamecallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="SearchByNameExport" type="tns:SearchByNameExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SearchByNameExport">
+<xs:sequence>
+<xs:element name="ExportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGrpPersonEntry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PersonType" type="xs:string"/>
+<xs:element name="PersonNumber" type="xs:int"/>
+<xs:element name="CivilId" type="xs:long"/>
+<xs:element name="Arabic1stName" type="xs:string"/>
+<xs:element name="Arabic2ndName" type="xs:string"/>
+<xs:element name="Arabic3rdName" type="xs:string"/>
+<xs:element name="Arabic4thName" type="xs:string"/>
+<xs:element name="ArabicFamilyName" type="xs:string"/>
+<xs:element name="Latin1stName" type="xs:string"/>
+<xs:element name="Latin2ndName" type="xs:string"/>
+<xs:element name="Latin3rdName" type="xs:string"/>
+<xs:element name="LatinFamilyName" type="xs:string"/>
+<xs:element name="BirthDate" nillable="true" type="xs:string"/>
+<xs:element name="Sex" type="xs:string"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="EducationLevel" type="xs:string"/>
+<xs:element name="BloodGroup" type="xs:string"/>
+<xs:element name="MaritlalStatus" type="xs:string"/>
+<xs:element name="Religion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="ArabicDescription" type="xs:string"/>
+<xs:element name="LatinDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="SearchByNamecall">
+<wsdl:part element="tns:SearchByNamecall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="SearchByNamecallResponse">
+<wsdl:part element="tns:SearchByNamecallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="SEARCH_BY_NAME">
+<wsdl:operation name="SearchByNamecall">
+<wsdl:input message="tns:SearchByNamecall" name="SearchByNamecall"> </wsdl:input>
+<wsdl:output message="tns:SearchByNamecallResponse" name="SearchByNamecallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SEARCH_BY_NAMESoapBinding" type="tns:SEARCH_BY_NAME">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="SearchByNamecall">
+<soap:operation soapAction="http://tempuri.org/SearchByNamecall/" style="document"/>
+<wsdl:input name="SearchByNamecall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="SearchByNamecallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SEARCH_BY_NAME">
+<wsdl:port binding="tns:SEARCH_BY_NAMESoapBinding" name="SEARCH_BY_NAMEPort">
+<soap:address location="http://10.11.78.103:9080/SRCH/SEARCH_BY_NAME"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

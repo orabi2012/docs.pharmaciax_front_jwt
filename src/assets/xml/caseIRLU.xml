@@ -1,0 +1,155 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrluLiAreaNameSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLU_LI_AREA_NAME_SRV" targetNamespace="http://tempuri.org/IrluLiAreaNameSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrluLiAreaNameSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrluLiAreaNameSrv/">
+<xs:element name="IrluLiAreaNameSrvcall" type="tns:IrluLiAreaNameSrvcall"/>
+<xs:element name="IrluLiAreaNameSrvcallResponse" type="tns:IrluLiAreaNameSrvcallResponse"/>
+<xs:complexType name="IrluLiAreaNameSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrluLiAreaNameSrvImport" type="tns:IrluLiAreaNameSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrluLiAreaNameSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InKuwaitAreaName">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportLikeKuwaitAreaName">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrluLiAreaNameSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrluLiAreaNameSrvExport" type="tns:IrluLiAreaNameSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrluLiAreaNameSrvExport">
+<xs:sequence>
+<xs:element name="ExportLikeKuwaitAreaName">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportReturnedKuwaitAreaName">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutKuwaitAreaName">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrluLiAreaNameSrvcallResponse">
+<wsdl:part element="tns:IrluLiAreaNameSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrluLiAreaNameSrvcall">
+<wsdl:part element="tns:IrluLiAreaNameSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLU_LI_AREA_NAME_SRV">
+<wsdl:operation name="IrluLiAreaNameSrvcall">
+<wsdl:input message="tns:IrluLiAreaNameSrvcall" name="IrluLiAreaNameSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrluLiAreaNameSrvcallResponse" name="IrluLiAreaNameSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLU_LI_AREA_NAME_SRVSoapBinding" type="tns:IRLU_LI_AREA_NAME_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrluLiAreaNameSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrluLiAreaNameSrvcall/" style="document"/>
+<wsdl:input name="IrluLiAreaNameSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrluLiAreaNameSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLU_LI_AREA_NAME_SRV">
+<wsdl:port binding="tns:IRLU_LI_AREA_NAME_SRVSoapBinding" name="IRLU_LI_AREA_NAME_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLU/IRLU_LI_AREA_NAME_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

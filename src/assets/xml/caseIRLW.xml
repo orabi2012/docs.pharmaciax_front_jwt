@@ -1,0 +1,340 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlwLiAddressesHomeWorkSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLW_LI_ADDRESSES_HOME_WORK_SRV" targetNamespace="http://tempuri.org/IrlwLiAddressesHomeWorkSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlwLiAddressesHomeWorkSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlwLiAddressesHomeWorkSrv/">
+<xs:element name="IrlwLiAddressesHomeWorkSrvcall" type="tns:IrlwLiAddressesHomeWorkSrvcall"/>
+<xs:element name="IrlwLiAddressesHomeWorkSrvcallResponse" type="tns:IrlwLiAddressesHomeWorkSrvcallResponse"/>
+<xs:complexType name="IrlwLiAddressesHomeWorkSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlwLiAddressesHomeWorkSrvImport" type="tns:IrlwLiAddressesHomeWorkSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlwLiAddressesHomeWorkSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImportWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportWorkIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWorkInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element minOccurs="0" name="Street" type="xs:string"/>
+<xs:element minOccurs="0" name="Building" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWorkApartment">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Floor" type="xs:string"/>
+<xs:element name="Apartment" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWorkIrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GroupImportHome">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InHomeIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InHomeInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element minOccurs="0" name="Street" type="xs:string"/>
+<xs:element minOccurs="0" name="Building" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportHomeApartment">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Floor" type="xs:string"/>
+<xs:element name="Apartment" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportHomeIrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiText" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonTypePpTpPoiNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="CivilIdNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlwLiAddressesHomeWorkSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlwLiAddressesHomeWorkSrvExport" type="tns:IrlwLiAddressesHomeWorkSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlwLiAddressesHomeWorkSrvExport">
+<xs:sequence>
+<xs:element name="ExportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PersonTypePpTpPoiText" type="xs:string"/>
+<xs:element name="PersonTypePpTpPoiNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPersonOfInterest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportTemporaryPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element name="CivilIdNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExportWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportWorkIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWorkInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element name="Street" type="xs:string"/>
+<xs:element name="Building" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWorkApartment">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Floor" type="xs:string"/>
+<xs:element name="Apartment" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWorkIrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportSelectedInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExportHome">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportHomeIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportHomeInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element name="Street" type="xs:string"/>
+<xs:element name="Building" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportHomeApartment">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Floor" type="xs:string"/>
+<xs:element name="Apartment" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportHomeIrIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlwLiAddressesHomeWorkSrvcall">
+<wsdl:part element="tns:IrlwLiAddressesHomeWorkSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlwLiAddressesHomeWorkSrvcallResponse">
+<wsdl:part element="tns:IrlwLiAddressesHomeWorkSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLW_LI_ADDRESSES_HOME_WORK_SRV">
+<wsdl:operation name="IrlwLiAddressesHomeWorkSrvcall">
+<wsdl:input message="tns:IrlwLiAddressesHomeWorkSrvcall" name="IrlwLiAddressesHomeWorkSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlwLiAddressesHomeWorkSrvcallResponse" name="IrlwLiAddressesHomeWorkSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLW_LI_ADDRESSES_HOME_WORK_SRVSoapBinding" type="tns:IRLW_LI_ADDRESSES_HOME_WORK_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlwLiAddressesHomeWorkSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlwLiAddressesHomeWorkSrvcall/" style="document"/>
+<wsdl:input name="IrlwLiAddressesHomeWorkSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlwLiAddressesHomeWorkSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLW_LI_ADDRESSES_HOME_WORK_SRV">
+<wsdl:port binding="tns:IRLW_LI_ADDRESSES_HOME_WORK_SRVSoapBinding" name="IRLW_LI_ADDRESSES_HOME_WORK_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLW/IRLW_LI_ADDRESSES_HOME_WORK_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,251 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrdvDisPermanentPersonDetSr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDV_DIS_PERMANENT_PERSON_DET_SR" targetNamespace="http://tempuri.org/IrdvDisPermanentPersonDetSr/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrdvDisPermanentPersonDetSr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrdvDisPermanentPersonDetSr/">
+<xs:element name="IrdvDisPermanentPersonDetSrcall" type="tns:IrdvDisPermanentPersonDetSrcall"/>
+<xs:element name="IrdvDisPermanentPersonDetSrcallResponse" type="tns:IrdvDisPermanentPersonDetSrcallResponse"/>
+<xs:complexType name="IrdvDisPermanentPersonDetSrcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdvDisPermanentPersonDetSrImport" type="tns:IrdvDisPermanentPersonDetSrImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdvDisPermanentPersonDetSrImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InPpInternalAddressUsage">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="AssociationType" type="xs:string"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GovernorateName" type="xs:string"/>
+<xs:element minOccurs="0" name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element minOccurs="0" name="Street" type="xs:string"/>
+<xs:element minOccurs="0" name="Lane" type="xs:string"/>
+<xs:element minOccurs="0" name="BuildingType" type="xs:string"/>
+<xs:element minOccurs="0" name="Building" type="xs:string"/>
+<xs:element name="PlotNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOccupation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportBirthNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Type" type="xs:string"/>
+<xs:element minOccurs="0" name="Sex" type="xs:string"/>
+<xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MaritalStatus" type="xs:string"/>
+<xs:element minOccurs="0" name="Religion" type="xs:string"/>
+<xs:element minOccurs="0" name="EducationLevel" type="xs:string"/>
+<xs:element minOccurs="0" name="CivilIdNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="BloodGroup" type="xs:string"/>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrdvDisPermanentPersonDetSrcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdvDisPermanentPersonDetSrExport" type="tns:IrdvDisPermanentPersonDetSrExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdvDisPermanentPersonDetSrExport">
+<xs:sequence>
+<xs:element name="ExportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutPpInternalAddressUsage">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AssociationType" type="xs:string"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutInternalAddress">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="GovernorateName" type="xs:string"/>
+<xs:element name="AreaName" type="xs:string"/>
+<xs:element name="BlockNumber" type="xs:short"/>
+<xs:element name="Street" type="xs:string"/>
+<xs:element name="Lane" type="xs:string"/>
+<xs:element name="BuildingType" type="xs:string"/>
+<xs:element name="Building" type="xs:string"/>
+<xs:element name="PlotNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOccupation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportBirthNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPermanentPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="NationalNumber" type="xs:int"/>
+<xs:element name="Type" type="xs:string"/>
+<xs:element name="Sex" type="xs:string"/>
+<xs:element name="BirthDate" nillable="true" type="xs:string"/>
+<xs:element name="MaritalStatus" type="xs:string"/>
+<xs:element name="Religion" type="xs:string"/>
+<xs:element name="EducationLevel" type="xs:string"/>
+<xs:element name="CivilIdNumber" type="xs:long"/>
+<xs:element name="BloodGroup" type="xs:string"/>
+<xs:element name="Title" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdvDisPermanentPersonDetSrcallResponse">
+<wsdl:part element="tns:IrdvDisPermanentPersonDetSrcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdvDisPermanentPersonDetSrcall">
+<wsdl:part element="tns:IrdvDisPermanentPersonDetSrcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDV_DIS_PERMANENT_PERSON_DET_SR">
+<wsdl:operation name="IrdvDisPermanentPersonDetSrcall">
+<wsdl:input message="tns:IrdvDisPermanentPersonDetSrcall" name="IrdvDisPermanentPersonDetSrcall"> </wsdl:input>
+<wsdl:output message="tns:IrdvDisPermanentPersonDetSrcallResponse" name="IrdvDisPermanentPersonDetSrcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDV_DIS_PERMANENT_PERSON_DET_SRSoapBinding" type="tns:IRDV_DIS_PERMANENT_PERSON_DET_SR">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrdvDisPermanentPersonDetSrcall">
+<soap:operation soapAction="http://tempuri.org/IrdvDisPermanentPersonDetSrcall/" style="document"/>
+<wsdl:input name="IrdvDisPermanentPersonDetSrcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrdvDisPermanentPersonDetSrcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDV_DIS_PERMANENT_PERSON_DET_SR">
+<wsdl:port binding="tns:IRDV_DIS_PERMANENT_PERSON_DET_SRSoapBinding" name="IRDV_DIS_PERMANENT_PERSON_DET_SRPort">
+<soap:address location="http://10.11.78.103:9080/IRDV/IRDV_DIS_PERMANENT_PERSON_DET_SR"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

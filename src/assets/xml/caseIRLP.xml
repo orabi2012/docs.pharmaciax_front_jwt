@@ -1,0 +1,157 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlpLiDepartmentSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLP_LI_DEPARTMENT_SRV" targetNamespace="http://tempuri.org/IrlpLiDepartmentSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlpLiDepartmentSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlpLiDepartmentSrv/">
+<xs:element name="IrlpLiDepartmentSrvcall" type="tns:IrlpLiDepartmentSrvcall"/>
+<xs:element name="IrlpLiDepartmentSrvcallResponse" type="tns:IrlpLiDepartmentSrvcallResponse"/>
+<xs:complexType name="IrlpLiDepartmentSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlpLiDepartmentSrvImport" type="tns:IrlpLiDepartmentSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlpLiDepartmentSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportWhosePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlpLiDepartmentSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlpLiDepartmentSrvExport" type="tns:IrlpLiDepartmentSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlpLiDepartmentSrvExport">
+<xs:sequence>
+<xs:element name="ExportWhosePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportReturnedPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlpLiDepartmentSrvcall">
+<wsdl:part element="tns:IrlpLiDepartmentSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlpLiDepartmentSrvcallResponse">
+<wsdl:part element="tns:IrlpLiDepartmentSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLP_LI_DEPARTMENT_SRV">
+<wsdl:operation name="IrlpLiDepartmentSrvcall">
+<wsdl:input message="tns:IrlpLiDepartmentSrvcall" name="IrlpLiDepartmentSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlpLiDepartmentSrvcallResponse" name="IrlpLiDepartmentSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLP_LI_DEPARTMENT_SRVSoapBinding" type="tns:IRLP_LI_DEPARTMENT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlpLiDepartmentSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlpLiDepartmentSrvcall/" style="document"/>
+<wsdl:input name="IrlpLiDepartmentSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlpLiDepartmentSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLP_LI_DEPARTMENT_SRV">
+<wsdl:port binding="tns:IRLP_LI_DEPARTMENT_SRVSoapBinding" name="IRLP_LI_DEPARTMENT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLP/IRLP_LI_DEPARTMENT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

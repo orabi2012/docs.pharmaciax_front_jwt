@@ -1,0 +1,207 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrazLsCustodyStillInJailSr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRAZ_LS_CUSTODY_STILL_IN_JAIL_SR" targetNamespace="http://tempuri.org/IrazLsCustodyStillInJailSr/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrazLsCustodyStillInJailSr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrazLsCustodyStillInJailSr/">
+<xs:element name="IrazLsCustodyStillInJailSrcall" type="tns:IrazLsCustodyStillInJailSrcall"/>
+<xs:element name="IrazLsCustodyStillInJailSrcallResponse" type="tns:IrazLsCustodyStillInJailSrcallResponse"/>
+<xs:complexType name="IrazLsCustodyStillInJailSrcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrazLsCustodyStillInJailSrImport" type="tns:IrazLsCustodyStillInJailSrImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrazLsCustodyStillInJailSrImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGrpCustLst">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGrpCusttIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrpCusttIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PpNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrpCusttNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrpCusttPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrpCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="JailedDate" nillable="true" type="xs:string"/>
+<xs:element name="Period" type="xs:short"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPageNoIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportNextCusttCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SequenceNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrazLsCustodyStillInJailSrcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrazLsCustodyStillInJailSrExport" type="tns:IrazLsCustodyStillInJailSrExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrazLsCustodyStillInJailSrExport">
+<xs:sequence>
+<xs:element name="ExportGrpCustLst">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGrpCusttIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpCusttIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PpNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpCusttNationality">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ArabicDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpCusttPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrpCusttCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="JailedDate" nillable="true" type="xs:string"/>
+<xs:element name="Period" type="xs:short"/>
+<xs:element name="StartDate" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPageNoIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNextCusttCustody">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SequenceNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrazLsCustodyStillInJailSrcallResponse">
+<wsdl:part element="tns:IrazLsCustodyStillInJailSrcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrazLsCustodyStillInJailSrcall">
+<wsdl:part element="tns:IrazLsCustodyStillInJailSrcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRAZ_LS_CUSTODY_STILL_IN_JAIL_SR">
+<wsdl:operation name="IrazLsCustodyStillInJailSrcall">
+<wsdl:input message="tns:IrazLsCustodyStillInJailSrcall" name="IrazLsCustodyStillInJailSrcall"> </wsdl:input>
+<wsdl:output message="tns:IrazLsCustodyStillInJailSrcallResponse" name="IrazLsCustodyStillInJailSrcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRAZ_LS_CUSTODY_STILL_IN_JAIL_SRSoapBinding" type="tns:IRAZ_LS_CUSTODY_STILL_IN_JAIL_SR">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrazLsCustodyStillInJailSrcall">
+<soap:operation soapAction="http://tempuri.org/IrazLsCustodyStillInJailSrcall/" style="document"/>
+<wsdl:input name="IrazLsCustodyStillInJailSrcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrazLsCustodyStillInJailSrcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRAZ_LS_CUSTODY_STILL_IN_JAIL_SR">
+<wsdl:port binding="tns:IRAZ_LS_CUSTODY_STILL_IN_JAIL_SRSoapBinding" name="IRAZ_LS_CUSTODY_STILL_IN_JAIL_SRPort">
+<soap:address location="http://10.11.78.103:9080/IRAZ/IRAZ_LS_CUSTODY_STILL_IN_JAIL_SR"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

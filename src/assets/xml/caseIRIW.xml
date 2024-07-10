@@ -1,0 +1,275 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IriwListWantedVehicleSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIW_LIST_WANTED_VEHICLE_SRV" targetNamespace="http://tempuri.org/IriwListWantedVehicleSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IriwListWantedVehicleSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IriwListWantedVehicleSrv/">
+<xs:element name="IriwListWantedVehicleSrvcall" type="tns:IriwListWantedVehicleSrvcall"/>
+<xs:element name="IriwListWantedVehicleSrvcallResponse" type="tns:IriwListWantedVehicleSrvcallResponse"/>
+<xs:complexType name="IriwListWantedVehicleSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriwListWantedVehicleSrvImport" type="tns:IriwListWantedVehicleSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriwListWantedVehicleSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element minOccurs="0" name="GovernorateCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Make" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGpPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCountIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportEndCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DateInvolved" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportStartCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DateInvolved" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IriwListWantedVehicleSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IriwListWantedVehicleSrvExport" type="tns:IriwListWantedVehicleSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IriwListWantedVehicleSrvExport">
+<xs:sequence>
+<xs:element name="ExportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportEndCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DateInvolved" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportStartCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DateInvolved" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpVehiclePlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Type" type="xs:short"/>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="DiplomaticNationalityCode" type="xs:short"/>
+<xs:element name="GovernorateCode" type="xs:string"/>
+<xs:element name="Status" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpVehicleType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Make" type="xs:string"/>
+<xs:element name="Model" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGpPlatePurposeType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCountIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IriwListWantedVehicleSrvcallResponse">
+<wsdl:part element="tns:IriwListWantedVehicleSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IriwListWantedVehicleSrvcall">
+<wsdl:part element="tns:IriwListWantedVehicleSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIW_LIST_WANTED_VEHICLE_SRV">
+<wsdl:operation name="IriwListWantedVehicleSrvcall">
+<wsdl:input message="tns:IriwListWantedVehicleSrvcall" name="IriwListWantedVehicleSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IriwListWantedVehicleSrvcallResponse" name="IriwListWantedVehicleSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIW_LIST_WANTED_VEHICLE_SRVSoapBinding" type="tns:IRIW_LIST_WANTED_VEHICLE_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IriwListWantedVehicleSrvcall">
+<soap:operation soapAction="http://tempuri.org/IriwListWantedVehicleSrvcall/" style="document"/>
+<wsdl:input name="IriwListWantedVehicleSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IriwListWantedVehicleSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIW_LIST_WANTED_VEHICLE_SRV">
+<wsdl:port binding="tns:IRIW_LIST_WANTED_VEHICLE_SRVSoapBinding" name="IRIW_LIST_WANTED_VEHICLE_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIW/IRIW_LIST_WANTED_VEHICLE_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

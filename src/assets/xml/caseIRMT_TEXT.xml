@@ -1,0 +1,427 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrmtDisNonKwtVehInvolTS/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRMT_DIS_NON_KWT_VEH_INVOL_T_S" targetNamespace="http://tempuri.org/IrmtDisNonKwtVehInvolTS/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrmtDisNonKwtVehInvolTS/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrmtDisNonKwtVehInvolTS/">
+<xs:element name="IrmtDisNonKwtVehInvolTScall" type="tns:IrmtDisNonKwtVehInvolTScall"/>
+<xs:element name="IrmtDisNonKwtVehInvolTScallResponse" type="tns:IrmtDisNonKwtVehInvolTScallResponse"/>
+<xs:complexType name="IrmtDisNonKwtVehInvolTScall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrmtDisNonKwtVehInvolTSImport" type="tns:IrmtDisNonKwtVehInvolTSImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrmtDisNonKwtVehInvolTSImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportGpCaseVehicleDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="LineNumber" type="xs:short"/>
+<xs:element minOccurs="0" name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiShape">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportMajorColorGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportMinorColorGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOwnerGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportDriverGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiCity">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportMakeGdc2moiMake">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOwnerNameIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportDriverNameIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element minOccurs="0" name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="VehicleIdNumber" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element minOccurs="0" name="MovementDateTime" type="xs:string"/>
+<xs:element minOccurs="0" name="PlateCharacters" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element minOccurs="0" name="MovementDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MovementTime" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OwnerNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="DriverIdNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="DriverIdType" type="xs:string"/>
+<xs:element minOccurs="0" name="OwnerIdType" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element minOccurs="0" name="DateInvolved" nillable="true" type="xs:string"/>
+<xs:element name="SeqNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrmtDisNonKwtVehInvolTScallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrmtDisNonKwtVehInvolTSExport" type="tns:IrmtDisNonKwtVehInvolTSExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrmtDisNonKwtVehInvolTSExport">
+<xs:sequence>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExportGpCaseVehicleDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="LineNumber" type="xs:short"/>
+<xs:element name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiShape">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportMajorColorGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportMinorColorGdc2moiColor">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOwnerGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportDriverGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiCity">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportMakeGdc2moiMake">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOwnerNameIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportDriverNameIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiCountry">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element name="CustomsText" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGdc2moiMovementInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="PlateNumber" type="xs:int"/>
+<xs:element name="VehicleIdNumber" type="xs:string"/>
+<xs:element name="MoiIdentifier" type="xs:int"/>
+<xs:element name="MovementDateTime" type="xs:string"/>
+<xs:element name="PlateCharacters" type="xs:string"/>
+<xs:element name="Model" type="xs:string"/>
+<xs:element name="YearOfManufacture" type="xs:short"/>
+<xs:element name="MovementDate" nillable="true" type="xs:string"/>
+<xs:element name="MovementTime" nillable="true" type="xs:string"/>
+<xs:element name="OwnerNumber" type="xs:string"/>
+<xs:element name="DriverIdNumber" type="xs:string"/>
+<xs:element name="DriverIdType" type="xs:string"/>
+<xs:element name="OwnerIdType" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportVehicleInvolvementType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseVehicleInvolvement">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Description" type="xs:string"/>
+<xs:element name="DateInvolved" nillable="true" type="xs:string"/>
+<xs:element name="SeqNo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrmtDisNonKwtVehInvolTScall">
+<wsdl:part element="tns:IrmtDisNonKwtVehInvolTScall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrmtDisNonKwtVehInvolTScallResponse">
+<wsdl:part element="tns:IrmtDisNonKwtVehInvolTScallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRMT_DIS_NON_KWT_VEH_INVOL_T_S">
+<wsdl:operation name="IrmtDisNonKwtVehInvolTScall">
+<wsdl:input message="tns:IrmtDisNonKwtVehInvolTScall" name="IrmtDisNonKwtVehInvolTScall"> </wsdl:input>
+<wsdl:output message="tns:IrmtDisNonKwtVehInvolTScallResponse" name="IrmtDisNonKwtVehInvolTScallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRMT_DIS_NON_KWT_VEH_INVOL_T_SSoapBinding" type="tns:IRMT_DIS_NON_KWT_VEH_INVOL_T_S">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrmtDisNonKwtVehInvolTScall">
+<soap:operation soapAction="http://tempuri.org/IrmtDisNonKwtVehInvolTScall/" style="document"/>
+<wsdl:input name="IrmtDisNonKwtVehInvolTScall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrmtDisNonKwtVehInvolTScallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRMT_DIS_NON_KWT_VEH_INVOL_T_S">
+<wsdl:port binding="tns:IRMT_DIS_NON_KWT_VEH_INVOL_T_SSoapBinding" name="IRMT_DIS_NON_KWT_VEH_INVOL_T_SPort">
+<soap:address location="http://10.11.78.103:9080/IRMT/IRMT_DIS_NON_KWT_VEH_INVOL_T_S"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

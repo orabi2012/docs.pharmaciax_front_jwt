@@ -1,0 +1,262 @@
+<main class="main" id="top">
+  <div class="container">
+    <div class="content">
+    
+    <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand">
+        <button
+          class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarVerticalCollapse"
+          aria-controls="navbarVerticalCollapse"
+          aria-expanded="false"
+          aria-label="Toggle Navigation"
+        >
+          <span class="navbar-toggle-icon"
+            ><span class="toggle-line"></span
+          ></span>
+        </button>
+        <a class="navbar-brand me-1 p-1 me-sm-3" routerLink="/home">
+          <!-- <div class="d-flex align-items-center">
+            <img
+              class="me-2"
+              src="../../assets/img/icons/spot-illustrations/falcon.png"
+              alt=""
+              width="40"
+            /><span class="font-sans-serif">falcon</span>
+          </div> -->
+          <button class="d-flex align-items-center p-3 btn btn-secondary btn-sm">العودة إلي الصفحة الرئيسية</button>
+
+        </a>
+      </nav>
+    <div class="card mb-5">
+      <div class="card-header">
+        <div class="row flex-between-end">
+          <div class="col-auto align-self-center">
+            <h3 class="mb-0" data-anchor="data-anchor" id="basic-form">
+              إضافة ملف جديد
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="card-body bg-light">
+        <div class="tab-content">
+          
+            <form [formGroup]="fileForm" (ngSubmit)="onFileUpload()">
+            <div class="row">
+              <div class="mb-4 col-md-2 text-center">
+                <label class="form-label" for="file_name">إسم المستند</label>
+                </div>
+                <div class="col-md-4">
+                  <input
+                    required
+                    minlength="3"
+                    formControlName="file_name"
+                    class="form-control"
+                    type="text"/>
+                    <div class="alert alert-danger" *ngIf="f['file_name'].invalid && (f['file_name'].dirty || f['file_name'].touched)">
+                      <div *ngIf="f['file_name']?.errors?.['required']">
+                        Name is required
+                      </div>
+                      <div *ngIf="f['file_name']?.errors?.['minlength']">
+                        Name must be at least 3 characters long
+                      </div>
+                    </div>
+                   
+                </div>
+              <div class=" col-md-2 text-center">
+                <label class="form-label" for="Doc_No">رقم المستند</label>
+                </div>
+                <div class="col-md-4">
+                <input
+                  required
+                  formControlName="Doc_No"
+                  class="form-control"
+                  type="text"/>
+                  <div class="alert alert-danger"
+                           *ngIf="(f['Doc_No'].touched||submitted) && f['Doc_No'].errors?.['required']">
+                             Field Is Required
+                  </div>
+              </div>
+              </div>
+              <div class="row mb-4">
+              <div class=" col-md-2 text-center">
+                <label class="form-label" for="txt_Ar"> كلمات مفتاحية عربي</label>
+              </div>
+              <div class="col-md-4">
+                <input
+                formControlName="txt_Ar"
+                  class="form-control"
+                  type="text"/>
+              </div>
+              <div class=" col-md-2 text-center">
+                <label class="form-label" for="txt_Eng">كلمات مفتاحية إنجليزي</label>
+                </div>
+                <div class="col-md-4">
+                <input 
+                formControlName="txt_Eng"
+                class="form-control"  
+                type="text" />
+              </div>
+              </div>
+              <div class="mb-1 row text-center">
+                <div class="col-md-2" >
+                  <label  class="form-label" for="Year">سنة الإصدار </label>
+                </div>
+                <div class="col-md-10">
+                   <div class="p-fluid p-grid p-formgrid mb-4">
+                    <div class="p-field p-col-md-10">
+                        <p-calendar
+                          [required]="true"
+                          formControlName="Year"
+                          view="year"
+                          dateFormat="yy"
+                          [readonlyInput]="false"
+                          inputId="pickYear">
+                        </p-calendar>
+                    </div>
+                    <div class="alert alert-danger"
+                           *ngIf="f['Year'].touched && f['Year'].errors?.['required']">
+                             Field Is Required
+                    </div>
+                  </div> 
+
+                  
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-2 text-center">
+                 <label class="form-label" for="file_Path">إختيار الملف</label>
+                </div>
+                <div class="col-md-10">
+                <input #fileInput [ngClass]="{ 'is-invalid': submitted && f['file'].errors }"
+                [required]="true"  
+                (change)="onImageChangeFromFile($event)"
+                class="form-control" 
+                formControlName="file"
+                type="file" 
+                accept="application/pdf"/>
+                <div *ngIf="(f['file'].touched || submitted) && f['file'].errors" class=" alert alert-danger">
+                  <div *ngIf="f['file'].errors?.['required']">This Field Is Required And Only Pdf File Allowed</div>
+                  <div *ngIf="f['file'].errors?.['max']">File size must be less than 10MB.</div>
+                </div>
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <div class="col-md-2 text-center">
+                  <label class="form-label" for="file_desc"> وصف المستند</label>
+                </div>
+                <div class="col-md-10">
+                  <quill-editor dir="ltr"
+                    [styles]="{height: '250px', backgroundColor:'#faf8f8'}"
+                    formControlName="file_desc"
+                    [modules]="quillEditorModules">
+                  </quill-editor>
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <div class="col-md-2 text-center">
+                <label class="form-label" for="status_id">حالة المستند</label>
+                </div>
+                <div class="col-md-4"> 
+                <ng-select
+                  required
+                  formControlName="status_id"
+                  class="form-control ngSelect"
+                  [clearOnBackspace]="true"
+                  [searchable]="true"	
+                   [clearable]="true">
+                  <ng-option *ngFor="let status of allStatus" [value]="status.status_id" >{{status.status_name}}</ng-option>
+                </ng-select>
+                <div class="alert alert-danger"
+                           *ngIf="(f['status_id'].touched||submitted) && f['status_id'].errors?.['required']">
+                             Field Is Required
+                </div>
+                </div>
+              
+              <div class="col-md-2 text-center">
+                <label class="form-label" for="Country_id"> الدولة</label>
+              </div>
+              <div class="col-md-4">
+                <ng-select
+                  required
+                  formControlName="Country_id"
+                  class="form-control ngSelect">
+                  [clearOnBackspace]="true"
+                  [searchable]="true"	
+                  <ng-option *ngFor="let country of countries" [value]="country.id" >{{country.country_name}}</ng-option>
+                </ng-select>
+                <div class="alert alert-danger"
+                           *ngIf="(f['Country_id'].touched||submitted) && f['Country_id'].errors?.['required']">
+                             Field Is Required
+                </div>
+                </div>
+              </div>
+              <div class="mb-4 row">
+                <div class="col-md-2 text-center">
+                <label class="form-label" for="Category_id"> التصنيف الرئيسي</label>
+                </div>
+                <div class="col-md-4">
+                <ng-select [(ngModel)]="selectedCategory"
+                  required
+                  [clearOnBackspace]="true"
+                  [searchable]="true"	
+                  (change)="onChange()"
+                  formControlName="Category_id"
+                  class="form-control ngSelect">
+                  <ng-option *ngFor="let category of categories" [value]="category.cat_id" >{{category.Category_name}}</ng-option>
+                </ng-select>
+                <div class="alert alert-danger"
+                           *ngIf="(f['Category_id'].touched||submitted) && f['Category_id'].errors?.['required']">
+                             Field Is Required
+                  </div>
+                </div>
+              
+              <div class="col-md-2 text-center">
+                <label class="form-label" for="subCategories"> التصنيف الفرعي</label>
+                </div>
+                <div class="col-md-4">
+                <ng-select class="form-control ngSelect" [multiple]="true"
+                  required
+                  [searchable]="true"	[clearable]="true"
+                  formControlName="subCategories" [closeOnSelect]="false">
+                  <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id" >{{sub.SubCategory_name}}</ng-option>
+                </ng-select>
+                <div class="alert alert-danger"
+                           *ngIf="(f['subCategories'].touched||submitted) && f['subCategories'].errors?.['required']">
+                             Field Is Required
+                </div>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-2 text-center">
+                  <label class="form-label" for="isAuthorized"> Authorized file</label>
+                </div>
+                <div class="col-md-10">
+                  <input  formControlName="isAuthorized" type="checkbox" (change)="onIsAuthorizedChange($event)"/>
+                </div>
+              </div> 
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" [disabled]="!fileForm.valid" type="submit" >حفظ</button>
+                <button class="btn btn-danger ms-4" type="button" (click)="cancel()">إلغاء</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <footer dir="ltr">
+      <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+        <div class="col-12 col-sm-auto text-center">
+          <p style="text-align: start;" class="mb-1 text-600">Contact Us :
+            <br>
+            <a >E.mail :<span style="font-weight: bold;"> pharmacia2006@gmail.com</span></a>
+            <br>
+            <a href="http://www.facebook.com/Pharmaciax">http://www.facebook.com/Pharmaciax</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    </div>
+    </div>
+</main>
+

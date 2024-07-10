@@ -1,0 +1,197 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrdnDiCaseDetailsTextSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRDN_DI_CASE_DETAILS_TEXT_SRV" targetNamespace="http://tempuri.org/IrdnDiCaseDetailsTextSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrdnDiCaseDetailsTextSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrdnDiCaseDetailsTextSrv/">
+<xs:element name="IrdnDiCaseDetailsTextSrvcall" type="tns:IrdnDiCaseDetailsTextSrvcall"/>
+<xs:element name="IrdnDiCaseDetailsTextSrvcallResponse" type="tns:IrdnDiCaseDetailsTextSrvcallResponse"/>
+<xs:complexType name="IrdnDiCaseDetailsTextSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdnDiCaseDetailsTextSrvImport" type="tns:IrdnDiCaseDetailsTextSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdnDiCaseDetailsTextSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="GroupImport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InCaseDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element minOccurs="0" name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrdnDiCaseDetailsTextSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrdnDiCaseDetailsTextSrvExport" type="tns:IrdnDiCaseDetailsTextSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrdnDiCaseDetailsTextSrvExport">
+<xs:sequence>
+<xs:element name="GroupExport">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutCaseDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="DetailLine" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrdnDiCaseDetailsTextSrvcallResponse">
+<wsdl:part element="tns:IrdnDiCaseDetailsTextSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrdnDiCaseDetailsTextSrvcall">
+<wsdl:part element="tns:IrdnDiCaseDetailsTextSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRDN_DI_CASE_DETAILS_TEXT_SRV">
+<wsdl:operation name="IrdnDiCaseDetailsTextSrvcall">
+<wsdl:input message="tns:IrdnDiCaseDetailsTextSrvcall" name="IrdnDiCaseDetailsTextSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrdnDiCaseDetailsTextSrvcallResponse" name="IrdnDiCaseDetailsTextSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRDN_DI_CASE_DETAILS_TEXT_SRVSoapBinding" type="tns:IRDN_DI_CASE_DETAILS_TEXT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrdnDiCaseDetailsTextSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrdnDiCaseDetailsTextSrvcall/" style="document"/>
+<wsdl:input name="IrdnDiCaseDetailsTextSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrdnDiCaseDetailsTextSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRDN_DI_CASE_DETAILS_TEXT_SRV">
+<wsdl:port binding="tns:IRDN_DI_CASE_DETAILS_TEXT_SRVSoapBinding" name="IRDN_DI_CASE_DETAILS_TEXT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRDN/IRDN_DI_CASE_DETAILS_TEXT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

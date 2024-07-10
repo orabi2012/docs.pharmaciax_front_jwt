@@ -1,0 +1,155 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrioLiStatuteOffenceCp2Srv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIO_LI_STATUTE_OFFENCE_CP2_SRV" targetNamespace="http://tempuri.org/IrioLiStatuteOffenceCp2Srv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrioLiStatuteOffenceCp2Srv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrioLiStatuteOffenceCp2Srv/">
+<xs:element name="IrioLiStatuteOffenceCp2Srvcall" type="tns:IrioLiStatuteOffenceCp2Srvcall"/>
+<xs:element name="IrioLiStatuteOffenceCp2SrvcallResponse" type="tns:IrioLiStatuteOffenceCp2SrvcallResponse"/>
+<xs:complexType name="IrioLiStatuteOffenceCp2Srvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrioLiStatuteOffenceCp2SrvImport" type="tns:IrioLiStatuteOffenceCp2SrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrioLiStatuteOffenceCp2SrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportSearchStatuteOffence">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Description1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="GroupIn">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="InIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="InStatuteOffence">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="Description1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrioLiStatuteOffenceCp2SrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrioLiStatuteOffenceCp2SrvExport" type="tns:IrioLiStatuteOffenceCp2SrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrioLiStatuteOffenceCp2SrvExport">
+<xs:sequence>
+<xs:element name="ExportSelectedStatuteOffence">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element name="Description1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNullSearchIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutGroup">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="OutIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="OutStatuteOffence">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SerialNumber" type="xs:int"/>
+<xs:element name="Description1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrioLiStatuteOffenceCp2Srvcall">
+<wsdl:part element="tns:IrioLiStatuteOffenceCp2Srvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrioLiStatuteOffenceCp2SrvcallResponse">
+<wsdl:part element="tns:IrioLiStatuteOffenceCp2SrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIO_LI_STATUTE_OFFENCE_CP2_SRV">
+<wsdl:operation name="IrioLiStatuteOffenceCp2Srvcall">
+<wsdl:input message="tns:IrioLiStatuteOffenceCp2Srvcall" name="IrioLiStatuteOffenceCp2Srvcall"> </wsdl:input>
+<wsdl:output message="tns:IrioLiStatuteOffenceCp2SrvcallResponse" name="IrioLiStatuteOffenceCp2SrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIO_LI_STATUTE_OFFENCE_CP2_SRVSoapBinding" type="tns:IRIO_LI_STATUTE_OFFENCE_CP2_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrioLiStatuteOffenceCp2Srvcall">
+<soap:operation soapAction="http://tempuri.org/IrioLiStatuteOffenceCp2Srvcall/" style="document"/>
+<wsdl:input name="IrioLiStatuteOffenceCp2Srvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrioLiStatuteOffenceCp2SrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIO_LI_STATUTE_OFFENCE_CP2_SRV">
+<wsdl:port binding="tns:IRIO_LI_STATUTE_OFFENCE_CP2_SRVSoapBinding" name="IRIO_LI_STATUTE_OFFENCE_CP2_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIO/IRIO_LI_STATUTE_OFFENCE_CP2_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

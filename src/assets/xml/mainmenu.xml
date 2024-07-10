@@ -1,0 +1,110 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IracInqueryMenuSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRAC_INQUERY_MENU_SRV" targetNamespace="http://tempuri.org/IracInqueryMenuSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IracInqueryMenuSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IracInqueryMenuSrv/">
+<xs:element name="IracInqueryMenuSrvcall" type="tns:IracInqueryMenuSrvcall"/>
+<xs:element name="IracInqueryMenuSrvcallResponse" type="tns:IracInqueryMenuSrvcallResponse"/>
+<xs:element name="IracInqueryMenuSrvImport" type="tns:IracInqueryMenuSrvImport"/>
+<xs:complexType name="IracInqueryMenuSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IracInqueryMenuSrvImport" type="tns:IracInqueryMenuSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IracInqueryMenuSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="Option" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportFlowAddressIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IracInqueryMenuSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IracInqueryMenuSrvExport" type="tns:IracInqueryMenuSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IracInqueryMenuSrvExport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="Option" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ExportFlowAddressIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Flag" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IracInqueryMenuSrvcall">
+<wsdl:part element="tns:IracInqueryMenuSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IracInqueryMenuSrvcallResponse">
+<wsdl:part element="tns:IracInqueryMenuSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRAC_INQUERY_MENU_SRV">
+<wsdl:operation name="IracInqueryMenuSrvcall">
+<wsdl:input message="tns:IracInqueryMenuSrvcall" name="IracInqueryMenuSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IracInqueryMenuSrvcallResponse" name="IracInqueryMenuSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRAC_INQUERY_MENU_SRVSoapBinding" type="tns:IRAC_INQUERY_MENU_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IracInqueryMenuSrvcall">
+<soap:operation soapAction="http://tempuri.org/IracInqueryMenuSrvcall/" style="document"/>
+<wsdl:input name="IracInqueryMenuSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IracInqueryMenuSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRAC_INQUERY_MENU_SRV">
+<wsdl:port binding="tns:IRAC_INQUERY_MENU_SRVSoapBinding" name="IRAC_INQUERY_MENU_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRAC/IRAC_INQUERY_MENU_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,276 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrabMenuCaseMaintSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRAB_MENU_CASE_MAINT_SRV" targetNamespace="http://tempuri.org/IrabMenuCaseMaintSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrabMenuCaseMaintSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrabMenuCaseMaintSrv/">
+<xs:element name="IrabMenuCaseMaintSrvcall" type="tns:IrabMenuCaseMaintSrvcall"/>
+<xs:element name="IrabMenuCaseMaintSrvcallResponse" type="tns:IrabMenuCaseMaintSrvcallResponse"/>
+<xs:complexType name="IrabMenuCaseMaintSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrabMenuCaseMaintSrvImport" type="tns:IrabMenuCaseMaintSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrabMenuCaseMaintSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="Option" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrabMenuCaseMaintSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrabMenuCaseMaintSrvExport" type="tns:IrabMenuCaseMaintSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrabMenuCaseMaintSrvExport">
+<xs:sequence>
+<xs:element name="ExportCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+<xs:element name="Status" type="xs:string"/>
+<xs:element name="CriminalKnownUnknown" type="xs:string"/>
+<xs:element name="DateHappened" nillable="true" type="xs:string"/>
+<xs:element name="Worker" type="xs:string"/>
+<xs:element name="ViolatedCompany" type="xs:string"/>
+<xs:element name="TimeHappened" nillable="true" type="xs:string"/>
+<xs:element name="DateRecorded" nillable="true" type="xs:string"/>
+<xs:element name="TimeRecorded" nillable="true" type="xs:string"/>
+<xs:element name="DateNotified" nillable="true" type="xs:string"/>
+<xs:element name="TimeNotified" nillable="true" type="xs:string"/>
+<xs:element name="TimeStamp" type="xs:string"/>
+<xs:element name="OfficerName" type="xs:string"/>
+<xs:element name="TimeHappenedAmPm" type="xs:string"/>
+<xs:element name="TimeRecordedAmPm" type="xs:string"/>
+<xs:element name="TimeNotifiedAmPm" type="xs:string"/>
+<xs:element name="CreatorSystemCode" type="xs:string"/>
+<xs:element name="OfficerTitle" type="xs:string"/>
+<xs:element name="Item1" type="xs:string"/>
+<xs:element name="Item2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+<xs:element name="Reference" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIrWork">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Action" type="xs:short"/>
+<xs:element name="Option" type="xs:short"/>
+<xs:element name="ConcatArabicName" type="xs:string"/>
+<xs:element name="ConcatLatinName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef00PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRef000PublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportCaseType46IefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNewCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNewCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportNewPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOldCase">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="CaseYearIdent" type="xs:short"/>
+<xs:element name="CaseNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOldCaseType">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Code" type="xs:short"/>
+<xs:element name="Description" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportOldPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportMunicipalityViolation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SeqNo" type="xs:int"/>
+<xs:element name="MunicipalityNo" type="xs:int"/>
+<xs:element name="MunicipalityDept" type="xs:string"/>
+<xs:element name="BranchGovernate" type="xs:string"/>
+<xs:element name="IssueDate" nillable="true" type="xs:string"/>
+<xs:element name="ViolatorPersDesc" type="xs:string"/>
+<xs:element name="ViolatorCompanyDesc" type="xs:string"/>
+<xs:element name="Remark1" type="xs:string"/>
+<xs:element name="Remark2" type="xs:string"/>
+<xs:element name="Remark3" type="xs:string"/>
+<xs:element name="TelephoneNumber" type="xs:int"/>
+<xs:element name="Adress" type="xs:string"/>
+<xs:element name="CompayName" type="xs:string"/>
+<xs:element name="OwnerName" type="xs:string"/>
+<xs:element name="IdNumber" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPublicOrgIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SelectChar" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrabMenuCaseMaintSrvcallResponse">
+<wsdl:part element="tns:IrabMenuCaseMaintSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrabMenuCaseMaintSrvcall">
+<wsdl:part element="tns:IrabMenuCaseMaintSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRAB_MENU_CASE_MAINT_SRV">
+<wsdl:operation name="IrabMenuCaseMaintSrvcall">
+<wsdl:input message="tns:IrabMenuCaseMaintSrvcall" name="IrabMenuCaseMaintSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrabMenuCaseMaintSrvcallResponse" name="IrabMenuCaseMaintSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRAB_MENU_CASE_MAINT_SRVSoapBinding" type="tns:IRAB_MENU_CASE_MAINT_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrabMenuCaseMaintSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrabMenuCaseMaintSrvcall/" style="document"/>
+<wsdl:input name="IrabMenuCaseMaintSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrabMenuCaseMaintSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRAB_MENU_CASE_MAINT_SRV">
+<wsdl:port binding="tns:IRAB_MENU_CASE_MAINT_SRVSoapBinding" name="IRAB_MENU_CASE_MAINT_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRAB/IRAB_MENU_CASE_MAINT_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

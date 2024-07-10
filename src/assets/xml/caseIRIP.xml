@@ -1,0 +1,135 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IripDisTrafficPersonSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRIP_DIS_TRAFFIC_PERSON_SRV" targetNamespace="http://tempuri.org/IripDisTrafficPersonSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IripDisTrafficPersonSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IripDisTrafficPersonSrv/">
+<xs:element name="IripDisTrafficPersonSrvcall" type="tns:IripDisTrafficPersonSrvcall"/>
+<xs:element name="IripDisTrafficPersonSrvcallResponse" type="tns:IripDisTrafficPersonSrvcallResponse"/>
+<xs:complexType name="IripDisTrafficPersonSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IripDisTrafficPersonSrvImport" type="tns:IripDisTrafficPersonSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IripDisTrafficPersonSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportTrafficPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Zt4f0tsnTrafficNoOfPerson" type="xs:int"/>
+<xs:element minOccurs="0" name="Zt4f0namArabicName" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0bdtBirthDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0nntNationality" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0idtIdType" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0idnIdNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="Zt4f0iddIdDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0hadHomeAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0harHomeArea" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0htlHomeTelephone" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0posOccupationCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0wadWorkAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0warWorkArea" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0wtlWorkTelephone" type="xs:string"/>
+<xs:element minOccurs="0" name="Zt4f0wexWorkTelExtension" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IripDisTrafficPersonSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IripDisTrafficPersonSrvExport" type="tns:IripDisTrafficPersonSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IripDisTrafficPersonSrvExport">
+<xs:sequence>
+<xs:element name="ExportWhereFromIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportTrafficPerson">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Zt4f0tsnTrafficNoOfPerson" type="xs:int"/>
+<xs:element name="Zt4f0namArabicName" type="xs:string"/>
+<xs:element name="Zt4f0bdtBirthDate" nillable="true" type="xs:string"/>
+<xs:element name="Zt4f0nntNationality" type="xs:string"/>
+<xs:element name="Zt4f0idtIdType" type="xs:string"/>
+<xs:element name="Zt4f0idnIdNumber" type="xs:long"/>
+<xs:element name="Zt4f0iddIdDate" nillable="true" type="xs:string"/>
+<xs:element name="Zt4f0hadHomeAddress" type="xs:string"/>
+<xs:element name="Zt4f0harHomeArea" type="xs:string"/>
+<xs:element name="Zt4f0htlHomeTelephone" type="xs:string"/>
+<xs:element name="Zt4f0posOccupationCode" type="xs:string"/>
+<xs:element name="Zt4f0wadWorkAddress" type="xs:string"/>
+<xs:element name="Zt4f0warWorkArea" type="xs:string"/>
+<xs:element name="Zt4f0wtlWorkTelephone" type="xs:string"/>
+<xs:element name="Zt4f0wexWorkTelExtension" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IripDisTrafficPersonSrvcall">
+<wsdl:part element="tns:IripDisTrafficPersonSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IripDisTrafficPersonSrvcallResponse">
+<wsdl:part element="tns:IripDisTrafficPersonSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRIP_DIS_TRAFFIC_PERSON_SRV">
+<wsdl:operation name="IripDisTrafficPersonSrvcall">
+<wsdl:input message="tns:IripDisTrafficPersonSrvcall" name="IripDisTrafficPersonSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IripDisTrafficPersonSrvcallResponse" name="IripDisTrafficPersonSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRIP_DIS_TRAFFIC_PERSON_SRVSoapBinding" type="tns:IRIP_DIS_TRAFFIC_PERSON_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IripDisTrafficPersonSrvcall">
+<soap:operation soapAction="http://tempuri.org/IripDisTrafficPersonSrvcall/" style="document"/>
+<wsdl:input name="IripDisTrafficPersonSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IripDisTrafficPersonSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRIP_DIS_TRAFFIC_PERSON_SRV">
+<wsdl:port binding="tns:IRIP_DIS_TRAFFIC_PERSON_SRVSoapBinding" name="IRIP_DIS_TRAFFIC_PERSON_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRIP/IRIP_DIS_TRAFFIC_PERSON_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

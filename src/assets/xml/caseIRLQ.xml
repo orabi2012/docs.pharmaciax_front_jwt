@@ -1,0 +1,193 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/IrlqLiCustodyOrganisationSrv/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="IRLQ_LI_CUSTODY_ORGANISATION_SRV" targetNamespace="http://tempuri.org/IrlqLiCustodyOrganisationSrv/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/IrlqLiCustodyOrganisationSrv/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tempuri.org/IrlqLiCustodyOrganisationSrv/">
+<xs:element name="IrlqLiCustodyOrganisationSrvcall" type="tns:IrlqLiCustodyOrganisationSrvcall"/>
+<xs:element name="IrlqLiCustodyOrganisationSrvcallResponse" type="tns:IrlqLiCustodyOrganisationSrvcallResponse"/>
+<xs:complexType name="IrlqLiCustodyOrganisationSrvcall">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlqLiCustodyOrganisationSrvImport" type="tns:IrlqLiCustodyOrganisationSrvImport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlqLiCustodyOrganisationSrvImport">
+<xs:sequence>
+<xs:element minOccurs="0" name="ImportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Text" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportOrgIndicatorIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImportGrp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ImpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="ImpPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="clientId" type="xs:string"/>
+<xs:attribute name="clientPassword" type="xs:string"/>
+<xs:attribute name="nextLocation" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="dialect" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="IrlqLiCustodyOrganisationSrvcallResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="IrlqLiCustodyOrganisationSrvExport" type="tns:IrlqLiCustodyOrganisationSrvExport"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="IrlqLiCustodyOrganisationSrvExport">
+<xs:sequence>
+<xs:element name="ExportOrgIndicatorIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Count" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportPoliceStationPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportJailPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportReleasePublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportRequestPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportIncidentWorkArea">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Text" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExportGrp">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="row">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ExpIefSupplied">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Select" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ExpPublicOrganisation">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Number" type="xs:int"/>
+<xs:element name="Name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="command" type="xs:string"/>
+<xs:attribute name="exitState" type="xs:int" use="required"/>
+<xs:attribute name="exitStateType" type="xs:int" use="required"/>
+<xs:attribute name="exitStateMsg" type="xs:string"/>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="IrlqLiCustodyOrganisationSrvcall">
+<wsdl:part element="tns:IrlqLiCustodyOrganisationSrvcall" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="Exception">
+<wsdl:part element="tns:Exception" name="Exception"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="IrlqLiCustodyOrganisationSrvcallResponse">
+<wsdl:part element="tns:IrlqLiCustodyOrganisationSrvcallResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IRLQ_LI_CUSTODY_ORGANISATION_SRV">
+<wsdl:operation name="IrlqLiCustodyOrganisationSrvcall">
+<wsdl:input message="tns:IrlqLiCustodyOrganisationSrvcall" name="IrlqLiCustodyOrganisationSrvcall"> </wsdl:input>
+<wsdl:output message="tns:IrlqLiCustodyOrganisationSrvcallResponse" name="IrlqLiCustodyOrganisationSrvcallResponse"> </wsdl:output>
+<wsdl:fault message="tns:Exception" name="Exception"> </wsdl:fault>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="IRLQ_LI_CUSTODY_ORGANISATION_SRVSoapBinding" type="tns:IRLQ_LI_CUSTODY_ORGANISATION_SRV">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="IrlqLiCustodyOrganisationSrvcall">
+<soap:operation soapAction="http://tempuri.org/IrlqLiCustodyOrganisationSrvcall/" style="document"/>
+<wsdl:input name="IrlqLiCustodyOrganisationSrvcall">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="IrlqLiCustodyOrganisationSrvcallResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="IRLQ_LI_CUSTODY_ORGANISATION_SRV">
+<wsdl:port binding="tns:IRLQ_LI_CUSTODY_ORGANISATION_SRVSoapBinding" name="IRLQ_LI_CUSTODY_ORGANISATION_SRVPort">
+<soap:address location="http://10.11.78.103:9080/IRLQ/IRLQ_LI_CUSTODY_ORGANISATION_SRV"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
