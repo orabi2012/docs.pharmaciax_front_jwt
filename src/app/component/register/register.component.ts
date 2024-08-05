@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 
   async register() {
     console.log(this.model);
-    this.model.password = await CryptoJS.AES.encrypt(this.model.password, 'postgress').toString()
+    // this.model.password = await CryptoJS.AES.encrypt(this.model.password, 'postgress').toString()
     this.authService.register(this.model).subscribe({
       next: (res:any) => {
         this.loadingService.hide();
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
         this.messageService.add({
           key: 'tc',
           severity: 'error',
-          summary: error.status,
+          summary: error.error.error,
           detail: error.error.message,
         });
       },
