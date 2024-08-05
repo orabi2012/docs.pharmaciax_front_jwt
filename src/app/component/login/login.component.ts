@@ -44,10 +44,12 @@ export class LoginComponent implements OnInit {
 
   async login() {
     this.loadingService.show();
-    this.model.password = await CryptoJS.AES.encrypt(
-      this.model.password,
-      'postgress'
-    ).toString();
+    
+    // this.model.password = await CryptoJS.AES.encrypt(
+    //   this.model.password,
+    //   'postgress'
+    // ).toString();
+
     this.authService.login(this.model).subscribe({
       next: (res: any) => {
         this.loadingService.hide();
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
         this.messageService.add({
           key: 'tc',
           severity: 'error',
-          summary: error.status,
+          summary: error.error.error,
           detail: error?.error?.message,
         });
       },
