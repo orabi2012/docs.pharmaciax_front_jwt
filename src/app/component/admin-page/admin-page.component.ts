@@ -7,19 +7,19 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
-  users:any
-  imageUrl:any
-  constructor(private authService:AuthService) { }
+  users: any
+  imageUrl: any
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.getAll().subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         this.users = res;
-        console.log(this.users)
+        // console.log(this.users)
       },
-      error:(error:any)=>console.log(error)
+      error: (error: any) => console.log(error)
     })
-    
+
   }
 
 }

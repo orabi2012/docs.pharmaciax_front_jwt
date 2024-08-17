@@ -13,15 +13,15 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UnauthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap(response => {
-        console.log("repsponse interceptor",response);
+        // console.log("repsponse interceptor",response);
       }),
       catchError(error => {
-         if (error.status === 401) {
+        if (error.status === 401) {
           // Unauthorized access, redirect to login page
           this.router.navigate(['/login']);
         }
