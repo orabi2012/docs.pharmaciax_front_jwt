@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         this.messageService.add({
           key: 'tc',
           severity: 'error',
-          summary: error.error.error,
+          summary: error.error.error || 're-check your email & password',
           detail: error?.error?.message,
         });
       },
