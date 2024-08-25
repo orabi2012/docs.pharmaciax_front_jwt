@@ -2,31 +2,37 @@
   <div class="container-fluid">
     <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand ">
       <div class="d-flex align-items-center">
-        <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+        <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse"
+          aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
+              class="toggle-line"></span></span></button>
         <a class="navbar-brand me-1 me-sm-3" routerLink="/home">
           <!-- <div class="d-flex align-items-center"><img class="me-2" src="../../assets/img/icons/spot-illustrations/falcon.png" alt="" width="40"><span class="font-sans-serif">falcon</span> -->
           <!-- </div> -->
-          <button class="d-flex align-items-center p-3 btn btn-outline-secondary btn-sm">العودة إلي الصفحة الرئيسية</button>
+          <button class="d-flex align-items-center p-3 btn btn-outline-secondary btn-sm">العودة إلي الصفحة
+            الرئيسية</button>
         </a>
       </div>
       <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
         <li class="nav-item">
-          <a class="nav-link" role="button" routerLink="/createUser"  aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll">
-          <button class=" btn btn-secondary rounded-pill btn-sm" type="button">
-             <span class=" p-1 bi-plus-circle-fill mt-auto"></span>إضافة مستخدم جديد
-          </button></a>
+          <a class="nav-link" role="button" routerLink="/createUser" aria-haspopup="true" aria-expanded="false"
+            data-hide-on-body-scroll="data-hide-on-body-scroll">
+            <button class=" btn btn-secondary rounded-pill btn-sm" type="button">
+              <span class=" p-1 bi-plus-circle-fill mt-auto"></span>إضافة مستخدم جديد
+            </button></a>
         </li>
       </ul>
 
     </nav>
     <div class="content">
-    <div class="card">
-      <div class="card-header bg-light">
-        <div class="row align-items-center">
-          <div class="col">
-            <h5 class="mb-0" id="followers">{{users?.length}} <span class="d-none d-sm-inline-block">مستخدم</span></h5>
-          </div>
-          <!-- <div class="col">
+      <div class="card">
+        <div class="card-header bg-light">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="mb-0" id="followers">{{users?.length}} <span class="d-none d-sm-inline-block">مستخدم</span>
+              </h5>
+            </div>
+            <!-- <div class="col">
             <form>
               <div class="row g-0">
                 <div class="col-8">
@@ -35,37 +41,47 @@
               </div>
             </form>
           </div> -->
+          </div>
         </div>
-      </div>
-      <div class="card-body bg-light px-1 py-0">
-        <div class="row g-0 text-center fs--1">
-          <div *ngFor="let user of users" class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
-            <div class="bg-white dark__bg-1100 p-3 h-100"><a [routerLink]="['/user_details',user.id]">
-              <img 
-              [ngStyle]="{ 'background-color': user.role_id === 1 ? '#e63757' : user.role_id === 2 ? '#f5803e' : user.role_id === 3 ? 'green' : user.role_id === 4 ? '#2c7be5' : '' }"
-              class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm"
-               [src]="imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'" width="100"></a>
-              <h6 class="mb-1"><a [routerLink]="['/user_details',user.id]">{{user.first_name}} {{user.last_name}}</a>
-              </h6>
-              <p class="fs--2 mb-1"><a [routerLink]="['/user_details',user.id]" class="text-700">{{user.email}}</a></p>
+        <div class="card-body bg-light px-1 py-0">
+          <div class="row g-0 text-center fs--1">
+            <div *ngFor="let user of users" class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-1">
+              <div class="bg-white dark__bg-1100 p-3 h-100"><a [routerLink]="['/user_details',user.id]">
+                  <img
+                    [ngStyle]="{ 'background-color': user.role_id === 1 ? '#e63757' : user.role_id === 2 ? '#f5803e' : user.role_id === 3 ? 'green' : user.role_id === 4 ? '#2c7be5' : '' }"
+                    class="img-thumbnail img-fluid rounded-circle mb-3 shadow-sm"
+                    [src]="imageUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'"
+                    width="100"></a>
+                <h6 class="mb-1"><a [routerLink]="['/user_details',user.id]">{{user.first_name}} {{user.last_name}}</a>
+                </h6>
+
+                <p class="fs--2 mb-1"><a [routerLink]="['/user_details',user.id]" class="text-700">{{user.email}}</a>
+
+                </p>
+
+                <h3 class="fs--2 mb-1">Created at : - {{user.createdAt}} </h3>
+                <h3 class="fs--2 mb-1">الدولة : {{user.Country.country_name}} </h3>
+
+
+
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <footer dir="ltr">
-      <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
-        <div class="col-12 col-sm-auto text-center">
-          <p style="text-align: start;" class="mb-1 text-600">Contact Us :
-            <br>
-            <a >E.mail :<span style="font-weight: bold;"> pharmacia2006@gmail.com</span></a>
-            <br>
-            <a href="http://www.facebook.com/Pharmaciax">http://www.facebook.com/Pharmaciax</a>
-          </p>
+      <footer dir="ltr">
+        <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+          <div class="col-12 col-sm-auto text-center">
+            <p style="text-align: start;" class="mb-1 text-600">Contact Us :
+              <br>
+              <a>E.mail :<span style="font-weight: bold;"> pharmacia2006@gmail.com</span></a>
+              <br>
+              <a href="http://www.facebook.com/Pharmaciax">http://www.facebook.com/Pharmaciax</a>
+            </p>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
     </div>
   </div>
 </main>
-
