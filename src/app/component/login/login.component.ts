@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import {
-  SocialAuthService,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from '@abacritt/angularx-social-login';
+// import {
+//   SocialAuthService,
+//   GoogleLoginProvider,
+//   FacebookLoginProvider,
+// } from '@abacritt/angularx-social-login';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 // @ts-ignore
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
 import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private googleService: SocialAuthService,
+    // private googleService: SocialAuthService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
     private loadingService: LoadingService
@@ -89,17 +89,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  signInWithGoogle(): void {
-    this.googleService.authState.subscribe((user: any) => {
-      this.user = user;
-      // console.log(this.user);
+  // signInWithGoogle(): void {
+  //   this.googleService.authState.subscribe((user: any) => {
+  //     this.user = user;
+  //     // console.log(this.user);
 
-      if (this.user) {
-        //call the backend from logginservice
-        //this.authservice.login(user)
-        this.router.navigate(['/home']);
-      }
-    });
-    this.googleService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+  //     if (this.user) {
+  //       //call the backend from logginservice
+  //       //this.authservice.login(user)
+  //       this.router.navigate(['/home']);
+  //     }
+  //   });
+  //   this.googleService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  // }
 }
