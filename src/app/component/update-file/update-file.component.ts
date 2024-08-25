@@ -177,7 +177,7 @@ export class UpdateFileComponent implements OnInit {
       );
     });
     // console.log('DATAAAAAAAAAAAAAAAAAAAAAAaa');
-    console.log(this.file?.data);
+    // console.log(this.file?.data);
   }
   onImageChangeFromFile(event: any) {
     const file = event.target.files[0];
@@ -223,7 +223,7 @@ export class UpdateFileComponent implements OnInit {
     this.fileForm.get('Year')!.setValue(dateString);
 
     let subCategories = this.fileForm.get('subCategories')?.value;
-    console.log(subCategories);
+    // console.log(subCategories);
     let objects = subCategories.map((item: any) => {
       return { subcat_id: item };
     });
@@ -253,9 +253,9 @@ export class UpdateFileComponent implements OnInit {
     // formData.append('updatedAt',this.fileForm.get('updatedAt')?.setValue(new Date().toISOString()));
     // formData.append('userID', this.userId);
 
-    console.log(formData);
+    // console.log(formData);
     formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
+      // console.log(`${key}: ${value}`);
     });
     this.fileService.updateFile(formData).subscribe(
       (result) => {

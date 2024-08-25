@@ -2,22 +2,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import {  SearchFiltre } from '../interfaces/searchFile';
+import { SearchFiltre } from '../interfaces/searchFile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   // createFile(file:any){
   //   return this.http.post("`${environment.base_url}`fileData/create",file)
   // }
 
-  createOrUpdateFile(fileForm:any,fileInput:any, url:any){
+  createOrUpdateFile(fileForm: any, fileInput: any, url: any) {
     let subCategories = fileForm.get('subCategories')?.value;
-    let objects = subCategories.map((item:any) => {return {"subcat_id":item}});
+    let objects = subCategories.map((item: any) => { return { "subcat_id": item } });
     fileForm.get('subCategories')?.setValue(JSON.stringify(objects))
 
     let year = fileForm.get('Year')!.value;
@@ -35,71 +35,71 @@ export class FileService {
       formData.append('txt_Ar', fileForm.get('txt_Ar')?.value);
       formData.append('txt_Eng', fileForm.get('txt_Eng')?.value);
       formData.append('Country_id', fileForm.get('Country_id')?.value);
-      formData.append('isAuthorized','0')
+      formData.append('isAuthorized', '0')
       formData.append('Category_id', fileForm.get('Category_id')?.value);
       formData.append('subCategories', fileForm.get('subCategories')?.value);
-      formData.append('status_id',fileForm.get('status_id')?.value);
-      formData.append('file_desc','');
+      formData.append('status_id', fileForm.get('status_id')?.value);
+      formData.append('file_desc', '');
       formData.append('userID', fileForm.get('createdByID')?.value);
-   ;
-      
-      
+      ;
+
+
       formData.forEach((value, key) => {
-        console.log(`${key}: ${value}`);
+        // console.log(`${key}: ${value}`);
       });
       this.createFile(formData).pipe();
+    }
   }
-}
-   createFile(formData:any){
-    
+  createFile(formData: any) {
+
     let headers = new HttpHeaders();
     let boundary = Math.random().toString().substr(2);
-      headers.append('Content-Type', `multipart/form-data; boundary=${boundary}`);
-    return  this.http.post(`${environment.base_url}`+'fileData/create',
-     formData, { headers: headers }).pipe();
-    
+    headers.append('Content-Type', `multipart/form-data; boundary=${boundary}`);
+    return this.http.post(`${environment.base_url}` + 'fileData/create',
+      formData, { headers: headers }).pipe();
+
   }
-  getAll():Observable<any>{
-    return this.http.get(`${environment.base_url}`+'fileData/all').pipe();
+  getAll(): Observable<any> {
+    return this.http.get(`${environment.base_url}` + 'fileData/all').pipe();
   }
- 
-  getFile(id:any, headers?: HttpHeaders):Observable<any>{
+
+  getFile(id: any, headers?: HttpHeaders): Observable<any> {
     const options = headers ? { headers } : undefined;
-    console.log("HEREEEEEEEEEEE")
+    // console.log("HEREEEEEEEEEEE")
     // return this.http.get(`${environment.base_url}`+'fileData/GetOne' + '/' + id)
     return this.http.get(`${environment.base_url}fileData/GetOne/${id}`, options);
 
   }
-  
-getFileFromGoogle(url:any){
-  //const headers = new HttpHeaders().set('X-Api-Key', 'AIzaSyB9ZdM_rTSbc7W5mafzDA8Maw7BuDr_Kfs');
- return this.http.get(url,  { responseType: 'blob' })
-  .pipe();
-}
-  
-  deleteFile(id:any){
-    return this.http.delete(`${environment.base_url}`+'fileData/DeleteOne'+'/'+id).pipe();
-  }
- 
-  searchForFile(searchFile:SearchFiltre):Observable<File[]>{
-    return this.http.post<File[]>(`${environment.base_url}`+"fileData/search",searchFile).pipe();
+
+  getFileFromGoogle(url: any) {
+    //const headers = new HttpHeaders().set('X-Api-Key', 'AIzaSyB9ZdM_rTSbc7W5mafzDA8Maw7BuDr_Kfs');
+    return this.http.get(url, { responseType: 'blob' })
+      .pipe();
   }
 
-  getFileStatus(){
-    return this.http.get(`${environment.base_url}`+`${environment.inactive}`).pipe();
+  deleteFile(id: any) {
+    return this.http.delete(`${environment.base_url}` + 'fileData/DeleteOne' + '/' + id).pipe();
   }
 
-  updateFile(file:any){
-    return this.http.put(`${environment.base_url}`+'fileData/update', file).pipe(map(()=>file));
+  searchForFile(searchFile: SearchFiltre): Observable<File[]> {
+    return this.http.post<File[]>(`${environment.base_url}` + "fileData/search", searchFile).pipe();
   }
-  getInactiveFiles(userId:number):Observable<any>{
-    const url=`${environment.base_url}`+'file-search-inactive'
-    const options={ params: { userId: userId} }
+
+  getFileStatus() {
+    return this.http.get(`${environment.base_url}` + `${environment.inactive}`).pipe();
+  }
+
+  updateFile(file: any) {
+    return this.http.put(`${environment.base_url}` + 'fileData/update', file).pipe(map(() => file));
+  }
+  getInactiveFiles(userId: number): Observable<any> {
+    const url = `${environment.base_url}` + 'file-search-inactive'
+    const options = { params: { userId: userId } }
     return this.http.get(url, options).pipe(
       catchError(error => {
         console.error('Error fetching inactive files', error);
         return throwError(error);
       })
-  )
+    )
   }
 }

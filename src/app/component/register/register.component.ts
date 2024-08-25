@@ -16,17 +16,17 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class RegisterComponent implements OnInit {
   model: any = {};
   user: any;
-  countries:any
+  countries: any
   constructor(
     private authService: AuthService,
     private router: Router,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
-    private categoryService:CategoryService,
-    private loadingService:LoadingService
-  ) {}
+    private categoryService: CategoryService,
+    private loadingService: LoadingService
+  ) { }
 
-  
+
   showSuccess() {
     this.messageService.add({
       key: 'tc',
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadingService.show();
-    this.categoryService.getCountries().subscribe((res:any)=>{
+    this.categoryService.getCountries().subscribe((res: any) => {
       this.loadingService.hide();
       this.countries = res
     })
@@ -50,10 +50,10 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    console.log(this.model);
+    // console.log(this.model);
     // this.model.password = await CryptoJS.AES.encrypt(this.model.password, 'postgress').toString()
     this.authService.register(this.model).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.loadingService.hide();
         this.user = res;
         this.messageService.add({
@@ -65,8 +65,8 @@ export class RegisterComponent implements OnInit {
 
         this.router.navigate(['/login']);
       },
-      error: (error:any) => {
-        console.log(error);
+      error: (error: any) => {
+        // console.log(error);
         this.messageService.add({
           key: 'tc',
           severity: 'error',

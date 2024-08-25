@@ -40,7 +40,7 @@ export class UserDetailsComponent implements OnInit {
     })
 
     this.route.data.subscribe((data: any) => {
-      console.log(data)
+      // console.log(data)
       this.user = data['user'];
       this.userForm.patchValue({
         email: this.user.email,
@@ -62,7 +62,7 @@ export class UserDetailsComponent implements OnInit {
   onSubmit() {
 
     const updatedUser = this.userForm.getRawValue()
-    console.log(updatedUser.email)
+    // console.log(updatedUser.email)
     this.authService.updateUser(updatedUser).subscribe(res => {
       this.toastr.success('User updated Successfully!', 'Success');
       this.router.navigate(['/adminPage'])

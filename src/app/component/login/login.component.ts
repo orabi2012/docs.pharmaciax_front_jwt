@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
     private loadingService: LoadingService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   async login() {
     this.loadingService.show();
-    
+
     // this.model.password = await CryptoJS.AES.encrypt(
     //   this.model.password,
     //   'postgress'
@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     this.googleService.authState.subscribe((user: any) => {
       this.user = user;
-      console.log(this.user);
+      // console.log(this.user);
 
       if (this.user) {
         //call the backend from logginservice

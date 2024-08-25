@@ -19,27 +19,27 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./file-details.component.css']
 })
 export class FileDetailsComponent implements OnInit {
-@Input() mobileZoom: boolean = true;
-file:any;
-user:any;
-pdfSrc!: string;
-page: number = 1;
-subObj:any = "";
-pdfLoading: boolean = true;
-isModalOpen = false;
-totalPages= 0;
-datePipe = new DatePipe('en-US');
+  @Input() mobileZoom: boolean = true;
+  file: any;
+  user: any;
+  pdfSrc!: string;
+  page: number = 1;
+  subObj: any = "";
+  pdfLoading: boolean = true;
+  isModalOpen = false;
+  totalPages = 0;
+  datePipe = new DatePipe('en-US');
 
-  constructor(private route:ActivatedRoute,
-    private cookieService:CookieService,
-     private fileService:FileService,
-     private router: Router,
-     private dialog: MatDialog,
-     private sanitizer: DomSanitizer) {
-      
-    }
+  constructor(private route: ActivatedRoute,
+    private cookieService: CookieService,
+    private fileService: FileService,
+    private router: Router,
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer) {
 
-    pdfUrl:any; 
+  }
+
+  pdfUrl: any;
   ngOnInit(): void {
     this.user = JSON.parse(this.cookieService.get('user')!)
     const FileId = this.route.snapshot.paramMap.get('id')
@@ -56,11 +56,11 @@ datePipe = new DatePipe('en-US');
     //   this.file = res
     //   this.pdfLoading = true
     //   const subArr =this.file.data.subCategories 
-      
+
     //   console.log("subArr -",subArr)
     //   this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
     //   this.subObj = " [ " + this.subObj + " ] ";
-     
+
     //   const filePath = this.file?.data?.fileID;
     //   const url = `${environment.base_url}apigoogle/${filePath}`
     //   this.fileService.getFileFromGoogle(url)
@@ -82,20 +82,20 @@ datePipe = new DatePipe('en-US');
   private loadFileDetails(fileId: string | null): void {
     const token = this.cookieService.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  
-    this.fileService.getFile(fileId!,  headers ).subscribe(
+
+    this.fileService.getFile(fileId!, headers).subscribe(
       (res: any) => {
-        console.log('Response:', res);
+        // console.log('Response:', res);
         // File details retrieval success
         this.file = res;
         this.pdfLoading = true;
         const subArr = this.file.data.subCategories;
         this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
         this.subObj = " [ " + this.subObj + " ] ";
-  
+
         const filePath = this.file?.data?.fileID;
         const url = `${environment.base_url}apigoogle/${filePath}`;
-  
+
         this.fileService.getFileFromGoogle(url).subscribe((blob: any) => {
           const pdfBlob = new Blob([blob], { type: 'application/pdf' });
           this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(pdfBlob));
@@ -150,9 +150,9 @@ datePipe = new DatePipe('en-US');
     this.pdfLoading = false;
     this.totalPages = pdf.numPages;
   }
-  delete(id:any){
+  delete(id: any) {
 
-    this.fileService.deleteFile(id).subscribe((res:any)=>{
+    this.fileService.deleteFile(id).subscribe((res: any) => {
       this.router.navigate(['/home'])
     });
   }

@@ -27,7 +27,7 @@ export class ChangePasswordComponent implements OnInit {
     this.authService.getUser(this.userIdLocal).subscribe(res => {
       this.userApi = res
       this.model.email = this.userApi.email
-      console.log(this.model.email)
+      // console.log(this.model.email)
       this.model.name = `${this.userApi.first_name} ${this.userApi.last_name}`
     })
   }
@@ -45,7 +45,7 @@ export class ChangePasswordComponent implements OnInit {
         this.router.navigate(['/login'])
       },
       (error) => {
-        console.log(error.error.error)
+        // console.log(error.error.error)
         this.toastr.error('Error', error?.error?.message)
       }
     );
