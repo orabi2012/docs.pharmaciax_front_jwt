@@ -96,7 +96,7 @@
             </button></a>
         </li>
 
-        <li class="nav-item pt-2">
+        <!-- <li class="nav-item pt-2">
           <a class="nav-link pe-3">
             <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngClass]="{
                 'btn-danger': roles?.role_name === 'Admin',
@@ -107,7 +107,7 @@
               {{ roles?.role_name }}
             </button>
           </a>
-        </li>
+        </li> -->
 
         <li class="nav-item pt-2">
           <a class="nav-link pe-3">
@@ -117,7 +117,9 @@
                 'btn-success': roles?.role_name === 'Authorized',
                 'btn-primary': roles?.role_name === 'User'
               }">
-              سعدنا بزيارتك رقم : [ {{ user?.visits }} ]
+              سعدنا بزيارتك رقم
+              <br>
+              [ {{ user?.visits }} ]
             </button>
           </a>
         </li>
