@@ -95,6 +95,7 @@
               جديد
             </button></a>
         </li>
+
         <li class="nav-item pt-2">
           <a class="nav-link pe-3">
             <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngClass]="{
@@ -107,6 +108,20 @@
             </button>
           </a>
         </li>
+
+        <li class="nav-item pt-2">
+          <a class="nav-link pe-3">
+            <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngClass]="{
+                'btn-danger': roles?.role_name === 'Admin',
+                'btn-warning': roles?.role_name === 'Editor',
+                'btn-success': roles?.role_name === 'Authorized',
+                'btn-primary': roles?.role_name === 'User'
+              }">
+              سعدنا بزيارتك رقم : [ {{ user?.visits }} ]
+            </button>
+          </a>
+        </li>
+
         <li *ngIf="user.role_id == 1 || user.role_id == 2 || user.role_id == 3 || user.role_id == 4"
           class="nav-item dropdown pt-2 pe-2">
           <a class="nav-link" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown"
@@ -138,6 +153,7 @@
           <a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             مرحبا <span style="font-weight: bolder">{{ user.first_name }}</span>
+
           </a>
           <div class="dropdown-menu dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
             <div class="bg-white dark__bg-1000 rounded-2 py-2">

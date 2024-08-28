@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     })
 
     this.user = JSON.parse(this.cookieService.get('user')!)
-    //  console.log(this.user)
+    console.log(this.user)
 
     const userRoleId = this.user.role_id
     this.categoryService.getRoleById(userRoleId).subscribe((res: any) => {
