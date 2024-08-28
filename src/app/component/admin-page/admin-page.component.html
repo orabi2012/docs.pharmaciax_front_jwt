@@ -29,7 +29,15 @@
         <div class="card-header bg-light">
           <div class="row align-items-center">
             <div class="col">
-              <h5 class="mb-0" id="followers">{{users?.length}} <span class="d-none d-sm-inline-block">مستخدم</span>
+              <h5 class="mb-0" id="followers"> عدد المستخدمين {{users?.length}} <span
+                  class="d-none d-sm-inline-block"></span>
+              </h5>
+            </div>
+
+            <div class="col">
+
+              <h5 class="mb-0" id="followers"> عدد الزيارات {{totalVisits }} <span class="d-none d-sm-inline-block">
+                </span>
               </h5>
             </div>
             <!-- <div class="col">
@@ -61,6 +69,7 @@
 
                 <h3 class="fs--2 mb-1">Created at : - {{user.createdAt}} </h3>
                 <h3 class="fs--2 mb-1">الدولة : {{user.Country.country_name}} </h3>
+                <h3 class="fs--2 mb-1">الزيارات : {{user.visits}} </h3>
 
 
 
