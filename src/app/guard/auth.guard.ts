@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router,
-    private toastr:ToastrService,private cookieService:CookieService) {}
+    private toastr: ToastrService, private cookieService: CookieService) { }
   // canActivate(): Observable<boolean> {
   //   return this.authService.currentUser$.pipe(
   //     map((user: any) => {
@@ -31,6 +31,23 @@ export class AuthGuard implements CanActivate {
   //   );
   // }
 
+  // canActivate(
+  //   route: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): boolean | UrlTree {
+
+  //   const isLoggedIn = this.checkUserLoggedIn();
+  //   if (isLoggedIn) {
+  //     // User is logged in, allow navigation
+  //     return true;
+  //   } else {
+  //     // User is not logged in, redirect to the login page
+  //     // return this.router.parseUrl('/login');
+  //     return this.router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } });
+
+  //   }
+  // }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -41,14 +58,18 @@ export class AuthGuard implements CanActivate {
       // User is logged in, allow navigation
       return true;
     } else {
-      // User is not logged in, redirect to the login page
-      return this.router.parseUrl('/login');
+      // User is not logged in, redirect to the login page with returnUrl
+      this.toastr.error('YOU SHOULD LOGIN FIRST');
+      // HIGHLIGHTED CHANGE: Adding returnUrl to the login redirection
+      return this.router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } });
     }
   }
 
+
+
   private checkUserLoggedIn(): boolean {
     const token = this.cookieService.get('tokenJwt');
-  
+
     try {
       if (token) {
         const parsedToken = JSON.parse(token);
@@ -58,8 +79,8 @@ export class AuthGuard implements CanActivate {
     } catch (error) {
       console.error('Error parsing token:', error);
     }
-  
+
     return false; // Return false if the token is not present or invalid
   }
-  
+
 }

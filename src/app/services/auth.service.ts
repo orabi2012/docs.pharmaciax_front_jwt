@@ -6,6 +6,7 @@ import { UserDetailsComponent } from '../component/user-details/user-details.com
 import { User } from '../interfaces/user';
 import jwt_decode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
   private currentUserSource = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSource.asObservable()
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
   getAll() {
     // return this.http.get('https://pharmaciax-api.onrender.com/users')
@@ -66,10 +67,18 @@ export class AuthService {
   }
 
   logout() {
+    // Clear the authentication token and user data
     this.cookieService.delete('tokenJwt');
-    this.cookieService.delete("user");
-    this.currentUserSource.next(null)
+    console.log('token Deleted')
+    this.cookieService.delete('user');
+
+    // Set the current user to null (or however you manage the user state)
+    this.currentUserSource.next(null);
+
+    // Redirect to the login page
+    this.router.navigate(['/login']);
   }
+
 
   setCurrentUser(user: any) {
     this.currentUserSource.next(user)

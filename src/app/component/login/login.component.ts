@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 // import {
 //   SocialAuthService,
 //   GoogleLoginProvider,
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     // private googleService: SocialAuthService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private route: ActivatedRoute, // Add this line
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +58,9 @@ export class LoginComponent implements OnInit {
         if (res) {
           this.user = res;
           if (this.user?.user_id != null) {
-            this.router.navigate(['/home']);
+            // this.router.navigate(['/home']);
+            const redirectUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+            this.router.navigate([redirectUrl]); // Use the captured return URL
           }
         } else {
           this.messageService.add({
