@@ -109,7 +109,7 @@ export class FileDetailsComponent implements OnInit {
   private updateMetaTags(): void {
     const title = this.file?.data?.file_name || 'Docs.pharmaciax.com';
     const description = this.file?.data?.description || 'قوانين قرارات منشورات ادوية';
-    const imageUrl = `src/assets/img/logos/logo3.png`;
+    const imageUrl = "https://docs.pharmaciax.com/assets/img/logos/logo3.png";
     const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.fileID}`;
 
     this.titleService.setTitle(title); // <-- Set the page title
