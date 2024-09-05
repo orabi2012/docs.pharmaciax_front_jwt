@@ -108,9 +108,9 @@ export class FileDetailsComponent implements OnInit {
   // <-- New method to dynamically update the OG meta tags
   private updateMetaTags(): void {
     const title = this.file?.data?.file_name || 'Docs.pharmaciax.com';
-    const description = this.file?.data?.description || 'قوانين قرارات منشورات ادوية';
+    const description = this.file?.data?.txt_Eng || 'قوانين قرارات منشورات ادوية';
     const imageUrl = "https://docs.pharmaciax.com/assets/img/logos/logo3.png";
-    const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.fileID}`;
+    const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
 
     this.titleService.setTitle(title); // <-- Set the page title
 
@@ -120,6 +120,9 @@ export class FileDetailsComponent implements OnInit {
     this.metaService.updateTag({ property: 'og:image', content: imageUrl }); // <-- Update OG image
     this.metaService.updateTag({ property: 'og:url', content: url }); // <-- Update OG URL
     this.metaService.updateTag({ property: 'og:type', content: 'website' }); // <-- Set OG type
+
+
+
   }
 
 
