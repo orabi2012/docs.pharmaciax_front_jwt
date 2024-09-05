@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
+// import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { FileService } from 'src/app/services/file.service';
@@ -9,6 +9,8 @@ import { PDFDocumentProxy } from 'ngx-extended-pdf-viewer';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser'; // <-- Added Meta and Title imports
+
 
 
 
@@ -35,7 +37,10 @@ export class FileDetailsComponent implements OnInit {
     private fileService: FileService,
     private router: Router,
     private dialog: MatDialog,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private metaService: Meta,
+    private titleService: Title
+  ) {
 
   }
 
@@ -49,28 +54,6 @@ export class FileDetailsComponent implements OnInit {
       // User is not logged in, redirect to the login page
       this.router.navigate(['/login']);
     }
-
-
-
-    // this.fileService.getFile(FileId).subscribe((res:any)=>{
-    //   this.file = res
-    //   this.pdfLoading = true
-    //   const subArr =this.file.data.subCategories 
-
-    //   console.log("subArr -",subArr)
-    //   this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
-    //   this.subObj = " [ " + this.subObj + " ] ";
-
-    //   const filePath = this.file?.data?.fileID;
-    //   const url = `${environment.base_url}apigoogle/${filePath}`
-    //   this.fileService.getFileFromGoogle(url)
-    //  .subscribe(blob => {
-    //     const pdfBlob = new Blob([blob], { type: 'application/pdf' });
-    //     this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(pdfBlob));
-    //     console.log(this.pdfUrl)
-    //     this.pdfLoading = false
-    //  }); 
-    // });
   }
   private checkUserLoggedIn(): boolean {
     // Implement your logic to check if the user is logged in
@@ -89,6 +72,8 @@ export class FileDetailsComponent implements OnInit {
         // File details retrieval success
         this.file = res;
         this.pdfLoading = true;
+        this.updateMetaTags();
+
         const subArr = this.file.data.subCategories;
         this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
         this.subObj = " [ " + this.subObj + " ] ";
@@ -120,24 +105,21 @@ export class FileDetailsComponent implements OnInit {
     );
   }
 
+  // <-- New method to dynamically update the OG meta tags
+  private updateMetaTags(): void {
+    const title = this.file?.data?.file_name || 'Docs.pharmaciax.com';
+    const description = this.file?.data?.description || 'قوانين قرارات منشورات ادوية';
+    const imageUrl = `src/assets/img/logos/logo3.png`;
+    const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.fileID}`;
 
-  private loadFileDetails1(fileId: string | null): void {
-    this.fileService.getFile(fileId!).subscribe((res: any) => {
-      this.file = res;
-      this.pdfLoading = true;
-      const subArr = this.file.data.subCategories;
-      this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
-      this.subObj = " [ " + this.subObj + " ] ";
+    this.titleService.setTitle(title); // <-- Set the page title
 
-      const filePath = this.file?.data?.fileID;
-      const url = `${environment.base_url}apigoogle/${filePath}`;
-
-      this.fileService.getFileFromGoogle(url).subscribe((blob: any) => {
-        const pdfBlob = new Blob([blob], { type: 'application/pdf' });
-        this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(pdfBlob));
-        this.pdfLoading = false;
-      });
-    });
+    this.metaService.updateTag({ name: 'description', content: description }); // <-- Update description
+    this.metaService.updateTag({ property: 'og:title', content: title }); // <-- Update OG title
+    this.metaService.updateTag({ property: 'og:description', content: description }); // <-- Update OG description
+    this.metaService.updateTag({ property: 'og:image', content: imageUrl }); // <-- Update OG image
+    this.metaService.updateTag({ property: 'og:url', content: url }); // <-- Update OG URL
+    this.metaService.updateTag({ property: 'og:type', content: 'website' }); // <-- Set OG type
   }
 
 
