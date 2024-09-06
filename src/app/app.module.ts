@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule, Meta } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -37,29 +37,18 @@ import { NgxEditorModule } from 'ngx-editor';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UpdateFileComponent } from './component/update-file/update-file.component';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import { QuillModule } from 'ngx-quill';
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import {  PDFDocumentProxy } from 'ngx-extended-pdf-viewer';
+import { PDFDocumentProxy } from 'ngx-extended-pdf-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { UnauthInterceptor } from './unauth.interceptor';
-
-
-
-
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -86,7 +75,7 @@ import { UnauthInterceptor } from './unauth.interceptor';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     SocialLoginModule,
     ToastModule,
     CalendarModule,
@@ -110,9 +99,9 @@ import { UnauthInterceptor } from './unauth.interceptor';
         preventDuplicates: true,
       }
     )
-    
+
   ],
-  providers: [
+  providers: [Meta,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -121,7 +110,7 @@ import { UnauthInterceptor } from './unauth.interceptor';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-            "966626020382-4smb7gmpsbhhr6gt39bc5c1mjr95ee35.apps.googleusercontent.com")
+              "966626020382-4smb7gmpsbhhr6gt39bc5c1mjr95ee35.apps.googleusercontent.com")
           },
         ],
         onError: (err) => {
@@ -131,14 +120,14 @@ import { UnauthInterceptor } from './unauth.interceptor';
     },
     MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor,multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UnauthInterceptor,
       multi: true
     },
     DatePipe,
-    
+
   ],
   bootstrap: [AppComponent]
 })

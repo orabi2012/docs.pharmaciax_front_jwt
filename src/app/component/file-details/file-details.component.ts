@@ -114,12 +114,12 @@ export class FileDetailsComponent implements OnInit {
 
     this.titleService.setTitle(title); // <-- Set the page title
 
-    this.metaService.addTag({ name: 'description', content: description }); // <-- Update description
-    this.metaService.addTag({ property: 'og:title', content: title }); // <-- Update OG title
-    this.metaService.addTag({ property: 'og:description', content: description }); // <-- Update OG description
-    this.metaService.addTag({ property: 'og:image', content: imageUrl }); // <-- Update OG image
-    this.metaService.addTag({ property: 'og:url', content: url }); // <-- Update OG URL
-    this.metaService.addTag({ property: 'og:type', content: 'website' }); // <-- Set OG type
+    this.metaService.updateTag({ name: 'description', content: description }); // <-- Update description
+    this.metaService.updateTag({ property: 'og:title', content: title }); // <-- Update OG title
+    this.metaService.updateTag({ property: 'og:description', content: description }); // <-- Update OG description
+    this.metaService.updateTag({ property: 'og:image', content: imageUrl }); // <-- Update OG image
+    this.metaService.updateTag({ property: 'og:url', content: url }); // <-- Update OG URL
+    this.metaService.updateTag({ property: 'og:type', content: 'website' }); // <-- Set OG type
 
 
 
