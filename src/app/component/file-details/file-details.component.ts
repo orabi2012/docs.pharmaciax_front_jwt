@@ -108,7 +108,7 @@ export class FileDetailsComponent implements OnInit {
   // <-- New method to dynamically update the OG meta tags
   private updateMetaTags(): void {
     const title = this.file?.data?.file_name || 'Docs.pharmaciax.com';
-    const description = this.file?.data?.txt_Eng || 'قوانين قرارات منشورات ادوية';
+    const description = this.file?.data?.txt_Eng || "";
     const imageUrl = "https://docs.pharmaciax.com/assets/img/logos/logo3.png";
     const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
 
