@@ -1,4 +1,4 @@
-import { SocialAuthService } from '@abacritt/angularx-social-login';
+// import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -57,7 +57,8 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService,
     private cookieService: CookieService,
     private router: Router, private loadingService: LoadingService,
-    private googleService: SocialAuthService, private fileService: FileService,
+    // private googleService: SocialAuthService,
+    private fileService: FileService,
     public categoryService: CategoryService, private http: HttpClient, private fb: FormBuilder) {
   }
 
@@ -141,7 +142,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.authService.logout()
-    this.googleService.signOut()
+    // this.googleService.signOut()
     this.router.navigate(["/login"])
   }
 

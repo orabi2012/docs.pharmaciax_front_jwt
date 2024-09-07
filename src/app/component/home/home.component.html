@@ -186,15 +186,15 @@
         <h5 class="mb-0 ps-2 mt-1">بحث متقدم</h5>
       </div>
       <div class="card-body bg-light" *ngIf="searchBox">
-        <form class="row g-3" [formGroup]="searchForm">
-          <div class="col-md-3">
-            <input class="form-control" placeholder=" إسم المستند" formControlName="File_name" />
+        <form class="row" [formGroup]="searchForm">
+          <div class="col-md-4">
+            <input class="form-control" placeholder="إسم المستند" formControlName="File_name" />
           </div>
           <div class="col-md-3">
-            <input class="form-control" placeholder=" تاريخ المستند" formControlName="Year" />
+            <input class="form-control" placeholder="تاريخ المستند" formControlName="Year" />
           </div>
           <div class="col-md-3">
-            <input class="form-control" placeholder=" رقم المستند " formControlName="Doc_no" />
+            <input class="form-control" placeholder="الرقم" formControlName="Doc_no" />
           </div>
           <div class="col-md-3">
             <input class="form-control" placeholder="كلمات مفتاحية" formControlName="Txt" />
@@ -239,12 +239,12 @@
               <thead class="bg-200 text-900">
                 <tr>
                   <th class="text-center d-sm-none" style="font-size: large">
-                    عرض المستند
+                    عرض
                   </th>
                   <th class="text-center" style="font-size: large">
                     إسم المستند
                   </th>
-                  <th class="text-center" style="font-size: large">
+                  <th class="hidden-xs text-center" style="font-size: large">
                     رقم المستند
                   </th>
                   <th class="hidden-xs text-center" style="font-size: large">
@@ -276,7 +276,7 @@
                         "></ng-container>
                     </td>
                     <td>{{ item.file_name }}</td>
-                    <td>{{ item.Doc_No }}</td>
+                    <td class="hidden-xs">{{ item.Doc_No }}</td>
                     <td class="hidden-xs">{{ item.Year }}</td>
                     <td class="hidden-xs isAuthorized">
                       <span *ngIf="item.isAuthorized; else unauthorized">
@@ -293,7 +293,7 @@
                     <td class="hidden-xs">
                       <img style="width: 30px; height: 20px" [src]="item.Country.flag" />
                     </td>
-                    <td class="hidden-xs">{{ item.Category.Category_name }}</td>
+                    <td class="hidden-xs hidden-s">{{ item.Category.Category_name }}</td>
                     <td>
                       <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
                           'background-color':
