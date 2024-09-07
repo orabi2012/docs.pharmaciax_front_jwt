@@ -11,10 +11,6 @@ import { environment } from 'src/environments/environment';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser'; // <-- Added Meta and Title imports
 
-
-
-
-
 @Component({
   selector: 'app-file-details',
   templateUrl: './file-details.component.html',
