@@ -59,12 +59,16 @@
                       <input name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control"
                         id="card-password" type="password" autocomplete="off" required />
                     </div>
-                    <div class="row flex-between-center mb-3">
-                      <div class="col-auto">
-                        <button type="button" class="btn btn-link p-0" (click)="toggleForgotPassword()">
-                          {{ isForgotPassword ? 'العودة لتسجيل الدخول' : 'نسيت كلمة المرور؟' }}
-                        </button>
-                      </div>
+                    <div class="mb-3">
+                      <button type="button" class="btn btn-outline-primary d-block w-100 mt-3 position-relative"
+                        (click)="toggleForgotPassword()">
+                        <i class="fas fa-key me-2"></i>
+                        {{ isForgotPassword ? 'العودة لتسجيل الدخول' : 'نسيت كلمة المرور؟' }}
+                        <span
+                          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger animate-pulse">
+                          جديد!
+                        </span>
+                      </button>
                     </div>
                     <div class="mb-3">
                       <button [disabled]="!loginForm.valid" class="btn btn-primary d-block w-100 mt-3" type="submit"
