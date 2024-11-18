@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-google-ad',
@@ -11,13 +11,17 @@ import { Component, OnInit, Input } from "@angular/core";
          data-full-width-responsive="true"></ins>
   `
 })
-export class GoogleAdComponent implements OnInit {
+export class GoogleAdComponent {
     @Input() adClient: string = 'ca-pub-8400668080120923';
-    @Input() adSlot!: string | number;
-    @Input() adFormat: string = 'auto';
+    @Input() adSlot!: number;
+    @Input() adFormat!: string;
 
     ngOnInit() {
-        ((window as any)['adsbygoogle'] = (window as any)['adsbygoogle'] || []).push({});
+        try {
+            ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        } catch (e) {
+            console.error('Error loading Google AdSense:', e);
+        }
     }
     // ... rest of the component code
 } 

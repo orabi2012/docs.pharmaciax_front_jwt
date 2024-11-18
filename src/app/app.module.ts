@@ -50,6 +50,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { UnauthInterceptor } from './unauth.interceptor';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -100,8 +101,8 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
         positionClass: 'toast-top-center',
         preventDuplicates: true,
       }
-    )
-
+    ),
+    SharedModule,
   ],
   providers: [Meta,
     {
