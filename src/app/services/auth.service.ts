@@ -83,4 +83,16 @@ export class AuthService {
   setCurrentUser(user: any) {
     this.currentUserSource.next(user)
   }
+
+  forgotPassword(email: string) {
+    return this.http.post(`${environment.base_url}` + 'user/forgot-password', { email });
+  }
+
+  resetPassword(token: string, password: string, confirmPassword: string) {
+    return this.http.post(`${environment.base_url}` + 'user/reset-password', {
+      token,
+      password,
+      confirmPassword
+    });
+  }
 }

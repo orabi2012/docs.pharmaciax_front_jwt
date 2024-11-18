@@ -7,6 +7,7 @@ import { CreateFileComponent } from './component/create-file/create-file.compone
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { FileDetailsComponent } from './component/file-details/file-details.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -20,24 +21,38 @@ import { AuthGuard } from './guard/auth.guard';
 import { UserResolver } from './user.resolver';
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard],
-  resolve:{category:CategoryResolver,files:FilesResolver}},
-  {path:'file_details/:id', component:FileDetailsComponent,resolve:{file:FileDetailsResolver},
-  canActivate:[AuthGuard]},
-  {path:'update_file/:id', component:UpdateFileComponent,
-   resolve:{files:FilesResolver},canActivate:[AuthGuard]},
-  {path:'createFile',component:CreateFileComponent,canActivate:[AuthGuard,AdminGuard],
-    resolve:{category:CategoryResolver}},
-  {path:'forgot-password',component:ForgotPasswordComponent},
-  {path:'adminPage',component:AdminPageComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:'change_password',component:ChangePasswordComponent,canActivate:[AuthGuard]},
-  {path:'createUser',component:CreateUserComponent,canActivate:[AuthGuard,AdminGuard]},
-  {path:"user_details/:id",component:UserDetailsComponent,
-  canActivate:[AuthGuard,AdminGuard],resolve:{user:UserResolver}},
-  {path:"unAuthorized",component:UnauthorizedComponent},
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard],
+    resolve: { category: CategoryResolver, files: FilesResolver }
+  },
+  {
+    path: 'file_details/:id', component: FileDetailsComponent, resolve: { file: FileDetailsResolver },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'update_file/:id', component: UpdateFileComponent,
+    resolve: { files: FilesResolver }, canActivate: [AuthGuard]
+  },
+  {
+    path: 'createFile', component: CreateFileComponent, canActivate: [AuthGuard, AdminGuard],
+    resolve: { category: CategoryResolver }
+  },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  {
+    path: 'reset-password/:token',
+    component: ResetPasswordComponent
+  },
+  { path: 'adminPage', component: AdminPageComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'change_password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  { path: 'createUser', component: CreateUserComponent, canActivate: [AuthGuard, AdminGuard] },
+  {
+    path: "user_details/:id", component: UserDetailsComponent,
+    canActivate: [AuthGuard, AdminGuard], resolve: { user: UserResolver }
+  },
+  { path: "unAuthorized", component: UnauthorizedComponent },
   { path: '**', redirectTo: '' }
 
 ];

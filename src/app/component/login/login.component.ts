@@ -21,6 +21,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class LoginComponent implements OnInit {
   model: any = {};
   user: any;
+  isForgotPassword = false;
+  loading = false;
 
   constructor(
     private authService: AuthService,
@@ -42,6 +44,48 @@ export class LoginComponent implements OnInit {
     //   }
 
     // });
+  }
+
+  toggleForgotPassword() {
+    this.isForgotPassword = !this.isForgotPassword;
+    this.model = { email: this.model.email }; // Keep email if entered
+  }
+
+  async forgotPassword() {
+    if (!this.model.email) {
+      this.messageService.add({
+        key: 'tc',
+        severity: 'error',
+        summary: 'خطأ',
+        detail: 'برجاء إدخال البريد الإلكتروني',
+      });
+      return;
+    }
+
+    this.loadingService.show();
+
+    this.authService.forgotPassword(this.model.email).subscribe({
+      next: (res: any) => {
+        this.loadingService.hide();
+        this.messageService.add({
+          key: 'tc',
+          severity: 'success',
+          summary: 'تم بنجاح',
+          detail: 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني',
+        });
+        this.toggleForgotPassword();
+      },
+      error: (error: any) => {
+        this.loadingService.setError(error.message);
+        this.loadingService.hide();
+        this.messageService.add({
+          key: 'tc',
+          severity: 'error',
+          summary: 'خطأ',
+          detail: error?.error?.message || 'فشل في إرسال رابط إعادة التعيين',
+        });
+      },
+    });
   }
 
   async login() {

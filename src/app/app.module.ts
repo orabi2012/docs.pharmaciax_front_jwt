@@ -49,6 +49,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { UnauthInterceptor } from './unauth.interceptor';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { UnauthInterceptor } from './unauth.interceptor';
     UpdateFileComponent,
     ChangePasswordComponent,
     ConfirmationDialogComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

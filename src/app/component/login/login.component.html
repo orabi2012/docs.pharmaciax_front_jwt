@@ -45,35 +45,32 @@
                       <h3>تسجيل الدخول</h3>
                     </div>
                   </div>
-                  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+                  <form #loginForm="ngForm" (ngSubmit)="isForgotPassword ? forgotPassword() : login()"
+                    autocomplete="off">
                     <div class="mb-3">
                       <label class="form-label" for="card-email">البريد الالكتروني</label>
                       <input name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off"
                         class="form-control" id="card-email" type="email" required />
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" *ngIf="!isForgotPassword">
                       <div class="d-flex justify-content-between">
                         <label class="form-label" for="card-password">كلمة المرور</label>
                       </div>
                       <input name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control"
                         id="card-password" type="password" autocomplete="off" required />
                     </div>
-                    <!-- <div class="row flex-between-center">
-                         <div class="col-auto">
-                          <div class="form-check mb-0">
-                            <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
-                            <label class="form-check-label mb-0" for="card-checkbox">تذكرني</label>
-                          </div>
-                        </div>
-                        <div class="col-auto"><a class="fs--1" routerLink="/forgot-password">نسيت كلمة المرور؟</a></div>
-                      </div>  -->
+                    <div class="row flex-between-center mb-3">
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-link p-0" (click)="toggleForgotPassword()">
+                          {{ isForgotPassword ? 'العودة لتسجيل الدخول' : 'نسيت كلمة المرور؟' }}
+                        </button>
+                      </div>
+                    </div>
                     <div class="mb-3">
                       <button [disabled]="!loginForm.valid" class="btn btn-primary d-block w-100 mt-3" type="submit"
                         name="submit">
-                        تسجيل الدخول
+                        {{ isForgotPassword ? 'إرسال رابط إعادة التعيين' : 'تسجيل الدخول' }}
                       </button>
-
-
                     </div>
                   </form>
 
@@ -82,8 +79,6 @@
                     <div class="divider-content-center">
                       في ذكري الراحلة - دكتورة/ نادية أحمد حلمي
                     </div>
-
-
                   </div>
 
                   <p style="text-align:center;">
