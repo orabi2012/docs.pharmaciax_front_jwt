@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <nav class="navbar navbar-light navbar-glass navbar-expand-sm">
     <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-      <div class="d-flex align-items-center">
-        <a class="navbar-brand me-1 me-sm-3" routerLink="/home">
-          <button class="btn btn-secondary btn-sm w-100">العودة إلي الصفحة الرئيسية</button>
+      <div class="d-flex align-items-center w-100">
+        <a class="navbar-brand me-1 me-sm-3 w-100">
+          <button class="btn btn-secondary btn-sm w-100" routerLink="/home">العودة إلي الصفحة الرئيسية</button>
         </a>
       </div>
       <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center gap-2">
@@ -106,8 +106,8 @@
         <div class="col-12 col-sm-3">
           <button class="btn btn-sm status-badge" [ngClass]="{
             'btn-success': file?.data?.file_data_status?.status_name === 'ساري',
-            'btn-warning': file?.data?.file_data_status?.status_name === 'قيد المراجعة',
-            'btn-danger': file?.data?.file_data_status?.status_name === 'منتي'
+            'btn-warning': file?.data?.file_data_status?.status_name === 'معدل',
+            'btn-danger': file?.data?.file_data_status?.status_name === 'ملغي'
           }">
             {{file?.data?.file_data_status?.status_name}}
           </button>

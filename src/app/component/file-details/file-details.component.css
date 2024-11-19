@@ -193,3 +193,36 @@
         width: auto;
     }
 }
+
+/* تنسيق زر العودة */
+.btn-secondary {
+    background-color: #5c7cfa;
+    border-color: #5c7cfa;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #4263eb;
+    border-color: #4263eb;
+    box-shadow: 0 4px 8px rgba(92, 124, 250, 0.3);
+}
+
+.btn-secondary:active {
+    background-color: #3b5bdb;
+    border-color: #3b5bdb;
+}
+
+/* يمكنك اختيار أحد هذه المجموعات من الألوان البديلة */
+
+/* المجموعة الثانية - أزرق فاتح */
+/*
+.btn-secondary {
+  background-color: #4dabf7;
+  border-color: #4dabf7;
+}
+.btn-secondary:hover {
+  background-color: #339af0;
+  border-color: #339af0;
+}
+*/
