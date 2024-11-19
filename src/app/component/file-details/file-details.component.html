@@ -1,20 +1,14 @@
 <div class="container-fluid">
   <nav class="navbar navbar-light navbar-glass navbar-expand-sm">
-    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-      <div class="d-flex align-items-center w-100">
-        <a class="navbar-brand me-1 me-sm-3 w-100">
-          <button class="btn btn-secondary btn-sm w-100" routerLink="/home">العودة إلي الصفحة الرئيسية</button>
-        </a>
+    <div class="buttons-container">
+      <button class="btn btn-dark home-btn" routerLink="/home">العودة إلى الصفحة الرئيسية</button>
+
+      <div class="action-buttons">
+        <button *ngIf="file?.data?.createdBy.id == user.user_id || user.role_id === 1"
+          [routerLink]="['/update_file',file?.data?.File_data_id]" class="btn btn-primary">تعديل</button>
+        <button *ngIf="user.role_id === 1" type="button" class="btn btn-danger" (click)="isModalOpen = true"
+          data-bs-toggle="modal" data-bs-target="#exampleModal">حذف</button>
       </div>
-      <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center gap-2">
-        <li *ngIf="file?.data?.createdBy.id == user.user_id || user.role_id === 1" class="nav-item me-2">
-          <button [routerLink]="['/update_file',file?.data?.File_data_id]" class="btn btn-primary btn-sm">تعديل</button>
-        </li>
-        <li *ngIf="user.role_id === 1" class="nav-item">
-          <button type="button" class="btn btn-danger btn-sm" (click)="isModalOpen = true" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">حذف</button>
-        </li>
-      </ul>
     </div>
   </nav>
 
@@ -33,7 +27,7 @@
     <div class="card-header">
       <div class="row justify-content-between align-items-center">
         <div class="col-auto">
-          <h5 class="mb-0">تفاصيل المستند</h5>
+          <h5 class="mb-0">تفاصيل المستد</h5>
         </div>
         <div class="col-auto">
           <button *ngIf="user.role_id === 1 || user.role_id === 2" class="btn status-badge" [ngClass]="{
