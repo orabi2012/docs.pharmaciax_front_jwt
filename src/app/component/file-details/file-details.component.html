@@ -1,19 +1,21 @@
 <div class="container-fluid">
   <nav class="navbar navbar-light navbar-glass navbar-expand-sm">
-    <div class="d-flex align-items-center">
-      <a class="navbar-brand me-1 me-sm-3" routerLink="/home">
-        <button class="btn btn-secondary btn-sm">العودة إلي الصفحة الرئيسية</button>
-      </a>
+    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand me-1 me-sm-3" routerLink="/home">
+          <button class="btn btn-secondary btn-sm w-100">العودة إلي الصفحة الرئيسية</button>
+        </a>
+      </div>
+      <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center gap-2">
+        <li *ngIf="file?.data?.createdBy.id == user.user_id || user.role_id === 1" class="nav-item me-2">
+          <button [routerLink]="['/update_file',file?.data?.File_data_id]" class="btn btn-primary btn-sm">تعديل</button>
+        </li>
+        <li *ngIf="user.role_id === 1" class="nav-item">
+          <button type="button" class="btn btn-danger btn-sm" (click)="isModalOpen = true" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">حذف</button>
+        </li>
+      </ul>
     </div>
-    <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
-      <li *ngIf="file?.data?.createdBy.id == user.user_id || user.role_id === 1" class="nav-item me-2">
-        <button [routerLink]="['/update_file',file?.data?.File_data_id]" class="btn btn-primary btn-sm">تعديل</button>
-      </li>
-      <li *ngIf="user.role_id === 1" class="nav-item">
-        <button type="button" class="btn btn-danger btn-sm" (click)="isModalOpen = true" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">حذف</button>
-      </li>
-    </ul>
   </nav>
 
   <div class="card mb-3">
@@ -29,15 +31,15 @@
 
   <div class="card mb-3">
     <div class="card-header">
-      <div class="row justify-content-between">
-        <div class="col-9">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
           <h5 class="mb-0">تفاصيل المستند</h5>
         </div>
-        <div class="col-3">
-          <button *ngIf="user.role_id === 1 || user.role_id === 2" class="btn btn-sm status-badge" [ngClass]="{
-            'btn-success': file?.data?.isactive,
-            'btn-dark': !file?.data?.isactive
-          }">
+        <div class="col-auto">
+          <button *ngIf="user.role_id === 1 || user.role_id === 2" class="btn status-badge" [ngClass]="{
+                    'btn-success': file?.data?.isactive,
+                    'btn-dark': !file?.data?.isactive
+                  }">
             {{file?.data?.isactive ? 'Active' : 'Inactive'}}
           </button>
         </div>
@@ -91,17 +93,17 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-sm-3">
           <p class="label">الدولة</p>
         </div>
-        <div class="col-3 d-flex align-items-center">
+        <div class="col-12 col-sm-3 d-flex align-items-center mb-2 mb-sm-0">
           <img class="country-flag" [src]="file?.data?.Country?.flag">
           <span class="value">{{file?.data?.Country?.country_name}}</span>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-3">
           <p class="label">حالة المستند</p>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-3">
           <button class="btn btn-sm status-badge" [ngClass]="{
             'btn-success': file?.data?.file_data_status?.status_name === 'ساري',
             'btn-warning': file?.data?.file_data_status?.status_name === 'قيد المراجعة',
