@@ -11,8 +11,7 @@ import { FileService } from 'src/app/services/file.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { DatePipe } from '@angular/common';
 import { CookieOptions, CookieService } from 'ngx-cookie-service';
-
-
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-home',
@@ -50,6 +49,7 @@ export class HomeComponent implements OnInit {
   datePipe = new DatePipe('en-US');
   searchBox = false;
   isSmallScreen: boolean = false;
+  lastClickTime: number = 0;
 
 
 
@@ -189,7 +189,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-  filterDataByCat(category: Category, index: number) {
+  filterDataByCat(category: Category, index: number, event: MouseEvent) {
+    // منع السلوك الافتراضي للرابط
+    event.preventDefault();
+
     const searchFilter: SearchFiltre = {
       category_id: category.cat_id,
       country_id: this.user.Country_id,
@@ -204,6 +207,25 @@ export class HomeComponent implements OnInit {
     this.selectedCategoryIndex = index;
     this.selectedSubcategoryIndex = null;
     this.removeActiveFileFilter();
+
+    // التعامل مع النقر في وضع الموبايل
+    if (this.isSmallScreen) {
+      const subMenu = document.getElementById(`dash${index}`);
+      if (subMenu) {
+        const isExpanded = subMenu.classList.contains('show');
+
+        // إغلاق القائمة إذا لم تكن هناك قائمة فرعية أو كانت مفتوحة
+        if (!category.subcategories || category.subcategories.length === 0 || isExpanded) {
+          const navbarCollapse = document.getElementById('navbarVerticalCollapse');
+          if (navbarCollapse) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) {
+              bsCollapse.hide();
+            }
+          }
+        }
+      }
+    }
   }
 
 
@@ -218,11 +240,19 @@ export class HomeComponent implements OnInit {
       doc_no: null,
       txt: null
     };
-    // console.log(searchObj)
+
     this.searchForFiles(searchObj);
     this.selectedCategoryIndex = category.id;
     this.selectedSubcategoryIndex = subCategories.subcat_id;
     this.removeActiveFileFilter();
+
+    if (this.isSmallScreen) {
+      const navbarCollapse = document.getElementById('navbarVerticalCollapse');
+      const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+      if (bsCollapse) {
+        bsCollapse.hide();
+      }
+    }
   }
 
 
@@ -271,7 +301,18 @@ export class HomeComponent implements OnInit {
     };
 
     this.searchForFiles(searchObj);
-    this.activeFileFilter = true
+    this.activeFileFilter = true;
+
+    // إضافة collapse للقائمة في وضع الموبايل
+    if (this.isSmallScreen) {
+      const navbarCollapse = document.getElementById('navbarVerticalCollapse');
+      if (navbarCollapse) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+          bsCollapse.hide();
+        }
+      }
+    }
   }
 
   removeActiveFileFilter() {
@@ -354,5 +395,16 @@ export class HomeComponent implements OnInit {
 
   toggleCard() {
     this.searchBox = !this.searchBox
+  }
+
+  handleDoubleClick(event: MouseEvent) {
+    if (this.isSmallScreen) {
+      event.preventDefault();
+      const navbarCollapse = document.getElementById('navbarVerticalCollapse');
+      if (navbarCollapse) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+        bsCollapse.hide();
+      }
+    }
   }
 }
