@@ -1,136 +1,96 @@
-.modal {
-    z-index: 1999999 !important;
+/* Shared styles */
+.label {
+    color: #2907CA;
+    font-size: 15px;
+    margin-left: 15px;
 }
 
-.country-flag {
-    height: 15px;
-    width: 25px;
-    margin-inline-end: 5px;
+.value {
+    color: #000;
+    font-size: 15px;
 }
 
-.active-status {
-    color: #2c7be5;
-    font-size: large;
-    font-weight: bold;
+/* Desktop styles */
+@media (min-width: 769px) {
+    .row {
+        margin-bottom: 2.5rem;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
-    .card-body[dir="ltr"] {
-        font-size: 14px;
-        color: #000;
+    .container-fluid {
+        padding: 10px;
     }
 
-    .card-body[dir="ltr"] .fw-bold {
-        font-weight: normal !important;
+    .card {
+        margin-bottom: 1rem;
     }
 
-    .card-body[dir="ltr"] .mb-1 {
-        color: #666;
+    .card-body {
+        padding: 1rem;
+    }
+
+    .row {
+        margin-bottom: 16px;
+        padding: 8px 0;
+    }
+
+    .row:last-child {
+        margin-bottom: 0;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .mb-1 {
+        white-space: nowrap;
+        margin-bottom: 0 !important;
+        font-size: 13px;
+    }
+
+    .fw-bold {
+        font-size: 13px;
     }
 
     .category-row {
         flex-direction: column;
     }
 
-    .category-item {
-        display: flex;
-        margin-bottom: 0.5rem;
-    }
-
-    .category-item:last-child {
-        margin-bottom: 0;
-    }
-}
-
-/* Desktop styles */
-@media (min-width: 769px) {
-    .row {
-        margin-bottom: 1rem;
-        align-items: center;
-    }
-
-    .label {
-        color: #2c7be5;
-        margin-bottom: 0;
-        font-size: 15px;
-    }
-
-    .value {
-        color: #000;
-        font-weight: 500;
-        margin-bottom: 0;
-        font-size: 15px;
-    }
-
-    .card-body {
-        padding: 1.5rem;
-    }
-
-    .card-header {
-        padding: 1rem 1.5rem;
-    }
-
-    .categories {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .category-item {
-        display: flex;
-        width: 50%;
-    }
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .categories {
-        flex-direction: column;
-    }
-
-    .category-item {
-        display: flex;
-        margin-bottom: 0.5rem;
+    .category-row>div {
         width: 100%;
-    }
-}
-
-/* Common styles for all screens */
-.label {
-    color: #0000FF;
-    margin-bottom: 0;
-    font-size: 15px;
-}
-
-.value {
-    color: #000;
-    margin-bottom: 0;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-/* Mobile specific styles */
-@media (max-width: 768px) {
-    .info-item {
-        display: flex;
         margin-bottom: 0.5rem;
     }
 
-    .info-item:last-child {
-        margin-bottom: 0;
+    .category-row .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
-    .info-item .label {
-        color: #0000FF;
-        font-size: 14px;
+    .category-row .label {
+        width: 40%;
+        display: inline-block;
     }
 
-    .info-item .value {
-        color: #000;
-        font-size: 14px;
-        font-weight: normal;
+    .category-row .value {
+        width: 60%;
+        display: inline-block;
     }
 
-    .card-body[dir="ltr"] .fw-bold {
-        font-weight: normal !important;
+    .country-flag {
+        width: 20px;
+        height: 14px;
+        margin-left: 5px;
     }
+}
+
+.country-flag {
+    width: 24px;
+    height: 16px;
+    margin-left: 8px;
+    object-fit: cover;
 }

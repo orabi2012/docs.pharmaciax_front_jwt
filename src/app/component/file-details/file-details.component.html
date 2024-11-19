@@ -34,7 +34,12 @@
           <h5 class="mb-0">تفاصيل المستند</h5>
         </div>
         <div class="col-3">
-          <span class="active-status">Active</span>
+          <button *ngIf="user.role_id === 1 || user.role_id === 2" class="btn btn-sm status-badge" [ngClass]="{
+            'btn-success': file?.data?.isactive,
+            'btn-dark': !file?.data?.isactive
+          }">
+            {{file?.data?.isactive ? 'Active' : 'Inactive'}}
+          </button>
         </div>
       </div>
     </div>
@@ -47,22 +52,28 @@
           <p class="value">{{file?.data?.file_name}}</p>
         </div>
       </div>
-      <div class="row categories">
-        <div class="category-item">
-          <div class="col-4">
-            <p class="label">التصنيف الرئيسي</p>
-          </div>
-          <div class="col-8">
-            <p class="value">{{file?.data?.Category?.Category_name}}</p>
-          </div>
+      <div class="row">
+        <div class="col-3">
+          <p class="label">التصنيف الرئيسي</p>
         </div>
-        <div class="category-item">
-          <div class="col-4">
-            <p class="label">التصنيف الفرعي</p>
-          </div>
-          <div class="col-8">
-            <p class="value">{{subObj}}</p>
-          </div>
+        <div class="col-9">
+          <p class="value">{{file?.data?.Category?.Category_name}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p class="label">التصنيف الفرعي</p>
+        </div>
+        <div class="col-9">
+          <p class="value">{{subObj}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <p class="label">المحتوي</p>
+        </div>
+        <div class="col-9">
+          <p class="value" [innerHTML]="file?.data?.txt_Eng"></p>
         </div>
       </div>
       <div class="row">
@@ -94,25 +105,12 @@
           <button class="btn btn-sm status-badge" [ngClass]="{
             'btn-success': file?.data?.file_data_status?.status_name === 'ساري',
             'btn-warning': file?.data?.file_data_status?.status_name === 'قيد المراجعة',
-            'btn-danger': file?.data?.file_data_status?.status_name === 'منتهي'
+            'btn-danger': file?.data?.file_data_status?.status_name === 'منتي'
           }">
             {{file?.data?.file_data_status?.status_name}}
           </button>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="card mb-3">
-    <div class="card-header">
-      <div class="row align-items-center">
-        <div class="col">
-          <h5 class="mb-0">وصف المستند</h5>
-        </div>
-      </div>
-    </div>
-    <div class="card-body bg-light border-top">
-      <div [innerHTML]="file?.data?.file_desc"></div>
     </div>
   </div>
 
@@ -142,6 +140,19 @@
           </div>
         </object>
       </ng-template>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h5 class="mb-0">وصف المستند</h5>
+        </div>
+      </div>
+    </div>
+    <div class="card-body bg-light border-top">
+      <div [innerHTML]="file?.data?.file_desc"></div>
     </div>
   </div>
 
@@ -199,62 +210,3 @@
     </div>
   </footer>
 </div>
-
-<style>
-  @media (max-width: 768px) {
-    .container-fluid {
-      padding: 10px;
-    }
-
-    .card {
-      margin-bottom: 1rem;
-    }
-
-    .card-body {
-      padding: 1rem;
-    }
-
-    .row {
-      margin-bottom: 16px;
-      padding: 8px 0;
-    }
-
-    .row:last-child {
-      margin-bottom: 0;
-    }
-
-    .btn {
-      width: 100%;
-      margin-bottom: 0.5rem;
-    }
-
-    .mb-1 {
-      white-space: nowrap;
-      margin-bottom: 0 !important;
-    }
-
-    .category-row {
-      flex-direction: column;
-    }
-
-    .category-row>div {
-      width: 100%;
-      margin-bottom: 0.5rem;
-    }
-
-    .category-row .col-3 {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
-
-    .category-row .label {
-      width: 40%;
-      display: inline-block;
-    }
-
-    .category-row .value {
-      width: 60%;
-      display: inline-block;
-    }
-  }
-</style>
