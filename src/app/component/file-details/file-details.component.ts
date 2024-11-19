@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 // import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,8 +16,9 @@ import { DomSanitizer, Meta, Title } from '@angular/platform-browser'; // <-- Ad
   templateUrl: './file-details.component.html',
   styleUrls: ['./file-details.component.css']
 })
-export class FileDetailsComponent implements OnInit {
+export class FileDetailsComponent implements OnInit, OnDestroy {
   @Input() mobileZoom: boolean = true;
+  public isMobile: boolean = false;
   file: any;
   user: any;
   pdfSrc!: string;
@@ -37,7 +38,7 @@ export class FileDetailsComponent implements OnInit {
     private metaService: Meta,
     private titleService: Title
   ) {
-
+    this.checkScreenSize();
   }
 
   pdfUrl: any;
@@ -50,7 +51,20 @@ export class FileDetailsComponent implements OnInit {
       // User is not logged in, redirect to the login page
       this.router.navigate(['/login']);
     }
+
+    // Add resize listener
+    window.addEventListener('resize', this.checkScreenSize.bind(this));
   }
+
+  ngOnDestroy() {
+    // Remove resize listener
+    window.removeEventListener('resize', this.checkScreenSize.bind(this));
+  }
+
+  private checkScreenSize(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
+
   private checkUserLoggedIn(): boolean {
     // Implement your logic to check if the user is logged in
     // You can access the token from the cookie service and validate it
@@ -116,15 +130,7 @@ export class FileDetailsComponent implements OnInit {
     this.metaService.updateTag({ property: 'og:image', content: imageUrl }); // <-- Update OG image
     this.metaService.updateTag({ property: 'og:url', content: url }); // <-- Update OG URL
     this.metaService.updateTag({ property: 'og:type', content: 'website' }); // <-- Set OG type
-
-
-
   }
-
-
-
-
-
 
   onPdfLoadComplete(event: any): void {
     const pdf: PDFDocumentProxy = event.source._pdfInfo;
@@ -132,7 +138,6 @@ export class FileDetailsComponent implements OnInit {
     this.totalPages = pdf.numPages;
   }
   delete(id: any) {
-
     this.fileService.deleteFile(id).subscribe((res: any) => {
       this.router.navigate(['/home'])
     });

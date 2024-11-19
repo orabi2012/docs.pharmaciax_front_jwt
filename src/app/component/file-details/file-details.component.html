@@ -1,5 +1,5 @@
-<div class="container">
-  <nav [ngClass]="isModalOpen ? '' : 'navbar-top'" class="navbar navbar-light navbar-glass  navbar-expand ">
+<div class="container-fluid">
+  <nav class="navbar navbar-light navbar-glass navbar-expand-sm">
     <div class="d-flex align-items-center">
       <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button"
         data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse"
@@ -83,14 +83,16 @@
         </div>
       </div>
       <div class="card-body bg-light border-top">
-        <div class="row navbar-glass">
-          <div class="col-3 col-sm-4 mb-3">
-            <p class=" mb-1">إسم المستند</p>
-          </div>
-          <div style="font-weight: bold;font-size: large;" class="col-8">{{file?.data?.file_name}}</div>
-        </div>
-        <div class="row">
-          <div class="col-lg col-xxl-5">
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="row g-2">
+              <div class="col-4">
+                <p class="mb-1">إسم المستند</p>
+              </div>
+              <div class="col-8">
+                <p class="fw-bold fs-5">{{file?.data?.file_name}}</p>
+              </div>
+            </div>
             <div class="row">
               <div class="col-3 col-sm-4 mb-3">
                 <p class=" mb-1">التصنيف الرئيسي</p>
@@ -170,7 +172,8 @@
           </div>
         </ng-container>
         <ng-template #pdfContent>
-          <object *ngIf="pdfUrl && !pdfLoading" [data]="pdfUrl" type="application/pdf" width="100%" [height]="'600vh'">
+          <object *ngIf="pdfUrl && !pdfLoading" [data]="pdfUrl" type="application/pdf" width="100%"
+            [height]="isMobile ? '400px' : '600vh'">
             <div class="text-center">
               <p>يبدو أنه لا يمكن عرض الملف مباشرة.</p>
               <a [href]="pdfUrl" target="_blank" class="btn btn-primary">
@@ -237,3 +240,29 @@
     </footer>
   </div>
 </div>
+
+<!-- Add responsive CSS -->
+<style>
+  @media (max-width: 768px) {
+    .container-fluid {
+      padding: 10px;
+    }
+
+    .card {
+      margin-bottom: 1rem;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    .btn {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

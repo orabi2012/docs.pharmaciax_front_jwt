@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
+  <nav class="navbar navbar-light navbar-vertical navbar-expand-lg">
     <div class="d-flex align-items-center">
       <div class="toggle-icon-wrapper">
         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip"
@@ -67,7 +67,7 @@
   <div class="content">
     <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand navbar-glass-shadow">
       <div class="d-flex align-items-center">
-        <button class="btn navbar- toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button"
+        <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse"
           aria-expanded="true" aria-label="Toggle Navigation">
           <span class="navbar-toggle-icon">
@@ -76,7 +76,7 @@
         </button>
       </div>
       <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
-        <li class="nav-item pt-1">
+        <li class="nav-item pt-1 d-none d-md-block">
           <a *ngIf="user.role_id === 1 || user.role_id === 2" class="nav-link pe-3" role="button" aria-haspopup="true"
             aria-expanded="false">
             <button class="btn rounded-pill btn-sm" [ngClass]="{
@@ -234,36 +234,19 @@
       <div class="card-header"></div>
       <div class="card-body pt-0">
         <div id="tableExample3" *ngIf="showActiveFilesTable">
-          <div class="table-responsive scrollbar">
+          <div class="table-responsive-sm">
             <table class="table table-bordered table-striped fs--1 mb-0">
               <thead class="bg-200 text-900">
                 <tr>
-                  <th class="text-center d-sm-none" style="font-size: large">
-                    عرض
-                  </th>
-                  <th class="text-center" style="font-size: large">
-                    إسم المستند
-                  </th>
-                  <th class="hidden-xs text-center" style="font-size: large">
-                    رقم المستند
-                  </th>
-                  <th class="hidden-xs text-center" style="font-size: large">
-                    سنة الإصدار
-                  </th>
-                  <th class="hidden-xs text-center" style="font-size: large">ملف خاص</th>
-                  <th class="hidden-xs text-center" style="font-size: large">
-                    الدولة
-                  </th>
-                  <th class="hidden-xs text-center" style="font-size: large">
-                    التصنيف الرئيسي
-                  </th>
-                  <th class="text-center" style="font-size: large">الحالة</th>
-                  <th class="hidden-xs text-center" style="font-size: large">
-                    تاريخ أخر تحديث
-                  </th>
-                  <th class="text-center d-none d-sm-table-cell" style="font-size: large">
-                    عرض المستند
-                  </th>
+                  <th class="d-none d-md-table-cell">إسم المستند</th>
+                  <th>رقم المستند</th>
+                  <th class="d-none d-md-table-cell">سنة الإصدار</th>
+                  <th class="d-none d-md-table-cell">ملف خاص</th>
+                  <th class="d-none d-md-table-cell">الدولة</th>
+                  <th class="d-none d-md-table-cell">التصنيف الرئيسي</th>
+                  <th>الحالة</th>
+                  <th class="d-none d-md-table-cell">تاريخ أخر تحديث</th>
+                  <th>عرض</th>
                 </tr>
               </thead>
               <tbody class="list">
@@ -406,12 +389,12 @@
                 <tr>
                   <th class="sort" data-sort="file_name">إسم المستند</th>
                   <th class="sort" data-sort="Doc_No">رقم المستند</th>
-                  <th class="sort" data-sort="Year">سنة الإصدار</th>
-                  <th class="sort" data-sort="isAuthorized">is Authorizrd</th>
-                  <th class="sort" data-sort="Country">الدولة</th>
-                  <th class="sort" data-sort="Category">التصنيف الرئيسي</th>
+                  <th class="sort d-none d-md-table-cell" data-sort="Year">سنة الإصدار</th>
+                  <th class="sort d-none d-md-table-cell" data-sort="isAuthorized">is Authorizrd</th>
+                  <th class="sort d-none d-md-table-cell" data-sort="Country">الدولة</th>
+                  <th class="sort d-none d-md-table-cell" data-sort="Category">التصنيف الرئيسي</th>
                   <th class="sort" data-sort="file_data_status">الحالة</th>
-                  <th class="sort" data-sort="file_name">تاريخ أخر تحديث</th>
+                  <th class="sort d-none d-md-table-cell" data-sort="file_name">تاريخ أخر تحديث</th>
                   <th>عرض القرار</th>
                 </tr>
               </thead>
@@ -419,8 +402,8 @@
                 <tr *ngFor="let item of getInactiveFilesForPage()">
                   <td>{{ item.file_name }}</td>
                   <td>{{ item.Doc_No }}</td>
-                  <td>{{ item.Year }}</td>
-                  <td class="isAuthorized">
+                  <td class="d-none d-md-table-cell">{{ item.Year }}</td>
+                  <td class="d-none d-md-table-cell isAuthorized">
                     <span *ngIf="item.isAuthorized; else unauthorized">
                       <i class="bi bi-star-fill" style="color: red"></i>
                     </span>
@@ -432,11 +415,10 @@
                       </div>
                     </ng-template>
                   </td>
-                  <td>
+                  <td class="d-none d-md-table-cell">
                     <img style="width: 30px; height: 20px" [src]="item.Country.flag" />
                   </td>
-                  <td>{{ item.Category.Category_name }}</td>
-                  <!-- <td>{{item.file_data_status.status_name}}</td> -->
+                  <td class="d-none d-md-table-cell">{{ item.Category.Category_name }}</td>
                   <td>
                     <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
                         'background-color':
@@ -449,7 +431,7 @@
                       {{ item.file_data_status.status_name }}
                     </button>
                   </td>
-                  <td>
+                  <td class="d-none d-md-table-cell">
                     {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
                   </td>
                   <td class="d-flex justify-content-center align-items-center">
@@ -517,3 +499,33 @@
     </footer>
   </div>
 </div>
+
+<!-- Add responsive CSS -->
+<style>
+  @media (max-width: 768px) {
+    .navbar-vertical {
+      width: 100%;
+      position: fixed;
+      z-index: 1030;
+    }
+
+    .content {
+      margin-top: 60px;
+      /* Adjust based on navbar height */
+      padding: 15px;
+    }
+
+    .table {
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem;
+    }
+  }
+</style>
