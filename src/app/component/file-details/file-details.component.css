@@ -1,13 +1,14 @@
 /* Shared styles */
 .label {
     color: #2907CA;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 500;
     margin-left: 15px;
 }
 
 .value {
     color: #000;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 /* Desktop styles */
@@ -31,6 +32,7 @@
 
     .card-body {
         padding: 1rem;
+        font-size: 18px;
     }
 
     .row {
@@ -50,11 +52,11 @@
     .mb-1 {
         white-space: nowrap;
         margin-bottom: 0 !important;
-        font-size: 13px;
+        font-size: 18px;
     }
 
     .fw-bold {
-        font-size: 13px;
+        font-size: 18px;
     }
 
     .category-row {
@@ -374,4 +376,56 @@
 .btn-dark.home-btn:hover {
     background-color: #212529;
     border-color: #212529;
+}
+
+/* تنسيق عام للنصوص */
+.card-body {
+    font-size: 18px;
+}
+
+.card-header h5 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 18px;
+}
+
+/* تنسيق خاص بالمعلومات في الأسفل */
+.card-body[dir="ltr"] {
+    font-size: 18px;
+}
+
+.card-body[dir="ltr"] .mb-1 {
+    font-size: 18px;
+}
+
+.card-body[dir="ltr"] .fw-bold {
+    font-size: 18px;
+}
+
+/* تنسيق النصوص في الفوتر */
+footer {
+    font-size: 18px;
+}
+
+/* تنسيقات الموبايل - نفس الحجم */
+@media (max-width: 767px) {
+
+    .card-body,
+    .card-header h5,
+    .label,
+    .value,
+    .card-body[dir="ltr"],
+    .card-body[dir="ltr"] .mb-1,
+    .card-body[dir="ltr"] .fw-bold,
+    footer {
+        font-size: 18px;
+    }
 }
