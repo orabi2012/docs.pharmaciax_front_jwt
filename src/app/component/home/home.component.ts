@@ -267,15 +267,13 @@ export class HomeComponent implements OnInit {
       country_id: this.user.Country_id,
       status_id: this.searchForm.get('Status_id')?.value,
       category_id: this.searchForm.get('category_id')?.value,
-      subcat_id: this.searchForm.get('subcat_id')?.value,
-
-
+      subcat_id: this.searchForm.get('subcat_id')?.value?.length > 0
+        ? this.searchForm.get('subcat_id')?.value
+        : null
     };
 
-    // console.log(searchObj)
     this.searchForFiles(searchObj);
-    this.activeFileFilter = true
-
+    this.activeFileFilter = true;
   }
 
   clearAll() {
@@ -286,6 +284,8 @@ export class HomeComponent implements OnInit {
     this.searchForm.get('Status_id').setValue('');
     this.searchForm.get('category_id').setValue('');
     this.searchForm.get('subcat_id').setValue('');
+
+    this.showAll();
   }
 
 
@@ -356,6 +356,10 @@ export class HomeComponent implements OnInit {
 
 
   onChange() {
+    // Clear subcategory selection first
+    this.searchForm.get('subcat_id').setValue([]);
+
+    // Then update subcategories array based on selected category
     for (const c of this.categories) {
       if (c.cat_id === this.selectedCategory) {
         this.subCategoriesArr = c.subcategories;

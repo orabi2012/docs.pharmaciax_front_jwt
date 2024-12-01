@@ -174,58 +174,79 @@
     </nav>
 
     <div class="card mt-3 mb-3" *ngIf="showActiveFilesTable">
-      <div class="card-header d-flex">
+      <div class="card-header d-flex align-items-center">
         <div class="toggle-icon-wrapper" (click)="toggleCard()">
-          <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip"
-            data-bs-placement="left" aria-label="Toggle Navigation" data-bs-original-title="Toggle Navigation">
+          <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle">
             <span class="navbar-toggle-icon">
               <span class="toggle-line"></span>
             </span>
           </button>
         </div>
-        <h5 class="mb-0 ps-2 mt-1">بحث متقدم</h5>
+        <h5 class="mb-0 ps-2">بحث متقدم</h5>
       </div>
+
       <div class="card-body bg-light" *ngIf="searchBox">
-        <form class="row" [formGroup]="searchForm">
-          <div class="col-md-4">
-            <input class="form-control" placeholder="إسم المستند" formControlName="File_name" />
+        <form class="row g-3" [formGroup]="searchForm">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-floating">
+              <input class="form-control" id="documentName" placeholder=" " formControlName="File_name" />
+              <label for="documentName">إسم المستند</label>
+            </div>
           </div>
-          <div class="col-md-3">
-            <input class="form-control" placeholder="تاريخ المستد" formControlName="Year" />
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-floating">
+              <input class="form-control" id="documentNumber" placeholder=" " formControlName="Doc_no" />
+              <label for="documentNumber">رقم المستند</label>
+            </div>
           </div>
-          <div class="col-md-3">
-            <input class="form-control" placeholder="الرقم" formControlName="Doc_no" />
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-floating">
+              <input class="form-control" id="documentDate" placeholder=" " formControlName="Year" />
+              <label for="documentDate">تاريخ المستند</label>
+            </div>
           </div>
-          <div class="col-md-3">
-            <input class="form-control" placeholder="كلمات مفتاحية" formControlName="Txt" />
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="form-floating">
+              <input class="form-control" id="keywords" placeholder=" " formControlName="Txt" />
+              <label for="keywords">كلمات مفتاحية</label>
+            </div>
           </div>
-          <div class="col-md-4">
-            <label class="form-label" for="Status_id"> حالة المستند</label>
-            <ng-select class="form-select ngSelect" formControlName="Status_id">
-              <ng-option *ngFor="let status of allStatus" [value]="status.status_id">{{ status.status_name
-                }}</ng-option>
-            </ng-select>
-          </div>
-          <div class="col-md-4">
+
+          <div class="col-12 col-md-4">
             <label class="form-label" for="category_id">التصنيف الرئيسي</label>
-            <ng-select [(ngModel)]="selectedCategory" (change)="onChange()" class="form-select ngSelect"
+            <ng-select [(ngModel)]="selectedCategory" (change)="onChange()" class="form-select-sm"
               formControlName="category_id" [closeOnSelect]="true">
-              <ng-option *ngFor="let category of categories" [value]="category.cat_id">{{ category.Category_name
-                }}</ng-option>
+              <ng-option *ngFor="let category of categories" [value]="category.cat_id">
+                {{ category.Category_name }}
+              </ng-option>
             </ng-select>
           </div>
-          <div class="col-md-4">
+
+          <div class="col-12 col-md-4">
             <label class="form-label" for="subcat_id">التصنيف الفرعي</label>
-            <ng-select [multiple]="true" [clearable]="true" class="form-select ngSelect" formControlName="subcat_id">
-              <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id">{{ sub.SubCategory_name
-                }}</ng-option>
+            <ng-select [multiple]="true" [clearable]="true" class="form-select-sm" formControlName="subcat_id">
+              <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id">
+                {{ sub.SubCategory_name }}
+              </ng-option>
             </ng-select>
           </div>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" (click)="toggleCard(); filterBySearchForm()" type="submit">
+
+          <div class="col-12 col-md-4">
+            <label class="form-label" for="Status_id">حالة المستند</label>
+            <ng-select class="form-select-sm" formControlName="Status_id">
+              <ng-option *ngFor="let status of allStatus" [value]="status.status_id">
+                {{ status.status_name }}
+              </ng-option>
+            </ng-select>
+          </div>
+
+          <div class="col-12 d-flex gap-2 justify-content-between mt-3">
+            <button class="btn btn-primary" (click)="toggleCard(); filterBySearchForm()">
               بحث
             </button>
-            <button class="btn btn-secondary" (click)="clearAll()">مسح</button>
+            <button class="btn btn-secondary" (click)="clearAll()">
+              مسح
+            </button>
           </div>
         </form>
       </div>
@@ -342,14 +363,6 @@
             </table>
           </div>
 
-          <!-- <ng-template #fileDetailsColumn let-item="item">
-                  <i
-                    [routerLink]="['/file_details', item.File_data_id]"
-                    class="bi bi-eye"
-                    [class.pointer-events-none]="item.isAuthorized && user.role_id === 4"
-                    style="font-size: 24px;"
-                  ></i>
-                </ng-template> -->
           <ng-template #fileDetailsColumn let-item="item">
             <button [routerLink]="['/file_details', item.File_data_id]" [class.pointer-events-none]="
                 item.isAuthorized && user.role_id === 4
@@ -526,6 +539,112 @@
 
     .nav-link {
       padding: 0.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 1rem;
+    }
+
+    .form-control,
+    .form-select-sm,
+    .ng-select {
+      font-size: 14px;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 14px;
+      margin-bottom: 0.25rem;
+    }
+
+    .btn-sm {
+      width: auto;
+      min-width: 80px;
+    }
+
+    .row.g-3 {
+      --bs-gutter-y: 0.5rem;
+    }
+  }
+
+  ::ng-deep .ng-select.form-select-sm .ng-select-container {
+    min-height: 35px;
+    font-size: 14px;
+  }
+
+  ::ng-deep .ng-select.form-select-sm.ng-select-multiple .ng-select-container {
+    min-height: 35px;
+    height: auto;
+  }
+
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+  }
+
+  .form-floating {
+    position: relative;
+  }
+
+  .form-floating>.form-control {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+  }
+
+  .form-floating>label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    transform-origin: 100% 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+  }
+
+  .form-floating>.form-control:focus~label,
+  .form-floating>.form-control:not(:placeholder-shown)~label {
+    opacity: .65;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+  }
+
+  .ng-select.form-select-sm {
+    margin-top: 0.25rem;
+  }
+
+  ::ng-deep .ng-select.form-select-sm .ng-select-container {
+    min-height: 40px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  ::ng-deep .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+  }
+
+  @media (max-width: 768px) {
+    .card-body {
+      padding: 1rem;
+    }
+
+    .form-floating>.form-control {
+      height: calc(3rem + 2px);
+      font-size: 14px;
+    }
+
+    .form-floating>label {
+      font-size: 14px;
+    }
+
+    .form-label.small {
+      font-size: 12px;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 0.375rem 0.75rem;
     }
   }
 </style>
