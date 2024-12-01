@@ -138,8 +138,17 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
     this.totalPages = pdf.numPages;
   }
   delete(id: any) {
-    this.fileService.deleteFile(id).subscribe((res: any) => {
-      this.router.navigate(['/home'])
+    if (!id) return;
+
+    this.fileService.deleteFile(id).subscribe({
+      next: (res: any) => {
+        // يمكنك إضافة رسالة نجاح هنا إذا كنت تستخدم نظام تنبيهات
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        // يمكنك إضافة رسالة خطأ هنا إذا كنت تستخدم نظام تنبيهات
+        console.error('Error deleting file:', error);
+      }
     });
   }
 }
