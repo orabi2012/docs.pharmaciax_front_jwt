@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   // base_url: 'https://wild-tan-elk-robe.cyclic.app/',
-   base_url: 'https://pharmaciax-api.onrender.com/',
-  //base_url: 'http://localhost:3000/',
+  // base_url: 'https://pharmaciax-api.onrender.com/',
+  base_url: 'http://localhost:3000/',
 
   inactive: 'File-status-List',
 };
