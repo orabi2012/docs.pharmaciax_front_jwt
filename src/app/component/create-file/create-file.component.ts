@@ -110,7 +110,7 @@ export class CreateFileComponent implements OnInit {
       this.fileForm.get('file')?.setValidators([Validators.required]);
       this.fileForm.get('file')?.updateValueAndValidity();
     } else {
-      const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB in bytes
+      const MAX_FILE_SIZE = 15 * 1024 * 1024; // 10 MB in bytes
       if (file.size > MAX_FILE_SIZE) {
         this.fileForm.reset();
         this.fileForm
