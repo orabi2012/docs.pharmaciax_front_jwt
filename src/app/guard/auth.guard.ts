@@ -16,56 +16,28 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router,
     private toastr: ToastrService, private cookieService: CookieService) { }
-  // canActivate(): Observable<boolean> {
-  //   return this.authService.currentUser$.pipe(
-  //     map((user: any) => {
-  //       if (user) {
-  //         return true;
-  //       } else {
-  //         console.log("alooooooooooooo")
-  //         this.toastr.error('YOU SHOULD LOGIN FIRST')
-  //         this.router.navigate(['login']);
-  //         return false;
-  //       }
-  //     })
-  //   );
-  // }
-
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): boolean | UrlTree {
-
-  //   const isLoggedIn = this.checkUserLoggedIn();
-  //   if (isLoggedIn) {
-  //     // User is logged in, allow navigation
-  //     return true;
-  //   } else {
-  //     // User is not logged in, redirect to the login page
-  //     // return this.router.parseUrl('/login');
-  //     return this.router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } });
-
-  //   }
-  // }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-
     const isLoggedIn = this.checkUserLoggedIn();
     if (isLoggedIn) {
-      // User is logged in, allow navigation
-      return true;
+      // Check if the requested URL exists in your routes
+      try {
+        this.router.parseUrl(state.url);
+        return true;
+      } catch {
+        // If URL parsing fails, redirect to home
+        return this.router.createUrlTree(['/home']);
+      }
     } else {
-      // User is not logged in, redirect to the login page with returnUrl
       this.toastr.error('YOU SHOULD LOGIN FIRST');
-      // HIGHLIGHTED CHANGE: Adding returnUrl to the login redirection
-      return this.router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } });
+      return this.router.createUrlTree(['/login'], {
+        queryParams: { returnUrl: state.url }
+      });
     }
   }
-
-
 
   private checkUserLoggedIn(): boolean {
     const token = this.cookieService.get('tokenJwt');
