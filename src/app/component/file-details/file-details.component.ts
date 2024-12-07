@@ -8,7 +8,7 @@ import { PDFDocumentProxy } from 'ngx-extended-pdf-viewer';
 // import { PDFDocumentProxy } from 'ng2-pdf-viewer';
 import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders, HttpClient } from '@angular/common/http';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser'; // <-- Added Meta and Title imports
 
 @Component({
@@ -148,6 +148,25 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
       error: (error) => {
         // يمكنك إضافة رسالة خطأ هنا إذا كنت تستخدم نظام تنبيهات
         console.error('Error deleting file:', error);
+      }
+    });
+  }
+
+  resendEmail(fileId: string) {
+    if (!fileId) return;
+
+    const token = this.cookieService.get('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.fileService.resendEmail(fileId, headers).subscribe({
+      next: (response) => {
+        // You can add a success message here
+        console.log('Email resent successfully');
+        // Add toast or alert to show success
+      },
+      error: (error) => {
+        console.error('Error resending email:', error);
+        // Add toast or alert to show error
       }
     });
   }

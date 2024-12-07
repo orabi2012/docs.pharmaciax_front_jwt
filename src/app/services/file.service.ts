@@ -102,4 +102,8 @@ export class FileService {
       })
     )
   }
+
+  resendEmail(fileId: string, headers: HttpHeaders) {
+    return this.http.post(`${environment.base_url}fileData/resend-email/${fileId}`, {}, { headers });
+  }
 }
