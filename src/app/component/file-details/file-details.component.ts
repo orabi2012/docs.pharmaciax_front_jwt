@@ -28,6 +28,7 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
   isModalOpen = false;
   totalPages = 0;
   datePipe = new DatePipe('en-US');
+  sanitizedFileDesc: any;
 
   constructor(private route: ActivatedRoute,
     private cookieService: CookieService,
@@ -96,6 +97,8 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
           this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(pdfBlob));
           this.pdfLoading = false;
         });
+
+        this.sanitizedFileDesc = this.sanitizer.bypassSecurityTrustHtml(this.file.data.file_desc);
       },
       (error: HttpErrorResponse) => {
         // File details retrieval error

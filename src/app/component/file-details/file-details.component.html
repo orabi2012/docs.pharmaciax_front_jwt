@@ -133,7 +133,7 @@
         <object *ngIf="pdfUrl && !pdfLoading" [data]="pdfUrl" type="application/pdf" width="100%"
           [height]="isMobile ? '400px' : '600vh'">
           <div class="text-center">
-            <p>يبدو أنه لا يمكن عرض الملف مباشرة.</p>
+            <p>يبدو أنه لا يمكن عرض الم��ف مباشرة.</p>
             <a [href]="pdfUrl" target="_blank" class="btn btn-primary">
               فتح المستند في نافذة جديدة
             </a>
@@ -152,7 +152,7 @@
       </div>
     </div>
     <div class="card-body bg-light border-top">
-      <div [innerHTML]="file?.data?.file_desc"></div>
+      <div [innerHTML]="sanitizedFileDesc" class="ql-editor"></div>
     </div>
   </div>
 
