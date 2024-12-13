@@ -66,10 +66,11 @@
                 <p class="fs--2 mb-1"><a [routerLink]="['/user_details',user.id]" class="text-700">{{user.email}}</a>
 
                 </p>
-
-                <h3 class="fs--2 mb-1">Created at : - {{user.createdAt}} </h3>
-                <h3 class="fs--2 mb-1">الدولة : {{user.Country.country_name}} </h3>
-                <h3 class="fs--2 mb-1">الزيارات : {{user.visits}} </h3>
+                <h3 class="fs--2 mb-1">Last Login : - <span
+                    style="color: #2c7be5; font-size: 1.2em">{{user.last_login}}</span></h3>
+                <h3 class="fs--2 mb-1"> Created at : - {{user.createdAt}} </h3>
+                <h3 class="fs--2 mb-1"> Country : {{user.Country.country_name}} </h3>
+                <h2 class="fs--2 mb-1"> Visits : {{user.visits}} </h2>
 
 
 
