@@ -46,15 +46,12 @@
             </a>
             <ul class="nav collapse" id="dash{{ i }}">
               <li class="nav-item" *ngFor="let subcategory of category.subcategories">
-                <a *ngIf="showActiveFilesTable" class="nav-link" role="button" [ngClass]="{
-                    active:
-                      selectedSubcategoryIndex === subcategory.subcat_id &&
-                      !activeFileFilter
+                <a *ngIf="showActiveFilesTable" (click)="filterDataBySub(category, subcategory)" class="nav-link"
+                  role="button" [ngClass]="{
+                    active: selectedSubcategoryIndex === subcategory.subcat_id && !activeFileFilter
                   }">
                   <div class="d-flex align-items-center">
-                    <span (click)="
-                        filterDataBySub(category, subcategory); clearAll()
-                      " class="nav-link-text ps-1">{{ subcategory.SubCategory_name }}</span>
+                    <span class="nav-link-text ps-1">{{ subcategory.SubCategory_name }}</span>
                   </div>
                 </a>
               </li>

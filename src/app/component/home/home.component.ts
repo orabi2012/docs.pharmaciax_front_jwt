@@ -190,9 +190,7 @@ export class HomeComponent implements OnInit {
 
 
   filterDataByCat(category: Category, index: number, event: MouseEvent) {
-    // منع السلوك الافتراضي للرابط
     event.preventDefault();
-
     const searchFilter: SearchFiltre = {
       category_id: category.cat_id,
       country_id: this.user.Country_id,
@@ -202,19 +200,16 @@ export class HomeComponent implements OnInit {
       txt: null,
       doc_no: null,
     };
-
     this.searchForFiles(searchFilter);
     this.selectedCategoryIndex = index;
     this.selectedSubcategoryIndex = null;
     this.removeActiveFileFilter();
 
-    // التعامل مع النقر في وضع الموبايل
     if (this.isSmallScreen) {
       const subMenu = document.getElementById(`dash${index}`);
       if (subMenu) {
         const isExpanded = subMenu.classList.contains('show');
 
-        // إغلاق القائمة إذا لم تكن هناك قائمة فرعية أو كانت مفتوحة
         if (!category.subcategories || category.subcategories.length === 0 || isExpanded) {
           const navbarCollapse = document.getElementById('navbarVerticalCollapse');
           if (navbarCollapse) {
@@ -229,9 +224,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  filterDataBySub(category: any, subCategories: any) {
+  filterDataBySub(category: any, subcategory: any) {
     const searchObj: SearchFiltre = {
-      subcat_id: subCategories.subcat_id,
+      subcat_id: subcategory.subcat_id,
       category_id: category.cat_id,
       country_id: this.user.Country_id,
       status_id: null,
@@ -240,10 +235,9 @@ export class HomeComponent implements OnInit {
       doc_no: null,
       txt: null
     };
-
     this.searchForFiles(searchObj);
-    this.selectedCategoryIndex = category.id;
-    this.selectedSubcategoryIndex = subCategories.subcat_id;
+    this.selectedCategoryIndex = null;
+    this.selectedSubcategoryIndex = subcategory.subcat_id;
     this.removeActiveFileFilter();
 
     if (this.isSmallScreen) {
@@ -303,7 +297,6 @@ export class HomeComponent implements OnInit {
     this.searchForFiles(searchObj);
     this.activeFileFilter = true;
 
-    // إضافة collapse للقائمة في وضع الموبايل
     if (this.isSmallScreen) {
       const navbarCollapse = document.getElementById('navbarVerticalCollapse');
       if (navbarCollapse) {
