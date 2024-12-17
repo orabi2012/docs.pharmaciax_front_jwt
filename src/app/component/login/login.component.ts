@@ -188,4 +188,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   //   });
   //   this.googleService.signIn(GoogleLoginProvider.PROVIDER_ID);
   // }
+
+  onRememberMeChange() {
+    if (!this.rememberMe) {
+      // Remove saved credentials when user unchecks the box
+      localStorage.removeItem('rememberedUser');
+    }
+  }
+
+  togglePasswordVisibility(show: boolean) {
+    // Prevent default behavior to avoid issues with touch events
+    event?.preventDefault();
+    this.showPassword = show;
+  }
 }
