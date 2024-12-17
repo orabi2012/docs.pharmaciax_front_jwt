@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   user: any;
   isForgotPassword = false;
   loading = false;
+  showPassword = false;
+  rememberMe = false;
 
   constructor(
     private authService: AuthService,
@@ -32,7 +34,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     private primengConfig: PrimeNGConfig,
     private loadingService: LoadingService,
     private route: ActivatedRoute, // Add this line
-  ) { }
+  ) {
+    // Check for remembered credentials
+    const remembered = localStorage.getItem('rememberedUser');
+    if (remembered) {
+      this.model = JSON.parse(remembered);
+      this.rememberMe = true;
+    }
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -122,9 +131,18 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (res) {
           this.user = res;
           if (this.user?.user_id != null) {
-            // this.router.navigate(['/home']);
+            // Handle remember me
+            if (this.rememberMe) {
+              localStorage.setItem('rememberedUser', JSON.stringify({
+                email: this.model.email,
+                password: this.model.password
+              }));
+            } else {
+              localStorage.removeItem('rememberedUser');
+            }
+
             const redirectUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-            this.router.navigate([redirectUrl]); // Use the captured return URL
+            this.router.navigate([redirectUrl]);
           }
         } else {
           this.messageService.add({

@@ -56,18 +56,29 @@
                       <div class="d-flex justify-content-between">
                         <label class="form-label" for="card-password">كلمة المرور</label>
                       </div>
-                      <input name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control"
-                        id="card-password" type="password" autocomplete="off" required />
+                      <div class="input-group">
+                        <input name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control"
+                          id="card-password" [type]="showPassword ? 'text' : 'password'" autocomplete="off" required />
+                        <button class="btn btn-outline-secondary" type="button" (mousedown)="showPassword = true"
+                          (mouseup)="showPassword = false" (mouseleave)="showPassword = false">
+                          <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
+                          id="rememberMeCheck">
+                        <label class="form-check-label" for="rememberMeCheck">
+                          تذكرني
+                        </label>
+                      </div>
                     </div>
                     <div class="mb-3">
                       <button type="button" class="btn btn-outline-primary d-block w-100 mt-3 position-relative"
                         (click)="toggleForgotPassword()">
                         <i class="fas fa-key me-2"></i>
                         {{ isForgotPassword ? 'العودة لتسجيل الدخول' : 'نسيت كلمة المرور؟' }}
-                        <span
-                          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger animate-pulse">
-                          جديد!
-                        </span>
                       </button>
                     </div>
                     <div class="mb-3">
