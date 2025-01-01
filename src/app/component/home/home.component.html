@@ -364,7 +364,8 @@
             <button [routerLink]="['/file_details', item.File_data_id]" [class.pointer-events-none]="
                 item.isAuthorized && user.role_id === 4
               " class="btn btn-primary" style="font-size: 12px">
-              عرض
+              مشاهدة
+              <span class="badge bg-info">{{ item.views }}</span>
               <!-- <i class="bi bi-eye"></i> -->
               <!-- Icon can be added inside the button if needed -->
               <!-- Additional text or content can also be added inside the button if needed -->

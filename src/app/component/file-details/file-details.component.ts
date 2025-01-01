@@ -104,7 +104,7 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
         // File details retrieval error
         if (error.status === 401) {
           // Unauthorized access
-          console.log('Unauthorized access');
+          console.log('Unauthorized access login needed');
           this.router.navigate(['/login']);
         } else {
           // Other error handling logic
