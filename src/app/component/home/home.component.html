@@ -249,46 +249,26 @@
             <table class="table table-bordered table-striped fs--1 mb-0">
               <thead class="bg-200 text-900">
                 <tr>
-                  <th class="d-none d-md-table-cell">إسم المستند</th>
-                  <th>رقم المستند</th>
+                  <th>إسم المستند</th>
+                  <th>عرض</th>
+                  <th>الحالة</th>
+                  <th class="d-none d-md-table-cell">رقم المستند</th>
                   <th class="d-none d-md-table-cell">سنة الإصدار</th>
                   <th class="d-none d-md-table-cell">ملف خاص</th>
                   <th class="d-none d-md-table-cell">الدولة</th>
                   <th class="d-none d-md-table-cell">التصنيف الرئيسي</th>
-                  <th>الحالة</th>
                   <th class="d-none d-md-table-cell">تاريخ أخر تحديث</th>
-                  <th>عرض</th>
                 </tr>
               </thead>
               <tbody class="list">
                 <tr *ngFor="let item of getDataForPage()">
                   <ng-container *ngIf="isSmallScreen; else largeScreenTemplate">
-                    <td class="text-center">
-                      <ng-container *ngTemplateOutlet="
-                          fileDetailsColumn;
-                          context: { item: item }
-                        "></ng-container>
-                    </td>
                     <td>{{ item.file_name }}</td>
-                    <td class="hidden-xs">{{ item.Doc_No }}</td>
-                    <td class="hidden-xs">{{ item.Year }}</td>
-                    <td class="hidden-xs isAuthorized">
-                      <span *ngIf="item.isAuthorized; else unauthorized">
-                        <i class="bi bi-star-fill" style="color: red"></i>
-                      </span>
-                      <ng-template #unauthorized>
-                        <div class="pretty p-default">
-                          <div class="state p-warning">
-                            <i class="icon bi bi-circle" style="color: green"></i>
-                          </div>
-                        </div>
-                      </ng-template>
+                    <td class="text-center align-middle">
+                      <ng-container *ngTemplateOutlet="fileDetailsColumn; context: { item: item }">
+                      </ng-container>
                     </td>
-                    <td class="hidden-xs">
-                      <img style="width: 30px; height: 20px" [src]="item.Country.flag" />
-                    </td>
-                    <td class="hidden-xs hidden-s">{{ item.Category.Category_name }}</td>
-                    <td>
+                    <td class="text-center align-middle">
                       <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
                           'background-color':
                             item.file_data_status.status_id === 1
@@ -299,9 +279,6 @@
                         }" style="font-weight: bolder; color: white">
                         {{ item.file_data_status.status_name }}
                       </button>
-                    </td>
-                    <td class="hidden-xs">
-                      {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
                     </td>
                   </ng-container>
                   <ng-template #largeScreenTemplate>
