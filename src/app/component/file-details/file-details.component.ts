@@ -29,6 +29,7 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
   totalPages = 0;
   datePipe = new DatePipe('en-US');
   sanitizedFileDesc: any;
+  viewCount: number = 0;
 
   constructor(private route: ActivatedRoute,
     private cookieService: CookieService,
@@ -77,24 +78,24 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
     const token = this.cookieService.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    // First, increment the views
-    this.fileService.incrementFileViews(fileId!, headers).subscribe({
-      next: () => {
-        console.log('View count incremented');
-      },
-      error: (error) => {
-        console.error('Error incrementing view count:', error);
-      }
-    });
-
-    // Then load the file details as before
+    // أولاً نقوم بجلب تفاصيل الملف
     this.fileService.getFile(fileId!, headers).subscribe(
       (res: any) => {
-        // console.log('Response:', res);
-        // File details retrieval success
         this.file = res;
+        this.viewCount = this.file.data.views || 0;
         this.pdfLoading = true;
         this.updateMetaTags();
+
+        // ثم نقوم بزيادة عدد المشاهدات وتحديث العداد المحلي
+        this.fileService.incrementFileViews(fileId!, headers).subscribe({
+          next: () => {
+            this.viewCount++; // زيادة العداد المحلي مباشرة
+            console.log('View count incremented');
+          },
+          error: (error) => {
+            console.error('Error incrementing view count:', error);
+          }
+        });
 
         const subArr = this.file.data.subCategories;
         this.subObj = subArr.map((subcat: any) => subcat?.SubCategory_name).join(" ]  [ ");
@@ -183,5 +184,13 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
         // Add toast or alert to show error
       }
     });
+  }
+
+  getViewText(count: number): string {
+    if (count === 0) return "لا توجد مشاهدات";
+    if (count === 1) return "مشاهدة واحدة";
+    if (count === 2) return "مشاهدتان";
+    if (count >= 3 && count <= 10) return `${count} مشاهدات`;
+    return `${count} مشاهدة`;
   }
 }

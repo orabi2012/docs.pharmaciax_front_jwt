@@ -429,3 +429,21 @@ footer {
         font-size: 18px;
     }
 }
+
+.views-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 16px;
+    padding: 4px 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.views-counter mat-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    color: #666;
+}

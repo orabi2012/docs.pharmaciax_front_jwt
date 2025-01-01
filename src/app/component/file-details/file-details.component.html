@@ -17,8 +17,16 @@
 
   <div class="card mb-3">
     <div class="card-header">
-      <div class="col">
-        <h5 class="mb-0">كود المستند</h5>
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <h5 class="mb-0">كود المستند</h5>
+        </div>
+        <div class="col-auto">
+          <div class="views-counter">
+            <mat-icon>visibility</mat-icon>
+            <span>{{ getViewText(viewCount) }}</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-body bg-light border-top">
@@ -227,5 +235,10 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="views-counter">
+    <mat-icon>visibility</mat-icon>
+    <span>{{ getViewText(viewCount) }}</span>
   </div>
 </div>
