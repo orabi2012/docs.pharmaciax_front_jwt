@@ -268,8 +268,8 @@
                       <ng-container *ngTemplateOutlet="fileDetailsColumn; context: { item: item }">
                       </ng-container>
                     </td>
-                    <td class="text-center align-middle">
-                      <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
+                    <td class="text-center align-middle status-column">
+                      <button disabled class="btn me-1 mb-1 rounded-pill btn-sm status-btn" [ngStyle]="{
                           'background-color':
                             item.file_data_status.status_id === 1
                               ? 'green'
@@ -331,14 +331,17 @@
           </div>
 
           <ng-template #fileDetailsColumn let-item="item">
-            <button [routerLink]="['/file_details', item.File_data_id]" [class.pointer-events-none]="
-                item.isAuthorized && user.role_id === 4
-              " class="btn btn-primary" style="font-size: 12px">
+            <button [routerLink]="['/file_details', item.File_data_id]"
+              [class.pointer-events-none]="item.isAuthorized && user.role_id === 4" class="btn" [ngClass]="{
+                'btn-danger': hasCommercialFraud(item),
+                'btn-primary': !hasCommercialFraud(item)
+              }" style="font-size: 12px" data-bs-toggle="tooltip" data-bs-placement="top"
+              [title]="hasCommercialFraud(item) ? 'منشور غش تجاري' : ''">
               مشاهدة
-              <span class="badge bg-info">{{ item.views }}</span>
-              <!-- <i class="bi bi-eye"></i> -->
-              <!-- Icon can be added inside the button if needed -->
-              <!-- Additional text or content can also be added inside the button if needed -->
+              <span class="badge" [ngClass]="{
+                'bg-light text-danger': hasCommercialFraud(item),
+                'bg-info': !hasCommercialFraud(item)
+              }">{{ item.views }}</span>
             </button>
           </ng-template>
 
@@ -614,5 +617,36 @@
       font-size: 14px;
       padding: 0.375rem 0.75rem;
     }
+  }
+
+  @media (max-width: 576px) {
+    .status-column {
+      width: 85px;
+      max-width: 85px;
+      padding: 2px !important;
+    }
+
+    .status-btn {
+      padding: 2px 6px !important;
+      font-size: 11px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 75px;
+      margin: 0 !important;
+      min-width: unset !important;
+      line-height: 1.5 !important;
+      border-radius: 12px !important;
+    }
+
+    .btn.me-1.mb-1 {
+      margin: 0 !important;
+    }
+  }
+
+  ::ng-deep .tooltip-red {
+    background-color: #dc3545 !important;
+    font-size: 14px !important;
+    margin: 5px;
   }
 </style>

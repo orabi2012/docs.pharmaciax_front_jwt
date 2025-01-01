@@ -124,6 +124,13 @@ export class HomeComponent implements OnInit {
 
     this.setIsSmallScreen();
 
+    // تفعيل tooltips
+    setTimeout(() => {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -403,5 +410,12 @@ export class HomeComponent implements OnInit {
         bsCollapse.hide();
       }
     }
+  }
+
+  hasCommercialFraud(item: any): boolean {
+    // التحقق من وجود "غش تجاري" في الـsubCategories
+    return item.subCategories?.some((sub: any) =>
+      sub.SubCategory_name?.includes('غش تجاري')
+    );
   }
 }
