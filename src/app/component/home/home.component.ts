@@ -418,4 +418,12 @@ export class HomeComponent implements OnInit {
       sub.SubCategory_name?.includes('غش تجاري')
     );
   }
+
+  getTotalViews(): number {
+    if (!this.files) return 0;
+
+    return this.files.reduce((total: number, item: any) => {
+      return total + (item.views || 0);
+    }, 0);
+  }
 }

@@ -244,6 +244,13 @@
     <div class="card mb-3">
       <div class="card-header"></div>
       <div class="card-body pt-0">
+        <div class="d-flex justify-content-center mb-3">
+          <div class="badge bg-primary p-2 total-views-badge" style="font-size: 14px;">
+            <i class="bi bi-eye me-1"></i>
+            إجمالي المشاهدات: {{ getTotalViews() }}
+          </div>
+        </div>
+
         <div id="tableExample3" *ngIf="showActiveFilesTable">
           <div class="table-responsive-sm">
             <table class="table table-bordered table-striped fs--1 mb-0">
@@ -648,5 +655,58 @@
     background-color: #dc3545 !important;
     font-size: 14px !important;
     margin: 5px;
+  }
+
+  @media (max-width: 576px) {
+    .total-views-badge {
+      width: 100%;
+      min-width: unset;
+      display: flex;
+      justify-content: center;
+      padding: 8px !important;
+      font-size: 16px !important;
+    }
+  }
+
+  /* ستايل عام لشارة إجمالي المشاهدات */
+  .total-views-badge {
+    min-width: 250px;
+    padding: 12px 25px !important;
+    margin: 15px 0;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #0d6efd, #0a58ca) !important;
+    transition: all 0.3s ease;
+  }
+
+  .total-views-badge i {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+
+  .total-views-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ستايل خاص بعرض الموبايل */
+  @media (max-width: 576px) {
+    .total-views-badge {
+      width: 100%;
+      min-width: unset;
+      margin: 10px 0;
+      padding: 10px !important;
+      font-size: 15px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px !important;
+    }
+
+    .total-views-badge i {
+      font-size: 16px;
+      margin-left: 6px;
+    }
   }
 </style>
