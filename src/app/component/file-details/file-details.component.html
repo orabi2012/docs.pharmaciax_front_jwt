@@ -8,8 +8,9 @@
           [routerLink]="['/update_file',file?.data?.File_data_id]" class="btn btn-primary">تعديل</button>
         <button *ngIf="user.role_id === 1" type="button" class="btn btn-danger" (click)="isModalOpen = true"
           data-bs-toggle="modal" data-bs-target="#exampleModal">حذف</button>
-        <button *ngIf="user.role_id === 1" type="button" class="btn btn-info"
-          (click)="resendEmail(file?.data?.File_data_id)"> إرسال البريد الإلكتروني
+        <button *ngIf="user.role_id === 1" type="button" class="btn btn-warning"
+          (click)="resendEmail(file?.data?.File_data_id)">
+          <mat-icon>email</mat-icon>
         </button>
       </div>
     </div>
