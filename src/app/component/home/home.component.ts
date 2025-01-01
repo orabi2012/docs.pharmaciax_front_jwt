@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   categories: Category[] = [];
   files: any;
   page = 1;
-  pageSize = 10;
+  pageSize = 25;
   totalItems = 0;
   imageUrl: any;
   filesByCountryId: any;
