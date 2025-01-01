@@ -77,6 +77,17 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
     const token = this.cookieService.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+    // First, increment the views
+    this.fileService.incrementFileViews(fileId!, headers).subscribe({
+      next: () => {
+        console.log('View count incremented');
+      },
+      error: (error) => {
+        console.error('Error incrementing view count:', error);
+      }
+    });
+
+    // Then load the file details as before
     this.fileService.getFile(fileId!, headers).subscribe(
       (res: any) => {
         // console.log('Response:', res);
