@@ -80,7 +80,7 @@
                 'btn-warning': showActiveFilesTable,
                 'btn-success': !showActiveFilesTable
               }" (click)="showInactiveFiles()">
-              {{ showActiveFilesTable ? "Inactive Files" : "Active Files" }}
+              {{ showActiveFilesTable ? "Inactive" : "Active" }}
             </button>
           </a>
         </li>
@@ -88,8 +88,8 @@
           <a *ngIf="user.role_id === 1 || user.role_id === 2" class="nav-link pe-3" role="button"
             routerLink="/createFile" aria-haspopup="true" aria-expanded="false">
             <button class="btn btn-secondary rounded-pill btn-sm" type="button">
-              <span class="p-1 bi-plus-circle-fill mt-auto"></span>إضافة ملف
-              جديد
+              <span class="p-1 bi-plus-circle-fill mt-auto"></span>
+
             </button></a>
         </li>
 
@@ -121,14 +121,12 @@
           </a>
         </li>
 
-        <li *ngIf="user.role_id == 1 || user.role_id == 2 || user.role_id == 3 || user.role_id == 4"
-          class="nav-item dropdown pt-2 pe-2">
-          <a class="nav-link" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <span style="font-weight: bolder; font-size: 16px">تغيير الدولة</span>
+        <li class="nav-item pt-1"
+          *ngIf="user.role_id == 1 || user.role_id == 2 || user.role_id == 3 || user.role_id == 4">
+          <a class="nav-link pe-3" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img style="width: 30px; height: 20px; cursor: pointer;" [src]="getCountryFlag(user.Country_id)" />
           </a>
-          <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
-            aria-labelledby="navbarDropdownNotification">
+          <div class="dropdown-menu dropdown-caret dropdown-menu-end py-0">
             <div class="bg-white dark__bg-1000 rounded-2 py-2">
               <a class="dropdown-item" *ngFor="let country of countries">
                 <div (click)="filterDataByCountry(country.id)" class="row">
@@ -142,11 +140,6 @@
               </a>
             </div>
           </div>
-        </li>
-        <li class="nav-item pt-1">
-          <a class="nav-link pe-3" role="button" aria-haspopup="true" aria-expanded="false">
-            <img style="width: 30px; height: 20px; justify-self: self-end" [src]="getCountryFlag(user.Country_id)" />
-          </a>
         </li>
         <li class="nav-item dropdown pt-1">
           <a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown"
