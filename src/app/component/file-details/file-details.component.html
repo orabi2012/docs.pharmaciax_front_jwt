@@ -110,7 +110,7 @@
           <p class="label">حالة المستند</p>
         </div>
         <div class="col-12 col-sm-3">
-          <button class="btn btn-sm status-badge" [ngClass]="{
+          <button class="btn btn-sm " [ngClass]="{
             'btn-success': file?.data?.file_data_status?.status_name === 'ساري',
             'btn-warning': file?.data?.file_data_status?.status_name === 'معدل',
             'btn-danger': file?.data?.file_data_status?.status_name === 'ملغي'
