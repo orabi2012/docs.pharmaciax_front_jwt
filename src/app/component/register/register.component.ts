@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'primeng/api';
@@ -13,7 +13,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./register.component.css'],
   providers: [MessageService],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   model: any = {};
   user: any;
   countries: any
@@ -47,6 +47,26 @@ export class RegisterComponent implements OnInit {
       summary: 'Success',
       detail: 'Record Saved',
     });
+    // Remove Google Ads when register page loads
+    const adScript = document.querySelector('script[src*="adsbygoogle"]');
+    if (adScript) {
+      adScript.remove();
+    }
+    // Hide any existing ad elements
+    const adElements = document.querySelectorAll('.adsbygoogle');
+    adElements.forEach(el => {
+      (el as HTMLElement).style.display = 'none';
+    });
+  }
+
+  ngOnDestroy() {
+    // Reinject Google Ads script when leaving register page
+    const head = document.getElementsByTagName('head')[0];
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8400668080120923';
+    script.crossOrigin = 'anonymous';
+    head.appendChild(script);
   }
 
   async register() {
