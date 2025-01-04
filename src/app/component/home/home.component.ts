@@ -1,6 +1,6 @@
 // import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category';
@@ -11,6 +11,7 @@ import { FileService } from 'src/app/services/file.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { DatePipe } from '@angular/common';
 import { CookieOptions, CookieService } from 'ngx-cookie-service';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 declare var bootstrap: any;
 
 @Component({
@@ -50,6 +51,7 @@ export class HomeComponent implements OnInit {
   searchBox = false;
   isSmallScreen: boolean = false;
   lastClickTime: number = 0;
+  @ViewChild(CdkVirtualScrollViewport) viewport!: CdkVirtualScrollViewport;
 
 
 
@@ -336,20 +338,22 @@ export class HomeComponent implements OnInit {
 
   searchForFiles(searchFilter: SearchFiltre) {
     this.loadingService.show();
-    this.fileService.searchForFile(searchFilter).subscribe(result => {
-      this.loadingService.hide();
-      this.files = result;
-      this.loadedData = true
-      this.totalItems = this.files.length;
-      this.getDataForPage()
-      this.goToPage(1);
+    this.fileService.searchForFile(searchFilter).subscribe(
+      result => {
+        this.loadingService.hide();
+        this.files = result;
+        this.loadedData = true;
+        this.totalItems = this.files.length;
 
-    },
-      (error) => {
+        if (this.viewport) {
+          this.viewport.checkViewportSize();
+        }
+      },
+      error => {
         this.loadingService.setError(error.message);
         this.loadingService.hide();
       }
-    )
+    );
   }
 
 
@@ -425,5 +429,10 @@ export class HomeComponent implements OnInit {
     return this.files.reduce((total: number, item: any) => {
       return total + (item.views || 0);
     }, 0);
+  }
+
+  // دالة trackBy لتحسين الأداء
+  trackByFn(index: number, item: any): number {
+    return item.File_data_id;
   }
 }

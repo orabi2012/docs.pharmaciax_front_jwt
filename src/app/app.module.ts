@@ -51,6 +51,7 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
 import { UnauthInterceptor } from './unauth.interceptor';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { SharedModule } from './shared/shared.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { SharedModule } from './shared/shared.module';
       }
     ),
     SharedModule,
+    ScrollingModule
   ],
   providers: [Meta,
     {
