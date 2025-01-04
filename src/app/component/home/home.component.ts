@@ -24,8 +24,6 @@ export class HomeComponent implements OnInit {
   countries: any;
   categories: Category[] = [];
   files: any;
-  page = 1;
-  pageSize = 25;
   totalItems = 0;
   imageUrl: any;
   filesByCountryId: any;
@@ -154,33 +152,6 @@ export class HomeComponent implements OnInit {
     // this.googleService.signOut()
     this.router.navigate(["/login"])
   }
-
-  getDataForPage() {
-    if (this.files) {
-      const startIndex = (this.page - 1) * this.pageSize;
-      return this.files.slice(startIndex, startIndex + this.pageSize);
-    }
-    return [];
-  }
-
-
-  get totalPages() {
-    return Math.ceil(this.totalItems / this.pageSize);
-  }
-
-  get pages() {
-    const start = Math.max(1, this.page - 2);
-    const end = Math.min(this.totalPages, this.page + 2);
-    return Array(end - start + 1).fill(0).map((_, i) => start + i);
-  }
-
-
-  goToPage(page: number) {
-    if (page >= 1 && page <= this.totalPages) {
-      this.page = page;
-    }
-  }
-
 
   filterDataByCountry(countryId: any) {
     this.user.Country_id = countryId;
@@ -373,32 +344,25 @@ export class HomeComponent implements OnInit {
 
   showInactiveFiles() {
     this.showActiveFilesTable = !this.showActiveFilesTable;
-    // console.log(this.showActiveFilesTable)
-    const userId = this.user.user_id
+    const userId = this.user.user_id;
     if (!this.showActiveFilesTable) {
-      this.fileService.getInactiveFiles(userId).subscribe(res => {
-        this.loadingService.hide();
-        // console.log(res)
-        this.inactiveFiles = res
-        this.loadedData = true
+      this.fileService.getInactiveFiles(userId).subscribe(
+        res => {
+          this.loadingService.hide();
+          this.inactiveFiles = res;
+          this.loadedData = true;
+          this.totalItems = this.inactiveFiles.length;
 
-        this.totalItems = this.inactiveFiles.length;
-        this.getDataForPage()
-        this.goToPage(1);
-
-      }, (error) => {
-        this.loadingService.setError(error.message);
-        this.loadingService.hide()
-          ;
-      })
+          if (this.viewport) {
+            this.viewport.checkViewportSize();
+          }
+        },
+        error => {
+          this.loadingService.setError(error.message);
+          this.loadingService.hide();
+        }
+      );
     }
-  }
-  getInactiveFilesForPage() {
-    if (this.inactiveFiles) {
-      const startIndex = (this.page - 1) * this.pageSize;
-      return this.inactiveFiles.slice(startIndex, startIndex + this.pageSize);
-    }
-    return [];
   }
 
   toggleCard() {

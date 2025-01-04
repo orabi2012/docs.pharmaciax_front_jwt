@@ -345,31 +345,14 @@
             </button>
           </ng-template>
 
-          <div class="d-flex justify-content-center mt-3">
-            <nav class="nael">
-              <ul>
-                <li *ngIf="page > 1">
-                  <a (click)="goToPage(page - 1)"><i class="bi bi-chevron-right"></i></a>
-                </li>
-                <li *ngFor="let pg of pages">
-                  <a [class.active]="pg === page" (click)="goToPage(pg)">{{
-                    pg
-                    }}</a>
-                </li>
-                <li *ngIf="page < totalPages">
-                  <a (click)="goToPage(page + 1)"><i class="bi bi-chevron-left"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
           <div class="noFiles" *ngIf="loadedData && totalItems == 0">
             <h3>لا توجد ملفات</h3>
           </div>
         </div>
         <div id="tableExample3" *ngIf="!showActiveFilesTable">
-          <div class="table-responsive scrollbar">
+          <div class="table-responsive-sm">
             <table class="table table-bordered table-striped fs--1 mb-0">
-              <thead class="bg-200 text-900">
+              <thead class="bg-200 text-900 sticky-header">
                 <tr>
                   <th class="sort" data-sort="file_name">إسم المستند</th>
                   <th class="sort" data-sort="Doc_No">رقم المستند</th>
@@ -382,77 +365,66 @@
                   <th>عرض القرار</th>
                 </tr>
               </thead>
-              <tbody class="list">
-                <tr *ngFor="let item of getInactiveFilesForPage()">
-                  <td>{{ item.file_name }}</td>
-                  <td>{{ item.Doc_No }}</td>
-                  <td class="d-none d-md-table-cell">{{ item.Year }}</td>
-                  <td class="d-none d-md-table-cell isAuthorized">
-                    <span *ngIf="item.isAuthorized; else unauthorized">
-                      <i class="bi bi-star-fill" style="color: red"></i>
-                    </span>
-                    <ng-template #unauthorized>
-                      <div class="pretty p-default">
-                        <div class="state p-warning">
-                          <i class="icon bi bi-circle" style="color: green"></i>
+            </table>
+
+            <cdk-virtual-scroll-viewport [itemSize]="50" class="virtual-scroll-viewport">
+              <table class="table table-bordered table-striped fs--1 mb-0">
+                <tbody class="list">
+                  <tr *cdkVirtualFor="let item of inactiveFiles; trackBy: trackByFn">
+                    <td>{{ item.file_name }}</td>
+                    <td>{{ item.Doc_No }}</td>
+                    <td class="d-none d-md-table-cell">{{ item.Year }}</td>
+                    <td class="d-none d-md-table-cell isAuthorized">
+                      <span *ngIf="item.isAuthorized; else unauthorized">
+                        <i class="bi bi-star-fill" style="color: red"></i>
+                      </span>
+                      <ng-template #unauthorized>
+                        <div class="pretty p-default">
+                          <div class="state p-warning">
+                            <i class="icon bi bi-circle" style="color: green"></i>
+                          </div>
                         </div>
-                      </div>
-                    </ng-template>
-                  </td>
-                  <td class="d-none d-md-table-cell">
-                    <img style="width: 30px; height: 20px" [src]="item.Country.flag" />
-                  </td>
-                  <td class="d-none d-md-table-cell">{{ item.Category.Category_name }}</td>
-                  <td>
-                    <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
-                        'background-color':
-                          item.file_data_status.status_id === 1
-                            ? ' green'
-                            : item.file_data_status.status_id === 2
-                            ? 'orange'
-                            : 'red'
+                      </ng-template>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                      <img style="width: 30px; height: 20px" [src]="item.Country.flag" />
+                    </td>
+                    <td class="d-none d-md-table-cell">{{ item.Category.Category_name }}</td>
+                    <td>
+                      <button disabled class="btn me-1 mb-1 rounded-pill btn-sm" [ngStyle]="{
+                          'background-color':
+                            item.file_data_status.status_id === 1
+                              ? ' green'
+                              : item.file_data_status.status_id === 2
+                              ? 'orange'
+                              : 'red'
                       }" style="font-weight: bolder; color: white">
-                      {{ item.file_data_status.status_name }}
-                    </button>
-                  </td>
-                  <td class="d-none d-md-table-cell">
-                    {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
-                  </td>
-                  <td class="d-flex justify-content-center align-items-center">
-                    <i [routerLink]="['/file_details', item.File_data_id]" class="bi bi-eye"
-                      [class.pointer-events-none]="
-                        item.isAuthorized && user.role_id === 4
-                      " style="font-size: 24px">
-                    </i>
-                  </td>
-                  <!-- <td>
+                        {{ item.file_data_status.status_name }}
+                      </button>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                      {{ datePipe.transform(item.updatedAt, "dd/MM/yyyy") }}
+                    </td>
+                    <td class="d-flex justify-content-center align-items-center">
+                      <i [routerLink]="['/file_details', item.File_data_id]" class="bi bi-eye"
+                        [class.pointer-events-none]="
+                          item.isAuthorized && user.role_id === 4
+                        " style="font-size: 24px">
+                      </i>
+                    </td>
+                    <!-- <td>
                             <button mat-raised-button [disabled]="(item.isAuthorized && user.role_id === 4)"
                             [matTooltipDisabled]="!(item.isAuthorized && user.role_id === 4)" [matTooltip]="disabledTooltip"
                             class="btn btn-outline-secondary " [routerLink]="['/file_details',item.File_data_id]">
                             preview
                           </button>
                         </td> -->
-                </tr>
-              </tbody>
-            </table>
+                  </tr>
+                </tbody>
+              </table>
+            </cdk-virtual-scroll-viewport>
           </div>
-          <div class="d-flex justify-content-center mt-3">
-            <nav class="nael">
-              <ul>
-                <li *ngIf="page > 1">
-                  <a (click)="goToPage(page - 1)"><i class="bi bi-chevron-right"></i></a>
-                </li>
-                <li *ngFor="let pg of pages">
-                  <a [class.active]="pg === page" (click)="goToPage(pg)">{{
-                    pg
-                    }}</a>
-                </li>
-                <li *ngIf="page < totalPages">
-                  <a (click)="goToPage(page + 1)"><i class="bi bi-chevron-left"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+
           <div class="noFiles" *ngIf="loadedData && totalItems == 0">
             <h3>لا توجد ملفات</h3>
           </div>
