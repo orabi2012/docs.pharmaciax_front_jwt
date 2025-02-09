@@ -197,10 +197,10 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
   shareOnWhatsApp(): void {
     const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
     const fullName = `${this.user?.first_name} ${this.user?.last_name}`.trim();
-    const shareText = `📋 *${this.file?.data?.file_name}*\n\n` +
-      `📚 ${this.file?.data?.Category?.Category_name}\n` +
+    const shareText = `📋 *${this.file?.data?.file_name}* \n\n` +
+      `📚 ${this.file?.data?.Category?.Category_name}\n\n` +
       `📂 ${this.subObj}\n\n` +
-      `💡 *${this.file?.data?.txt_Eng}*\n\n` +
+      `💡 *${this.file?.data?.txt_Eng}* \n\n` +
       `🔗 ${url}\n\n` +
       `✨ ━━━━━━━━━━━━━━ ✨\n` +
       `🌟 Shared from docs.pharmaciax.com\n` +
@@ -214,10 +214,10 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
     const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
     const fullName = `${this.user?.first_name} ${this.user?.last_name}`.trim();
     // Remove the URL from shareText since Telegram adds it automatically
-    const shareText = `📋 **${this.file?.data?.file_name}**\n\n` +
-      `📚 ${this.file?.data?.Category?.Category_name}\n` +
+    const shareText = `📋 **${this.file?.data?.file_name}** \n\n` +
+      `📚 ${this.file?.data?.Category?.Category_name}\n\n` +
       `📂 ${this.subObj}\n\n` +
-      `💡 **${this.file?.data?.txt_Eng}**\n\n` +
+      `💡 **${this.file?.data?.txt_Eng}** \n\n` +
       `✨ ━━━━━━━━━━━━━━ ✨\n` +
       `🌟 Shared from docs.pharmaciax.com\n` +
       `👤 By ${fullName}\n\n` +
