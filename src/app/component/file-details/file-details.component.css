@@ -241,3 +241,49 @@ footer {
         gap: 10px;
     }
 }
+
+/* Add these styles for the sharing buttons */
+.sharing-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sharing-button i {
+    margin-right: 5px;
+}
+
+.btn-facebook {
+    background-color: #3b5998;
+    /* Facebook color */
+}
+
+.btn-messenger {
+    background-color: #0084ff;
+    /* Messenger color */
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    /* WhatsApp color */
+}
+
+.btn-telegram {
+    background-color: #0088cc;
+    /* Telegram color */
+}
+
+.sharing-button:hover {
+    transform: scale(1.05);
+}
+
+.sharing-button:active {
+    transform: scale(0.95);
+}

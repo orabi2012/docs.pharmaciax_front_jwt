@@ -193,4 +193,19 @@ export class FileDetailsComponent implements OnInit, OnDestroy {
     if (count >= 3 && count <= 10) return `${count} مشاهدات`;
     return `${count} مشاهدة`;
   }
+
+  shareOnWhatsApp(): void {
+    const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
+    const shareText = `${this.file?.data?.file_name}\n${this.file?.data?.Category?.Category_name}\n${this.subObj}\n${this.file?.data?.txt_Eng}\n${url}\n\nshared by docs.pharmaciax.com`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  shareOnTelegram(): void {
+    const url = `https://docs.pharmaciax.com/file_details/${this.file?.data?.File_data_id}`;
+    // Remove the URL from shareText since Telegram adds it automatically
+    const shareText = `${this.file?.data?.file_name}\n${this.file?.data?.Category?.Category_name}\n${this.subObj}\n${this.file?.data?.txt_Eng}\n\nshared by docs.pharmaciax.com`;
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(shareText)}`;
+    window.open(telegramUrl, '_blank');
+  }
 }

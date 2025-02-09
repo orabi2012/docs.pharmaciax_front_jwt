@@ -1,10 +1,11 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "types": [
+      "cookie"
+    ],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -23,7 +24,6 @@
       "es2020",
       "dom"
     ],
-   
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
