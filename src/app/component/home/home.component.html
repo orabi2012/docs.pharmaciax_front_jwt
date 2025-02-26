@@ -253,27 +253,36 @@
 
         <div id="tableExample3" *ngIf="showActiveFilesTable">
           <div class="table-responsive-sm">
-            <table class="table table-bordered table-striped fs--1 mb-0">
-              <thead class="bg-200 text-900 sticky-header">
-                <tr>
-                  <th>إسم المستند</th>
-                  <th class="d-none d-md-table-cell">رقم المستند</th>
-                  <th class="d-none d-md-table-cell">سنة الإصدار</th>
-                  <th class="d-none d-md-table-cell">ملف خاص</th>
-                  <th class="d-none d-md-table-cell">الدولة</th>
-                  <th class="d-none d-md-table-cell">التصنيف الرئيسي</th>
-                  <th class="d-none d-md-table-cell">الحالة</th>
-                  <th class="d-none d-md-table-cell">تاريخ أخر تحديث</th>
-                  <th>عرض</th>
-                  <th class="d-md-none">الحالة</th>
-                </tr>
-              </thead>
-            </table>
-
-            <cdk-virtual-scroll-viewport [itemSize]="50" class="virtual-scroll-viewport">
-              <table class="table table-bordered table-striped fs--1 mb-0">
+            <div class="single-table-container" cdkVirtualScrollingElement>
+              <table class="table table-bordered table-striped fs--1 mb-0 single-table">
+                <colgroup>
+                  <col style="width: 18%">
+                  <col style="width: 8%" class="d-none d-md-table-cell">
+                  <col style="width: 7%" class="d-none d-md-table-cell">
+                  <col style="width: 6%" class="d-none d-md-table-cell">
+                  <col style="width: 8%" class="d-none d-md-table-cell">
+                  <col style="width: 20%" class="d-none d-md-table-cell">
+                  <col style="width: 10%" class="d-none d-md-table-cell">
+                  <col style="width: 10%" class="d-none d-md-table-cell">
+                  <col style="width: 7%">
+                  <col style="width: 6%" class="d-md-none">
+                </colgroup>
+                <thead class="bg-200 text-900 sticky-header">
+                  <tr>
+                    <th>إسم المستند</th>
+                    <th class="d-none d-md-table-cell">رقم المستند</th>
+                    <th class="d-none d-md-table-cell">سنة الإصدار</th>
+                    <th class="d-none d-md-table-cell">ملف خاص</th>
+                    <th class="d-none d-md-table-cell">الدولة</th>
+                    <th class="d-none d-md-table-cell">التصنيف الرئيسي</th>
+                    <th class="d-none d-md-table-cell">الحالة</th>
+                    <th class="d-none d-md-table-cell">تاريخ أخر تحديث</th>
+                    <th>عرض</th>
+                    <th class="d-md-none">الحالة</th>
+                  </tr>
+                </thead>
                 <tbody class="list">
-                  <tr *cdkVirtualFor="let item of files; trackBy: trackByFn">
+                  <tr *ngFor="let item of files; trackBy: trackByFn">
                     <td>{{ item.file_name }}</td>
                     <td class="d-none d-md-table-cell">{{ item.Doc_No }}</td>
                     <td class="d-none d-md-table-cell">{{ item.Year }}</td>
@@ -327,7 +336,7 @@
                   </tr>
                 </tbody>
               </table>
-            </cdk-virtual-scroll-viewport>
+            </div>
           </div>
 
           <ng-template #fileDetailsColumn let-item="item">
@@ -351,26 +360,35 @@
         </div>
         <div id="tableExample3" *ngIf="!showActiveFilesTable">
           <div class="table-responsive-sm">
-            <table class="table table-bordered table-striped fs--1 mb-0">
-              <thead class="bg-200 text-900 sticky-header">
-                <tr>
-                  <th class="sort" data-sort="file_name">إسم المستند</th>
-                  <th class="sort" data-sort="Doc_No">رقم المستند</th>
-                  <th class="sort d-none d-md-table-cell" data-sort="Year">سنة الإصدار</th>
-                  <th class="sort d-none d-md-table-cell" data-sort="isAuthorized">is Authorizrd</th>
-                  <th class="sort d-none d-md-table-cell" data-sort="Country">الدولة</th>
-                  <th class="sort d-none d-md-table-cell" data-sort="Category">التصنيف الرئيسي</th>
-                  <th class="sort" data-sort="file_data_status">الحالة</th>
-                  <th class="sort d-none d-md-table-cell" data-sort="file_name">تاريخ أخر تحديث</th>
-                  <th>عرض القرار</th>
-                </tr>
-              </thead>
-            </table>
-
-            <cdk-virtual-scroll-viewport [itemSize]="50" class="virtual-scroll-viewport">
-              <table class="table table-bordered table-striped fs--1 mb-0">
+            <div class="single-table-container">
+              <table class="table table-bordered table-striped fs--1 mb-0 single-table">
+                <colgroup>
+                  <col style="width: 18%">
+                  <col style="width: 8%" class="d-none d-md-table-cell">
+                  <col style="width: 7%" class="d-none d-md-table-cell">
+                  <col style="width: 6%" class="d-none d-md-table-cell">
+                  <col style="width: 8%" class="d-none d-md-table-cell">
+                  <col style="width: 20%" class="d-none d-md-table-cell">
+                  <col style="width: 10%" class="d-none d-md-table-cell">
+                  <col style="width: 10%" class="d-none d-md-table-cell">
+                  <col style="width: 7%">
+                  <col style="width: 6%" class="d-md-none">
+                </colgroup>
+                <thead class="bg-200 text-900 sticky-header">
+                  <tr>
+                    <th class="sort" data-sort="file_name">إسم المستند</th>
+                    <th class="sort" data-sort="Doc_No">رقم المستند</th>
+                    <th class="sort d-none d-md-table-cell" data-sort="Year">سنة الإصدار</th>
+                    <th class="sort d-none d-md-table-cell" data-sort="isAuthorized">is Authorizrd</th>
+                    <th class="sort d-none d-md-table-cell" data-sort="Country">الدولة</th>
+                    <th class="sort d-none d-md-table-cell" data-sort="Category">التصنيف الرئيسي</th>
+                    <th class="sort" data-sort="file_data_status">الحالة</th>
+                    <th class="sort d-none d-md-table-cell" data-sort="file_name">تاريخ أخر تحديث</th>
+                    <th>عرض القرار</th>
+                  </tr>
+                </thead>
                 <tbody class="list">
-                  <tr *cdkVirtualFor="let item of inactiveFiles; trackBy: trackByFn">
+                  <tr *ngFor="let item of inactiveFiles; trackBy: trackByFn">
                     <td>{{ item.file_name }}</td>
                     <td>{{ item.Doc_No }}</td>
                     <td class="d-none d-md-table-cell">{{ item.Year }}</td>
@@ -412,17 +430,10 @@
                         " style="font-size: 24px">
                       </i>
                     </td>
-                    <!-- <td>
-                            <button mat-raised-button [disabled]="(item.isAuthorized && user.role_id === 4)"
-                            [matTooltipDisabled]="!(item.isAuthorized && user.role_id === 4)" [matTooltip]="disabledTooltip"
-                            class="btn btn-outline-secondary " [routerLink]="['/file_details',item.File_data_id]">
-                            preview
-                          </button>
-                        </td> -->
                   </tr>
                 </tbody>
               </table>
-            </cdk-virtual-scroll-viewport>
+            </div>
           </div>
 
           <div class="noFiles" *ngIf="loadedData && totalItems == 0">
