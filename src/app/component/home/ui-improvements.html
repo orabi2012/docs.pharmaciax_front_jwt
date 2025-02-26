@@ -1,0 +1,93 @@
+<!-- UI/UX Improvements for PharmaciaX -->
+
+<!-- Example of Loading Indicator -->
+<div class="loading-indicator" *ngIf="!loadedData">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-2 text-muted">جاري تحميل البيانات...</p>
+</div>
+
+<!-- Example of Empty State -->
+<div class="empty-state" *ngIf="loadedData && files?.length === 0">
+  <i class="bi bi-folder-x"></i>
+  <h5>لا توجد مستندات</h5>
+  <p>لم يتم العثور على أي مستندات نشطة</p>
+</div>
+
+<!-- Example of Improved Table Header -->
+<thead class="bg-200 text-900 sticky-header">
+  <tr>
+    <th>
+      <div class="d-flex align-items-center">
+        <span>إسم المستند</span>
+        <i class="bi bi-arrow-down-up sort-indicator"></i>
+      </div>
+    </th>
+    <th class="d-none d-md-table-cell">
+      <div class="d-flex align-items-center">
+        <span>رقم المستند</span>
+        <i class="bi bi-arrow-down-up sort-indicator"></i>
+      </div>
+    </th>
+    <!-- Other headers follow the same pattern -->
+  </tr>
+</thead>
+
+<!-- Example of Improved Search Box -->
+<div class="search-box">
+  <i class="bi bi-search"></i>
+  <input type="text" class="form-control" placeholder="بحث عن مستند..." [(ngModel)]="searchTerm">
+</div>
+
+<!-- Example of Card with Improved Styling -->
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0">المستندات النشطة</h5>
+  </div>
+  <div class="card-body">
+    <!-- Table or content goes here -->
+  </div>
+  <div class="card-footer">
+    <!-- Pagination or actions go here -->
+  </div>
+</div>
+
+<!-- Example of Improved Pagination -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+      <a class="page-link" href="#">{{ page }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Example of Improved Status Button -->
+<button class="btn btn-sm rounded-pill" 
+  [ngStyle]="{
+    'background-color': status === 'active' ? 'green' : 
+                        status === 'pending' ? 'orange' : 'red'
+  }" 
+  style="font-weight: 500; color: white">
+  {{ statusName }}
+</button>
+
+<!-- Example of Improved Action Buttons -->
+<div class="action-buttons">
+  <button class="btn btn-primary btn-sm me-2">
+    <i class="bi bi-eye me-1"></i> عرض
+  </button>
+  <button class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-pencil me-1"></i> تعديل
+  </button>
+</div>

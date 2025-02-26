@@ -1,7 +1,7 @@
 // import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category';
 import { SearchFiltre } from 'src/app/interfaces/searchFile';
@@ -12,18 +12,41 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { DatePipe } from '@angular/common';
 import { CookieOptions, CookieService } from 'ngx-cookie-service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('slideAnimation', [
+      state('down', style({
+        height: '*',
+        opacity: 1,
+        overflow: 'hidden'
+      })),
+      state('up', style({
+        height: '0',
+        opacity: 0,
+        overflow: 'hidden',
+        padding: '0'
+      })),
+      transition('down => up', [
+        animate('300ms ease-out')
+      ]),
+      transition('up => down', [
+        animate('300ms ease-in')
+      ])
+    ])
+  ]
 })
 export class HomeComponent implements OnInit {
   user: any;
   countries: any;
   categories: Category[] = [];
   files: any;
+  filteredFiles: any[] = []; // Add the filteredFiles property
   totalItems = 0;
   imageUrl: any;
   filesByCountryId: any;
@@ -47,6 +70,7 @@ export class HomeComponent implements OnInit {
   activeFileFilter = false;
   datePipe = new DatePipe('en-US');
   searchBox = false;
+  isCardCollapsed = false; // Track the collapse state of the search card
   isSmallScreen: boolean = false;
   lastClickTime: number = 0;
   @ViewChild(CdkVirtualScrollViewport) viewport!: CdkVirtualScrollViewport;
@@ -65,6 +89,12 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // Set initial state of search box (expanded by default)
+    this.searchBox = true;
+    this.isCardCollapsed = false;
+    // Initialize filteredFiles with empty array
+    this.filteredFiles = [];
+
     this.searchForm = this.fb.group({
       File_name: [''],
       Year: [''],
@@ -309,10 +339,12 @@ export class HomeComponent implements OnInit {
 
   searchForFiles(searchFilter: SearchFiltre) {
     this.loadingService.show();
+    this.filteredFiles = []; // Initialize filteredFiles with empty array
     this.fileService.searchForFile(searchFilter).subscribe(
-      result => {
+      res => {
+        this.files = res;
+        this.filteredFiles = res; // Populate filteredFiles with search results
         this.loadingService.hide();
-        this.files = result;
         this.loadedData = true;
         this.totalItems = this.files.length;
 
@@ -366,7 +398,18 @@ export class HomeComponent implements OnInit {
   }
 
   toggleCard() {
-    this.searchBox = !this.searchBox
+    this.isCardCollapsed = !this.isCardCollapsed;
+    // If we're opening the card, make sure searchBox is true
+    if (!this.isCardCollapsed) {
+      this.searchBox = true;
+    } else {
+      // If we're closing, wait for animation to complete before hiding
+      setTimeout(() => {
+        if (this.isCardCollapsed) {
+          this.searchBox = false;
+        }
+      }, 300); // Match animation duration
+    }
   }
 
   handleDoubleClick(event: MouseEvent) {

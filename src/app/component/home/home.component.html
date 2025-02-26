@@ -23,9 +23,9 @@
               [ngClass]="{ active: activeFileFilter }" role="button">
               <div class="d-flex align-items-center" style="margin-top: 60px">
                 <span class="nav-link-icon">
-                  <span class="fas fa-chart-pie"></span>
+                  <i class="bi bi-grid-fill"></i>
                 </span>
-                <span style="font-size: 16px" class="nav-link-text ps-1">الكل</span>
+                <span class="nav-link-text ps-1">الكل</span>
               </div>
             </a>
           </li>
@@ -37,9 +37,9 @@
               aria-controls="dashboard">
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
-                  <span class="fas fa-chart-pie"></span>
+                  <i class="bi bi-folder"></i>
                 </span>
-                <span style="font-size: 16px" class="nav-link-text ps-1">{{
+                <span class="nav-link-text ps-1">{{
                   category?.Category_name
                   }}</span>
               </div>
@@ -51,7 +51,8 @@
                     active: selectedSubcategoryIndex === subcategory.subcat_id && !activeFileFilter
                   }">
                   <div class="d-flex align-items-center">
-                    <span class="nav-link-text ps-1">{{ subcategory.SubCategory_name }}</span>
+                    <i class="bi bi-dot ms-2"></i>
+                    <span class="nav-link-text">{{ subcategory.SubCategory_name }}</span>
                   </div>
                 </a>
               </li>
@@ -164,48 +165,43 @@
     </nav>
 
     <div class="card mt-3 mb-3" *ngIf="showActiveFilesTable">
-      <div class="card-header d-flex align-items-center">
-        <div class="toggle-icon-wrapper" (click)="toggleCard()">
-          <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle">
-            <span class="navbar-toggle-icon">
-              <span class="toggle-line"></span>
-            </span>
-          </button>
-        </div>
-        <h5 class="mb-0 ps-2">بحث متقدم</h5>
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+          <i class="bi bi-search ms-2"></i>بحث المستندات
+        </h5>
+        <button class="btn btn-sm btn-primary" (click)="toggleCard()">
+          <span *ngIf="isCardCollapsed">عرض خيارات البحث</span>
+          <span *ngIf="!isCardCollapsed">إخفاء خيارات البحث</span>
+        </button>
       </div>
 
-      <div class="card-body bg-light" *ngIf="searchBox">
+      <div class="card-body bg-light" *ngIf="searchBox" [@slideAnimation]="isCardCollapsed ? 'up' : 'down'">
         <form class="row g-3" [formGroup]="searchForm">
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-floating">
-              <input class="form-control" id="documentName" placeholder=" " formControlName="File_name" />
-              <label for="documentName">إسم المستند</label>
-            </div>
+            <label for="documentName" class="form-label">إسم المستند</label>
+            <input class="form-control" id="documentName" placeholder=" " formControlName="File_name" />
           </div>
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-floating">
-              <input class="form-control" id="documentNumber" placeholder=" " formControlName="Doc_no" />
-              <label for="documentNumber">رقم المستند</label>
-            </div>
+            <label for="documentNumber" class="form-label">رقم المستند</label>
+            <input class="form-control" id="documentNumber" placeholder=" " formControlName="Doc_no" />
           </div>
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-floating">
-              <input class="form-control" id="documentDate" placeholder=" " formControlName="Year" />
-              <label for="documentDate">تاريخ المستند</label>
-            </div>
+            <label for="documentDate" class="form-label">سنة الإصدار</label>
+            <input class="form-control" id="documentDate" placeholder=" " formControlName="Year" />
           </div>
           <div class="col-12 col-md-6 col-lg-3">
-            <div class="form-floating">
-              <input class="form-control" id="keywords" placeholder=" " formControlName="Txt" />
-              <label for="keywords">كلمات مفتاحية</label>
-            </div>
+            <label for="keywords" class="form-label">كلمات مفتاحية</label>
+            <input class="form-control" id="keywords" placeholder=" " formControlName="Txt" />
           </div>
-
           <div class="col-12 col-md-4">
             <label class="form-label" for="category_id">التصنيف الرئيسي</label>
-            <ng-select [(ngModel)]="selectedCategory" (change)="onChange()" class="form-select-sm"
-              formControlName="category_id" [closeOnSelect]="true">
+            <ng-select 
+              [(ngModel)]="selectedCategory" 
+              (change)="onChange()" 
+              formControlName="category_id" 
+              [closeOnSelect]="true"
+              [appendTo]="'body'"
+              placeholder="اختر التصنيف الرئيسي">
               <ng-option *ngFor="let category of categories" [value]="category.cat_id">
                 {{ category.Category_name }}
               </ng-option>
@@ -214,7 +210,12 @@
 
           <div class="col-12 col-md-4">
             <label class="form-label" for="subcat_id">التصنيف الفرعي</label>
-            <ng-select [multiple]="true" [clearable]="true" class="form-select-sm" formControlName="subcat_id">
+            <ng-select 
+              [multiple]="true" 
+              [clearable]="true" 
+              formControlName="subcat_id"
+              [appendTo]="'body'"
+              placeholder="اختر التصنيف الفرعي">
               <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id">
                 {{ sub.SubCategory_name }}
               </ng-option>
@@ -223,7 +224,10 @@
 
           <div class="col-12 col-md-4">
             <label class="form-label" for="Status_id">حالة المستند</label>
-            <ng-select class="form-select-sm" formControlName="Status_id">
+            <ng-select 
+              formControlName="Status_id"
+              [appendTo]="'body'"
+              placeholder="اختر حالة المستند">
               <ng-option *ngFor="let status of allStatus" [value]="status.status_id">
                 {{ status.status_name }}
               </ng-option>
@@ -231,12 +235,8 @@
           </div>
 
           <div class="col-12 d-flex gap-2 justify-content-between mt-3">
-            <button class="btn btn-primary" (click)="toggleCard(); filterBySearchForm()">
-              بحث
-            </button>
-            <button class="btn btn-secondary" (click)="clearAll()">
-              مسح
-            </button>
+            <button class="btn btn-primary" (click)="toggleCard(); filterBySearchForm()">بحث</button>
+            <button class="btn btn-secondary" (click)="clearAll()">مسح</button>
           </div>
         </form>
       </div>
@@ -254,27 +254,27 @@
         <div id="tableExample3" *ngIf="showActiveFilesTable">
           <div class="table-responsive-sm">
             <div class="single-table-container" cdkVirtualScrollingElement>
-              <table class="table table-bordered table-striped fs--1 mb-0 single-table">
+              <table class="table table-striped table-hover fs--1 mb-0">
                 <colgroup>
-                  <col style="width: 18%">
+                  <col style="width: 40%">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 15%" class="d-none d-md-table-cell">
                   <col style="width: 8%" class="d-none d-md-table-cell">
-                  <col style="width: 7%" class="d-none d-md-table-cell">
-                  <col style="width: 6%" class="d-none d-md-table-cell">
-                  <col style="width: 8%" class="d-none d-md-table-cell">
-                  <col style="width: 20%" class="d-none d-md-table-cell">
-                  <col style="width: 10%" class="d-none d-md-table-cell">
                   <col style="width: 10%" class="d-none d-md-table-cell">
                   <col style="width: 7%">
                   <col style="width: 6%" class="d-md-none">
                 </colgroup>
                 <thead class="bg-200 text-900 sticky-header">
                   <tr>
-                    <th>إسم المستند</th>
+                    <th style="width: 40%;">إسم المستند</th>
                     <th class="d-none d-md-table-cell">رقم المستند</th>
                     <th class="d-none d-md-table-cell">سنة الإصدار</th>
                     <th class="d-none d-md-table-cell">ملف خاص</th>
                     <th class="d-none d-md-table-cell">الدولة</th>
-                    <th class="d-none d-md-table-cell">التصنيف الرئيسي</th>
+                    <th class="d-none d-md-table-cell" style="width: 15%;">التصنيف الرئيسي</th>
                     <th class="d-none d-md-table-cell">الحالة</th>
                     <th class="d-none d-md-table-cell">تاريخ أخر تحديث</th>
                     <th>عرض</th>
@@ -282,6 +282,12 @@
                   </tr>
                 </thead>
                 <tbody class="list">
+                  <tr *ngIf="files && files.length === 0">
+                    <td colspan="10" class="text-center py-5">
+                      <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+                      <p class="text-muted">لا توجد نتائج مطابقة لبحثك. حاول تغيير معايير البحث.</p>
+                    </td>
+                  </tr>
                   <tr *ngFor="let item of files; trackBy: trackByFn">
                     <td>{{ item.file_name }}</td>
                     <td class="d-none d-md-table-cell">{{ item.Doc_No }}</td>
@@ -361,15 +367,15 @@
         <div id="tableExample3" *ngIf="!showActiveFilesTable">
           <div class="table-responsive-sm">
             <div class="single-table-container">
-              <table class="table table-bordered table-striped fs--1 mb-0 single-table">
+              <table class="table table-striped table-hover fs--1 mb-0">
                 <colgroup>
-                  <col style="width: 18%">
+                  <col style="width: 40%">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 5%" class="d-none d-md-table-cell">
+                  <col style="width: 15%" class="d-none d-md-table-cell">
                   <col style="width: 8%" class="d-none d-md-table-cell">
-                  <col style="width: 7%" class="d-none d-md-table-cell">
-                  <col style="width: 6%" class="d-none d-md-table-cell">
-                  <col style="width: 8%" class="d-none d-md-table-cell">
-                  <col style="width: 20%" class="d-none d-md-table-cell">
-                  <col style="width: 10%" class="d-none d-md-table-cell">
                   <col style="width: 10%" class="d-none d-md-table-cell">
                   <col style="width: 7%">
                   <col style="width: 6%" class="d-md-none">

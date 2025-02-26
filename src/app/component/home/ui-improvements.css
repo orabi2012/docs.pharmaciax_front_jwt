@@ -1,0 +1,215 @@
+/* UI/UX Improvements for PharmaciaX */
+
+/* Table row hover effect */
+.single-table tbody tr {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.single-table tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Improved table styling */
+.single-table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Better header styling */
+.sticky-header th {
+  padding: 12px 8px;
+  font-weight: 600;
+  color: #495057;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  border-bottom: 2px solid #dee2e6;
+  transition: background-color 0.2s ease;
+}
+
+.sticky-header th:hover {
+  background: linear-gradient(to bottom, #e9ecef, #dee2e6);
+}
+
+/* Improved table cell styling */
+.single-table td {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+/* Status button styling */
+.btn-sm.rounded-pill {
+  transition: all 0.2s ease;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sm.rounded-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Better scrollbar styling */
+.single-table-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.single-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.single-table-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.single-table-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Improved container styling */
+.single-table-container {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+/* Subtle animation for view button */
+.btn-primary {
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Loading indicator */
+.loading-indicator {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.loading-indicator .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.empty-state h5 {
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #6c757d;
+}
+
+/* Improved sort indicators */
+.sort-indicator {
+  display: inline-block;
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+th:hover .sort-indicator {
+  opacity: 1;
+}
+
+/* Better spacing for mobile */
+@media (max-width: 576px) {
+  .single-table td, .single-table th {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  .btn-sm {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+}
+
+/* Card styling improvements */
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+}
+
+/* Search box improvements */
+.search-box {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.search-box input {
+  padding-left: 40px;
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  border-color: #86b7fe;
+}
+
+.search-box i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+/* Pagination improvements */
+.pagination {
+  margin-top: 1.5rem;
+}
+
+.pagination .page-item .page-link {
+  border-radius: 4px;
+  margin: 0 2px;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(13, 110, 253, 0.25);
+}

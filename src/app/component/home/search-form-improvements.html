@@ -1,0 +1,139 @@
+<!-- Improved Search Form Card -->
+<div class="card search-card mt-3 mb-3" *ngIf="showActiveFilesTable">
+  <div class="card-header d-flex align-items-center">
+    <div class="toggle-icon-wrapper" (click)="toggleCard()">
+      <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle">
+        <span class="navbar-toggle-icon">
+          <span class="toggle-line"></span>
+        </span>
+      </button>
+    </div>
+    <h5 class="mb-0 ps-2">
+      <i class="bi bi-search me-2"></i>بحث متقدم
+    </h5>
+    <div class="ms-auto">
+      <span class="badge bg-primary rounded-pill">
+        <i class="bi bi-funnel-fill me-1"></i>فلترة
+      </span>
+    </div>
+  </div>
+
+  <div class="card-body bg-light" *ngIf="searchBox">
+    <form class="row g-3" [formGroup]="searchForm">
+      <!-- Quick search bar for mobile -->
+      <div class="col-12 d-block d-md-none">
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" placeholder="بحث سريع..." formControlName="File_name">
+          <button class="btn btn-primary" type="button" (click)="filterBySearchForm()">بحث</button>
+        </div>
+      </div>
+
+      <!-- Document Name -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="form-floating search-input">
+          <input class="form-control" id="documentName" placeholder=" " formControlName="File_name" />
+          <label for="documentName">
+            <i class="bi bi-file-text me-1"></i>إسم المستند
+          </label>
+        </div>
+      </div>
+
+      <!-- Document Number -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="form-floating search-input">
+          <input class="form-control" id="documentNumber" placeholder=" " formControlName="Doc_no" />
+          <label for="documentNumber">
+            <i class="bi bi-hash me-1"></i>رقم المستند
+          </label>
+        </div>
+      </div>
+
+      <!-- Document Date -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="form-floating search-input">
+          <input class="form-control" id="documentDate" placeholder=" " formControlName="Year" />
+          <label for="documentDate">
+            <i class="bi bi-calendar me-1"></i>سنة الإصدار
+          </label>
+        </div>
+      </div>
+
+      <!-- Keywords -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="form-floating search-input">
+          <input class="form-control" id="keywords" placeholder=" " formControlName="Txt" />
+          <label for="keywords">
+            <i class="bi bi-key me-1"></i>كلمات مفتاحية
+          </label>
+        </div>
+      </div>
+
+      <!-- Main Category -->
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="category_id">
+          <i class="bi bi-diagram-3 me-1"></i>التصنيف الرئيسي
+        </label>
+        <ng-select [(ngModel)]="selectedCategory" (change)="onChange()" 
+                  class="form-select-sm custom-select"
+                  formControlName="category_id" 
+                  [closeOnSelect]="true"
+                  placeholder="اختر التصنيف الرئيسي">
+          <ng-option *ngFor="let category of categories" [value]="category.cat_id">
+            {{ category.Category_name }}
+          </ng-option>
+        </ng-select>
+      </div>
+
+      <!-- Sub Category -->
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="subcat_id">
+          <i class="bi bi-diagram-2 me-1"></i>التصنيف الفرعي
+        </label>
+        <ng-select [multiple]="true" 
+                  [clearable]="true" 
+                  class="form-select-sm custom-select" 
+                  formControlName="subcat_id"
+                  placeholder="اختر التصنيف الفرعي">
+          <ng-option *ngFor="let sub of subCategoriesArr" [value]="sub.subcat_id">
+            {{ sub.SubCategory_name }}
+          </ng-option>
+        </ng-select>
+      </div>
+
+      <!-- Document Status -->
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="Status_id">
+          <i class="bi bi-check-circle me-1"></i>حالة المستند
+        </label>
+        <ng-select class="form-select-sm custom-select" 
+                  formControlName="Status_id"
+                  placeholder="اختر حالة المستند">
+          <ng-option *ngFor="let status of allStatus" [value]="status.status_id">
+            {{ status.status_name }}
+          </ng-option>
+        </ng-select>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="col-12 d-flex gap-2 justify-content-between mt-3">
+        <button class="btn btn-primary search-btn" (click)="toggleCard(); filterBySearchForm()">
+          <i class="bi bi-search me-2"></i>بحث
+        </button>
+        <button class="btn btn-outline-secondary clear-btn" (click)="clearAll()">
+          <i class="bi bi-x-circle me-2"></i>مسح
+        </button>
+      </div>
+
+      <!-- Search Tips -->
+      <div class="col-12 mt-2">
+        <div class="search-tips">
+          <small class="text-muted">
+            <i class="bi bi-info-circle me-1"></i>
+            نصائح البحث: يمكنك البحث باستخدام اسم المستند أو رقمه أو الكلمات المفتاحية.
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

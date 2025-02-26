@@ -1,0 +1,318 @@
+/* Full Page UI/UX Improvements for PharmaciaX */
+
+/* ===== GLOBAL STYLES ===== */
+:root {
+  --primary-color: #0d6efd;
+  --primary-light: rgba(13, 110, 253, 0.1);
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --border-color: #dee2e6;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+}
+
+body {
+  background-color: #f5f7fa;
+}
+
+/* ===== NAVBAR IMPROVEMENTS ===== */
+.navbar-vertical {
+  box-shadow: var(--shadow-md);
+  border-right: 1px solid var(--border-color);
+}
+
+.navbar-vertical .navbar-brand img {
+  transition: transform var(--transition-fast);
+}
+
+.navbar-vertical .navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+.navbar-vertical-content {
+  padding-top: 1rem;
+}
+
+.navbar-vertical .nav-link {
+  border-radius: var(--border-radius-sm);
+  margin: 0.25rem 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.navbar-vertical .nav-link:hover {
+  background-color: var(--primary-light);
+  transform: translateX(-2px);
+}
+
+.navbar-vertical .nav-link.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-vertical .nav-link-icon {
+  color: var(--primary-color);
+  transition: transform var(--transition-fast);
+}
+
+.navbar-vertical .nav-link:hover .nav-link-icon {
+  transform: scale(1.2);
+}
+
+.navbar-vertical .nav-link.active .nav-link-icon {
+  color: white;
+}
+
+/* Improved navbar toggler */
+.navbar-toggler-humburger-icon {
+  transition: all var(--transition-fast);
+}
+
+.navbar-toggler-humburger-icon:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.05);
+}
+
+.navbar-toggle-icon .toggle-line {
+  transition: all var(--transition-normal);
+}
+
+.navbar-toggler-humburger-icon:hover .toggle-line {
+  background-color: var(--primary-color);
+}
+
+/* ===== CARD IMPROVEMENTS ===== */
+.card {
+  border: none;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-header h5 {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* ===== SEARCH FORM IMPROVEMENTS ===== */
+.form-floating {
+  margin-bottom: 0.5rem;
+}
+
+.form-floating input.form-control {
+  border-radius: var(--border-radius-sm);
+  border-color: var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.form-floating input.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-floating label {
+  color: var(--secondary-color);
+}
+
+/* ng-select improvements */
+.ng-select {
+  border-radius: var(--border-radius-sm);
+}
+
+.ng-select .ng-select-container {
+  border-radius: var(--border-radius-sm) !important;
+  transition: all var(--transition-fast);
+}
+
+.ng-select.ng-select-focused .ng-select-container {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Search form buttons */
+.btn {
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: #5c636a;
+  border-color: #565e64;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.25);
+}
+
+/* ===== TABLE IMPROVEMENTS ===== */
+/* Already included in previous CSS file */
+
+/* ===== FOOTER IMPROVEMENTS ===== */
+footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+footer a:hover {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+/* ===== TOTAL VIEWS BADGE ===== */
+.total-views-badge {
+  background: linear-gradient(to right, #0d6efd, #0a58ca);
+  border-radius: 20px;
+  padding: 0.5rem 1rem !important;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.total-views-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+}
+
+.total-views-badge i {
+  margin-right: 0.5rem;
+}
+
+/* ===== RESPONSIVE IMPROVEMENTS ===== */
+@media (max-width: 992px) {
+  .card-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn {
+    padding: 0.4rem 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-vertical {
+    box-shadow: none;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-floating {
+    margin-bottom: 0.75rem;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .d-flex.gap-2.justify-content-between {
+    flex-direction: column;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Different animation delay for each card */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ===== GOOGLE AD IMPROVEMENTS ===== */
+.card:has(app-google-ad) {
+  border: 1px dashed #dee2e6;
+  box-shadow: none;
+}
+
+.card:has(app-google-ad):hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== DARK MODE SUPPORT (if needed) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-color: #343a40;
+    --dark-color: #f8f9fa;
+    --border-color: #495057;
+  }
+  
+  /* Add dark mode styles here if needed */
+}
