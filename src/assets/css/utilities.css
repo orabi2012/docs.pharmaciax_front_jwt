@@ -1,0 +1,118 @@
+/* Utility Classes */
+
+/* Document status indicators */
+.status-active {
+  background-color: #28a745;
+}
+
+.status-inactive {
+  background-color: #dc3545;
+}
+
+.status-pending {
+  background-color: #ffc107;
+}
+
+/* Document preview container */
+.document-preview {
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+}
+
+/* PDF viewer styles */
+.pdf-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Loading indicator */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+/* Footer styles */
+footer {
+  padding: 1.5rem 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin-bottom: 0;
+  color: #6c757d;
+}
+
+/* Custom utility classes */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-truncate-container {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Different animation delay classes */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-full-width {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+}
+
+/* RTL specific adjustments */
+[dir="rtl"] .nav-link-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .nav-link-text {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Search form animation */
+@keyframes slideDown {
+  from { max-height: 0; opacity: 0; }
+  to { max-height: 1000px; opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { max-height: 1000px; opacity: 1; }
+  to { max-height: 0; opacity: 0; }
+}
+
+.slide-down {
+  animation: slideDown 0.4s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease forwards;
+}
